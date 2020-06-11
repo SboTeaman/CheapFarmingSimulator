@@ -3,6 +3,7 @@ package com.company;
 import Buildings.Buildings;
 import Interfaces.BuyingPlants;
 import Interfaces.BuyingsBuildings;
+import Interfaces.RandomNumberGenerator;
 import Interfaces.Selling;
 
 import java.util.ArrayList;
@@ -74,6 +75,30 @@ public class Players implements Selling, BuyingPlants , BuyingsBuildings {
         }
         else{
             System.out.println("You don't have enough money to buy: "+ buildings.name);
+        }
+    }
+    public void buyMoreField(Buildings farm, double amount){
+
+        double valueOfTransaction=amount* RandomNumberGenerator.randomBetween(10,20);
+
+        if(this.cash>= valueOfTransaction){
+            if(this.yourBuildings.contains(farm))
+            {
+                if(farm.maxFieldsSlots>=amount && this.cash>=valueOfTransaction ) {
+                    farm.fieldsSlots += amount;
+                    this.cash-=valueOfTransaction;
+                    System.out.println("You successful expand your farm by "+amount + " new Ha of field");
+                }
+                else{
+                    System.out.println("You don't have enough space for new field");
+                }
+            }
+            else{
+                System.out.println("You don't have farm to expand");
+                }
+            }
+        else{
+            System.out.println("You don't have enough money for new field!");
         }
     }
 }

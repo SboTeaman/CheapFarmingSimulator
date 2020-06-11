@@ -10,25 +10,19 @@ public class Farms extends Buildings  {
     public int index;
     public String name;
     public double price;
-    public double startingAmountOfFields;
-    public double maxAmountOfFields;
-    public double silosSlots;
-    public double garageSlots;
+
     List<Farms> farmList= new ArrayList();
 
     public Farms(int index,
                  String name,
                  double price,
-                 double startingAmountOfFields,
-                 double maxAmountOfFields,
+                 double fieldsSlots,
+                 double maxFieldSlots,
                  double silosSlots,
                  double garageSlots) {
-        super(name, price);
+        super(name, price, fieldsSlots,maxFieldSlots, silosSlots, garageSlots);
         this.index = index;
-        this.startingAmountOfFields = startingAmountOfFields;
-        this.maxAmountOfFields = maxAmountOfFields;
-        this.silosSlots = silosSlots;
-        this.garageSlots = garageSlots;
+
 
     }
 
@@ -39,8 +33,8 @@ public class Farms extends Buildings  {
         return "index: "+this.index+
                 " name: "+this.name +
                 " price: "+this.price +
-                " starting Amount Of Fields "+this.startingAmountOfFields +
-                " max Amount Of Fields "+this.maxAmountOfFields +
+                " field Slots "+this.fieldsSlots+
+                "max field slots"+this.maxFieldsSlots+
                 " silos Slots "+this.silosSlots +
                 " garage Slots "+this.garageSlots;
     }

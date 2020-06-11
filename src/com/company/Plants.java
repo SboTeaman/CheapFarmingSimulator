@@ -43,7 +43,7 @@ public class Plants{
             this.timeToGrow = timeToGrow;
             this.costOfHarvesting = costOfHarvesting;
             this.value_kg = value_KG;
-            this.amountInInventory=amountInInventory;
+            this.amountInInventory=0.0;
         }
 
 
