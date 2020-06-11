@@ -1,16 +1,19 @@
 package com.company;
 
-import Interfaces.Buying;
+import Buildings.Buildings;
+import Interfaces.BuyingPlants;
+import Interfaces.BuyingsBuildings;
 import Interfaces.Selling;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Players implements Selling, Buying {
+public class Players implements Selling, BuyingPlants , BuyingsBuildings {
 
     private final String name;
     public double cash;
     public List<Plants> inventory = new ArrayList<>(100);
+    public List<Buildings> yourBuildings = new ArrayList<>(100);
 
     Players(String name) {
         this.name = name;
@@ -21,7 +24,7 @@ public class Players implements Selling, Buying {
 
 
     @Override
-    public void buy( Plants plants, Double amount)  {
+    public void buyPlant(Plants plants, Double amount)  {
 
             if (this.cash >= plants.value_kg) {
                 double valueOfTransaction = amount * plants.value_kg;
@@ -29,14 +32,13 @@ public class Players implements Selling, Buying {
                 plants.amountInInventory+=amount;
                 this.inventory.add(plants);
                 System.out.println("You bought "+amount+" of "+plants.name);
-
             }
             else{
                 System.out.println("You don't have enough money to buy: "+plants.name);
             }
     }
     @Override
-    public void sell(Plants plants, Double amount )  {
+    public void sellPlant(Plants plants, Double amount )  {
             if(inventory.contains(plants)){
                 if (plants.amountInInventory > 0){
                 double valueOfTransaction = amount * plants.value_kg;
@@ -61,4 +63,17 @@ public class Players implements Selling, Buying {
         public String toString () {
             return "name: " + this.name + "\ncash: " + this.cash;
         }
+
+    @Override
+    public void buyBuilding(Buildings buildings) {
+        if (this.cash >= buildings.price) {
+            this.cash -=buildings.price;
+
+            this.yourBuildings.add(buildings);
+            System.out.println("You bought: "+buildings.name);
+        }
+        else{
+            System.out.println("You don't have enough money to buy: "+ buildings.name);
+        }
     }
+}
