@@ -5,12 +5,12 @@ public class Plants{
         private final double costOfPlanting;
         private final double costOfProtectingFromParasite;
         private final double efficiency_ha;
-        private final double timeToGrow;
+        private double timeToGrow;
         private final double costOfHarvesting;
         public final double value_kg;
         public  double amountInInventory=0.0;
 
-    Plants(String name,
+   public Plants(String name,
            double costOfPlanting,
            double costOfProtectingFromParasite,
            double efficiency_Ha,
@@ -46,13 +46,25 @@ public class Plants{
             this.amountInInventory=amountInInventory;
         }
 
-        public void Plant(){}
+
+
+    public void Plant(){}
 
         public void Harvest(){}
 
         public void Store(){}
 
+        public void GrowingProcess(){
 
+
+            if(this.timeToGrow<=0){
+                System.out.println("Ready to harvest");
+            }
+            else {
+                this.timeToGrow -= 1;
+                System.out.println("Time left to grown " + this.timeToGrow);
+            }
+        }
 
         public String toString()
         {

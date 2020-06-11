@@ -1,7 +1,7 @@
 package com.company;
 
-import com.company.Interfaces.Buying;
-import com.company.Interfaces.Selling;
+import Interfaces.Buying;
+import Interfaces.Selling;
 
 import java.util.ArrayList;
 import java.util.List;

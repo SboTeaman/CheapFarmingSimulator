@@ -1,4 +1,4 @@
-package com.company.Interfaces;
+package Interfaces;
 
 import com.company.Plants;
 
