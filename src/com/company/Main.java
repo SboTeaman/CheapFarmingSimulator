@@ -1,6 +1,7 @@
 package com.company;
 
 
+import java.sql.SQLOutput;
 
 public class Main
 {
@@ -11,15 +12,28 @@ public class Main
 
 
         Players FirstPlayer= new Players("me");
+        Players SecondPlayer = new Players("Not_me");
        // System.out.println(FirstPlayer.toString());
 
-        FirstPlayer.sell(corn,10.0);
+
         //System.out.println(FirstPlayer.toString());
 
         FirstPlayer.buy(corn,20.0);
         FirstPlayer.buy(carrot,20.0);
-       // System.out.println(FirstPlayer.toString());
-       // System.out.println(FirstPlayer.inventory);
+        System.out.println(FirstPlayer.inventory);
+        FirstPlayer.sell(corn,10.0);
+        FirstPlayer.sell(corn,10.0);
+        FirstPlayer.sell(corn,10.0);
+
+        FirstPlayer.sell(carrot,10.0);
+        FirstPlayer.sell(carrot,10.0);
+        FirstPlayer.sell(carrot,10.0);
+
+
+       // SecondPlayer.buy(corn,40.0);
+        System.out.println((corn.amountInInventory));
+
+
     }
 
 

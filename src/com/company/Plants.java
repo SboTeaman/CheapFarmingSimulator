@@ -8,7 +8,7 @@ public class Plants{
         private final double timeToGrow;
         private final double costOfHarvesting;
         public final double value_kg;
-        public  double amount=0.0;
+        public  double amountInInventory=0.0;
 
     Plants(String name,
            double costOfPlanting,
@@ -34,7 +34,7 @@ public class Plants{
                double timeToGrow,
                double costOfHarvesting,
                double value_KG,
-               double amount){
+               double amountInInventory){
 
             this.name = name;
             this.costOfPlanting = costOfPlanting;
@@ -43,7 +43,7 @@ public class Plants{
             this.timeToGrow = timeToGrow;
             this.costOfHarvesting = costOfHarvesting;
             this.value_kg = value_KG;
-            this.amount=amount;
+            this.amountInInventory=amountInInventory;
         }
 
         public void Plant(){}
@@ -56,14 +56,14 @@ public class Plants{
 
         public String toString()
         {
-            return "Name: "+this.name+
-                    "\nCost of Planting: "+this.costOfPlanting+
-                    "\nCost of protecting frm parasite: "+this.costOfProtectingFromParasite+
-                    "\nEfficiency for one hectare: "+this.efficiency_ha+
-                    "\nTime to grow: "+this.timeToGrow+
-                    "\nCost of harvesting: " +this.costOfHarvesting+
-                    "\nValue for one Kilogram: "+this.value_kg+
-                    "\nAmount: "+this.amount;
+            return "\nName: "+this.name+
+                    //"\nCost of Planting: "+this.costOfPlanting+
+                    //"\nCost of protecting frm parasite: "+this.costOfProtectingFromParasite+
+                    //"\nEfficiency for one hectare: "+this.efficiency_ha+
+                    //"\nTime to grow: "+this.timeToGrow+
+                    //"\nCost of harvesting: " +this.costOfHarvesting+
+                   // "\nValue for one Kilogram: "+this.value_kg+
+                    "\nAmount: "+this.amountInInventory;
         }
 }
 
