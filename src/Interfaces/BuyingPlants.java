@@ -1,6 +1,5 @@
 package Interfaces;
 
-import Buildings.Farms;
 import com.company.Plants;
 
 public interface BuyingPlants {

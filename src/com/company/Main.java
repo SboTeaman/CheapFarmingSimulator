@@ -4,13 +4,8 @@ import Buildings.Buildings;
 import Buildings.Farms;
 import Interfaces.RandomNumberGenerator;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         Plants corn = new Plants("corn", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
         Plants carrot = new Plants("carrot", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
@@ -43,16 +38,23 @@ public class Main {
 
         Players FirstPlayer = new Players("me");
         Players SecondPlayer = new Players("Not_me");
+
+
         System.out.println(FirstPlayer.cash);
+        FirstPlayer.sellField(OldFarm ,5);
         FirstPlayer.buyPlant(corn,10.0);
         System.out.println(FirstPlayer.cash);
         FirstPlayer.buyBuilding(OldFarm);
+        FirstPlayer.sellField(OldFarm ,5);
         System.out.println(FirstPlayer.cash);
         System.out.println((FirstPlayer.yourBuildings));
         System.out.println(FirstPlayer.cash);
         FirstPlayer.buyMoreField(OldFarm, 9);
         FirstPlayer.buyMoreField(OldFarm, 9);
 
+        System.out.println(FirstPlayer.cash);
+        System.out.println(FirstPlayer.yourBuildings.toString());
+        FirstPlayer.sellField(OldFarm ,5);
         System.out.println(FirstPlayer.cash);
         System.out.println(FirstPlayer.yourBuildings.toString());
     }

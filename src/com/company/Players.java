@@ -22,8 +22,6 @@ public class Players implements Selling, BuyingPlants , BuyingsBuildings {
     }
 
 
-
-
     @Override
     public void buyPlant(Plants plants, Double amount)  {
 
@@ -59,8 +57,6 @@ public class Players implements Selling, BuyingPlants , BuyingsBuildings {
                 System.out.println("You don't have "+plants.name+ " in your inventory");
                 }
     }
-
-
         public String toString () {
             return "name: " + this.name + "\ncash: " + this.cash;
         }
@@ -84,7 +80,7 @@ public class Players implements Selling, BuyingPlants , BuyingsBuildings {
         if(this.cash>= valueOfTransaction){
             if(this.yourBuildings.contains(farm))
             {
-                if(farm.maxFieldsSlots>=amount && this.cash>=valueOfTransaction ) {
+                if(farm.maxFieldsSlots>=amount && this.cash>=valueOfTransaction && farm.fieldsSlots<farm.maxFieldsSlots ) {
                     farm.fieldsSlots += amount;
                     this.cash-=valueOfTransaction;
                     System.out.println("You successful expand your farm by "+amount + " new Ha of field");
@@ -99,6 +95,22 @@ public class Players implements Selling, BuyingPlants , BuyingsBuildings {
             }
         else{
             System.out.println("You don't have enough money for new field!");
+        }
+    }
+
+    public void sellField(Buildings farm ,double amount ){
+        double valueOfTransaction=amount* RandomNumberGenerator.randomBetween(10,20);
+        if(yourBuildings.contains(farm)){
+            if(farm.fieldsSlots>amount){
+            this.cash+=valueOfTransaction;
+            farm.fieldsSlots-=amount;
+            }
+
+            else{
+                System.out.println("You don't have enough field to sell");
+            }
+        }else{
+            System.out.println("You don't any have farm");
         }
     }
 }
