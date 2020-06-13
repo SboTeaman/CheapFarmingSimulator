@@ -8,6 +8,7 @@ import Interfaces.BuyingsBuildings;
 import Interfaces.RandomNumberGenerator;
 import Interfaces.Selling;
 
+import java.sql.BatchUpdateException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,11 +111,6 @@ public class Players implements Selling, BuyingPlants {
         }
     }
 
-    public void buyAnimal(Animals animal, double amount) {
-
-        this.yourAnimals.add(animal);
-
-    }
 
     public void buyBuildings(Farms farm, Buildings buildings) {
         if (yourFarms.isEmpty()) {
@@ -132,6 +128,29 @@ public class Players implements Selling, BuyingPlants {
             } else {
                 System.out.println("You don't have enough money to buy: " + buildings.name);
             }
+        }
+    }
+
+    public void buyAnimals(Farms farm, Buildings building, Animals animal, double amount) {
+        double valueOfTransaction = amount * animal.costOfPurchase;
+        if (yourFarms.contains(farm)) {
+            if (yourBuildings.contains(building)) {
+                if (this.cash >= valueOfTransaction) {
+                    if (amount < building.capacity) {
+                        building.capacity -= amount;
+                        yourAnimals.add(animal);
+                        System.out.println("You successful buy " + amount + " " + animal.name);
+                    } else {
+                        System.out.println("You don't have space for " + amount + " " + animal);
+                    }
+                } else {
+                    System.out.println("You don't have enough money for " + amount + " " + animal);
+                }
+            } else {
+                System.out.println("You don't have " + building.name + " for " + animal.name);
+            }
+        } else {
+            System.out.println("You don't have any farm");
         }
     }
 
