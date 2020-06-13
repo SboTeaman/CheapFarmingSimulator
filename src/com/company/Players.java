@@ -17,10 +17,11 @@ public class Players implements Selling, BuyingPlants {
     public List<Plants> inventory = new ArrayList<>(100);
     public List<Farms> yourFarms = new ArrayList<>(100);
     public List<Animals> yourAnimals = new ArrayList<>(100);
+    public List<Buildings> yourBuildings = new ArrayList<>(100);
 
     Players(String name) {
         this.name = name;
-        this.cash = 100000000.0;
+        this.cash = 15000000.0;
     }
 
 
@@ -113,7 +114,16 @@ public class Players implements Selling, BuyingPlants {
         this.yourAnimals.add(animal);
 
     }
+    public void buyBuildings(Buildings buildings) {
+        if (this.cash >= buildings.price) {
+            this.cash -= buildings.price;
 
+            this.yourBuildings.add(buildings);
+            System.out.println("You bought: " + buildings.name);
+        } else {
+            System.out.println("You don't have enough money to buy: " + buildings.name);
+        }
+    }
 
 
 

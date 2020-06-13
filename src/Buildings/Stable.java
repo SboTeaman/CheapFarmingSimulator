@@ -7,11 +7,5 @@ public class Stable extends Buildings {
         super(name, price, fieldRequired, capacity);
     }
 
-    @Override
-    public String toString() {
-        return this.name;
-    }
-
-
 }
 
