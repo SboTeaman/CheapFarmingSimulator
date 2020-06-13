@@ -1,4 +1,5 @@
 package com.company;
+
 import Buildings.Farms;
 import Animals.Animals;
 import Buildings.Buildings;
@@ -109,22 +110,30 @@ public class Players implements Selling, BuyingPlants {
         }
     }
 
-    public void buyAnimal(Animals animal, double amount){
+    public void buyAnimal(Animals animal, double amount) {
 
         this.yourAnimals.add(animal);
 
     }
-    public void buyBuildings(Buildings buildings) {
-        if (this.cash >= buildings.price) {
-            this.cash -= buildings.price;
 
-            this.yourBuildings.add(buildings);
-            System.out.println("You bought: " + buildings.name);
+    public void buyBuildings(Farms farm, Buildings buildings) {
+        if (yourFarms.isEmpty()) {
+            System.out.println("You don't have Farm, buy farm first");
         } else {
-            System.out.println("You don't have enough money to buy: " + buildings.name);
+            if (this.cash > buildings.price) {
+                if (farm.fieldsSlots > 0) {
+                    this.cash -= buildings.price;
+                    farm.fieldsSlots -= 1;
+                    this.yourBuildings.add(buildings);
+                    System.out.println("You bought: " + buildings.name);
+                } else {
+                    System.out.println("You don't have enough space for " + buildings.name);
+                }
+            } else {
+                System.out.println("You don't have enough money to buy: " + buildings.name);
+            }
         }
     }
-
 
 
 }

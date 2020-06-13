@@ -49,10 +49,15 @@ public class Main {
         Buildings smallPigsty = new Pigsty("smallPigsty", 1000.0, 2.0, 3);
         Buildings smallStable = new Stable("smallStable", 1000.0, 2.0, 3);
 
-
-        FirstPlayer.buyBuildings(smallCowshed);
-        FirstPlayer.buyBuildings(smallPigsty);
-        FirstPlayer.buyBuildings(smallStable);
+        FirstPlayer.buyFarm(OldFarm);
+        FirstPlayer.buyBuildings(OldFarm,smallCowshed);
+        System.out.println(FirstPlayer.yourFarms);
+        FirstPlayer.buyBuildings(OldFarm,smallPigsty);
+        FirstPlayer.buyBuildings(OldFarm,smallStable);
         System.out.println(FirstPlayer.yourBuildings);
+        System.out.println(FirstPlayer.yourFarms);
+        FirstPlayer.buyMoreField(OldFarm,1);
+        FirstPlayer.buyBuildings(OldFarm,smallPigsty);
+        FirstPlayer.buyBuildings(OldFarm,smallStable);
     }
 }
