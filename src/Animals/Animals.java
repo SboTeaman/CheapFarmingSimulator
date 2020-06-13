@@ -10,6 +10,7 @@ public class Animals {
     public double amountOfFoodPerWeek;
     public Plants typeOfFoodThatCanEat;
     public double chanceForReproduction;
+    public double amountInBuilding=0.0;
 
 
     public Animals(String name, double costOfPurchase, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, Plants typeOfFoodThatCanEat, double chanceForReproduction) {

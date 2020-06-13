@@ -137,7 +137,7 @@ public class Players implements Selling, BuyingPlants {
             if (yourBuildings.contains(building)) {
                 if (this.cash >= valueOfTransaction) {
                     if (amount < building.capacity) {
-                        building.capacity -= amount;
+                        animal.amountInBuilding += amount;
                         yourAnimals.add(animal);
                         System.out.println("You successful buy " + amount + " " + animal.name);
                     } else {
@@ -154,5 +154,19 @@ public class Players implements Selling, BuyingPlants {
         }
     }
 
+    public void sellAnimal(Farms farm, Buildings building, Animals animal, double amount) {
+        double valueOfTransaction = amount * animal.costOfPurchase;
+        if (yourAnimals.contains(animal)) {
+            if (animal.amountInBuilding >= amount) {
+                animal.amountInBuilding -= amount;
+                this.cash += valueOfTransaction;
+                if (animal.amountInBuilding == 0) {
+                    yourAnimals.remove(animal);
+                }
+            } else {
+                System.out.println("You don't have enough " + animal.name + " to sell");
+            }
+        }
+    }
 
 }

@@ -52,6 +52,10 @@ public class Main {
         FirstPlayer.buyFarm(OldFarm);
         FirstPlayer.buyBuildings(OldFarm, smallCowshed);
 
-        FirstPlayer.buyAnimals(OldFarm,smallCowshed,cow, 200.0 );
+        FirstPlayer.buyAnimals(OldFarm,smallCowshed,cow, 2.0 );
+        System.out.println(FirstPlayer.yourAnimals);
+        FirstPlayer.sellAnimal(OldFarm,smallCowshed,cow, 1.0 );
+        FirstPlayer.sellAnimal(OldFarm,smallCowshed,cow, 1.0 );
+        System.out.println(FirstPlayer.yourAnimals);
     }
 }
