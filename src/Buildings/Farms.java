@@ -3,38 +3,35 @@ package Buildings;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Farms extends Buildings  {
+public class Farms  {
 
-    public int index;
+    public double fieldsSlots;
+    public double maxFieldsSlots;
+    public double silosSlots;
+    public double garageSlots;
     public String name;
     public double price;
 
-    List<Farms> farmList= new ArrayList();
+    List<Farms> farmList = new ArrayList();
 
-    public Farms(int index,
-                 String name,
-                 double price,
-                 double fieldsSlots,
-                 double maxFieldSlots,
-                 double silosSlots,
-                 double garageSlots) {
-        super(name, price, fieldsSlots,maxFieldSlots, silosSlots, garageSlots);
-        this.index = index;
-
-
+    public Farms(String name, double price, double fieldsSlots, double maxFieldsSlots, double silosSlots, double garageSlots) {
+        this.name = name;
+        this.price = price;
+        this.fieldsSlots = fieldsSlots;
+        this.maxFieldsSlots = maxFieldsSlots;
+        this.silosSlots = silosSlots;
+        this.garageSlots = garageSlots;
     }
 
 
-
-
-    public String ToString(){
-        return "index: "+this.index+
-                " name: "+this.name +
-                " price: "+this.price +
-                " field Slots "+this.fieldsSlots+
-                "max field slots"+this.maxFieldsSlots+
-                " silos Slots "+this.silosSlots +
-                " garage Slots "+this.garageSlots;
+    public String toString() {
+        return
+                " name: " + this.name +
+                " price: " + this.price +
+                " field Slots " + this.fieldsSlots +
+                "max field slots" + this.maxFieldsSlots +
+                " silos Slots " + this.silosSlots +
+                " garage Slots " + this.garageSlots;
     }
 
 }
