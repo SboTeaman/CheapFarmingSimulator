@@ -23,7 +23,7 @@ public class Players implements Selling, BuyingPlants {
 
     Players(String name) {
         this.name = name;
-        this.cash = 15000000.0;
+        this.cash = 1500.0;
     }
 
 

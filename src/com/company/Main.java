@@ -8,8 +8,10 @@ import Buildings.Stable;
 import Buildings.Farms;
 import Interfaces.RandomNumberGenerator;
 
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Plants corn = new Plants("corn", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
         Plants carrot = new Plants("carrot", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
@@ -43,19 +45,32 @@ public class Main {
         Players SecondPlayer = new Players("Not_me");
 
 
-
-
         Buildings smallCowshed = new Cowshed("smallCowshed", 1000.0, 2.0, 3);
         Buildings smallPigsty = new Pigsty("smallPigsty", 1000.0, 2.0, 3);
         Buildings smallStable = new Stable("smallStable", 1000.0, 2.0, 3);
 
-        FirstPlayer.buyFarm(OldFarm);
-        FirstPlayer.buyBuildings(OldFarm, smallCowshed);
 
-        FirstPlayer.buyAnimals(OldFarm,smallCowshed,cow, 2.0 );
-        System.out.println(FirstPlayer.yourAnimals);
-        FirstPlayer.sellAnimal(OldFarm,smallCowshed,cow, 1.0 );
-        FirstPlayer.sellAnimal(OldFarm,smallCowshed,cow, 1.0 );
-        System.out.println(FirstPlayer.yourAnimals);
+        int choice =  System.in.read();
+
+        switch (choice) {
+            case '1':
+                FirstPlayer.buyFarm(OldFarm);
+                break;
+            case '2':
+                FirstPlayer.buyFarm(StartedFarm);
+                break;
+            case '3':
+                FirstPlayer.buyFarm(AdvancedFarm);
+                break;
+            case '4':
+                FirstPlayer.buyFarm(HighTierFarm);
+                break;
+            case '5':
+                FirstPlayer.buyFarm(UltimateFarm);
+                break;
+        }
+
+
+        System.out.println(FirstPlayer.yourFarms);
     }
 }
