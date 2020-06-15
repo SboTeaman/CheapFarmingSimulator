@@ -9,9 +9,6 @@ import Buildings.Farms;
 import Interfaces.RandomNumberGenerator;
 
 import java.io.IOException;
-import java.sql.SQLOutput;
-import java.util.List;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -52,6 +49,8 @@ public class Main {
         Buildings smallCowshed = new Cowshed("smallCowshed", 1000.0, 2.0, 3);
         Buildings smallPigsty = new Pigsty("smallPigsty", 1000.0, 2.0, 3);
         Buildings smallStable = new Stable("smallStable", 1000.0, 2.0, 3);
+
+        /*
         int choiceMenu;
         for (int i = 1; i > 0; i++) {
             System.out.println("Week:" + i);
@@ -205,6 +204,15 @@ public class Main {
                 }
             } while (choiceMenu < 4);
         }
+
+
+         */ // MENU!!! DO NOT REMOVE THIS!!!
+
+
+
+        FirstPlayer.buyFarm(startedFarm);
+        FirstPlayer.buyBuildings(Players.farm,smallCowshed);
+        FirstPlayer.buyAnimals(Players.farm,smallCowshed,cow,1.0);
 
     }
 

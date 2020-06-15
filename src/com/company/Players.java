@@ -3,62 +3,26 @@ package com.company;
 import Buildings.Farms;
 import Animals.Animals;
 import Buildings.Buildings;
-import Interfaces.BuyingPlants;
-import Interfaces.BuyingsBuildings;
 import Interfaces.RandomNumberGenerator;
-import Interfaces.Selling;
+import Interfaces.Saleable;
 
-import java.sql.BatchUpdateException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Players implements Selling, BuyingPlants {
+public class Players {
 
     private final String name;
     public double cash;
+    public static Farms farm;
     public List<Plants> inventory = new ArrayList<>();
-    public List<Farms> yourFarms = new ArrayList<>();
     public List<Animals> yourAnimals = new ArrayList<>();
     public List<Buildings> yourBuildings = new ArrayList<>();
 
     Players(String name) {
         this.name = name;
-        this.cash = 1500.0;
+        this.cash = 1500000.0;
     }
 
-
-    @Override
-    public void buyPlant(Plants plants, int amount) {
-
-        if (this.cash >= plants.value_kg) {
-            double valueOfTransaction = amount * plants.value_kg;
-            this.cash -= valueOfTransaction;
-            plants.amountInInventory += amount;
-            this.inventory.add(plants);
-            System.out.println("You bought " + amount + " of " + plants.name);
-        } else {
-            System.out.println("You don't have enough money to buy: " + plants.name);
-        }
-    }
-
-    @Override
-    public void sellPlant(Plants plants, Double amount) {
-        if (inventory.contains(plants)) {
-            if (plants.amountInInventory > 0) {
-                double valueOfTransaction = amount * plants.value_kg;
-                this.cash += valueOfTransaction;
-                System.out.println("You successful sell " + amount + " of " + plants.name);
-                plants.amountInInventory -= amount;
-            } else if (plants.amountInInventory < amount) {
-                System.out.println("You don't have enough " + plants.name + " to sell");
-            }
-            if (plants.amountInInventory == 0) {
-                inventory.remove(plants);
-            }
-        } else {
-            System.out.println("You don't have " + plants.name + " in your inventory");
-        }
-    }
 
     public String toString() {
         return "name: " + this.name + "\ncash: " + this.cash;
@@ -66,22 +30,32 @@ public class Players implements Selling, BuyingPlants {
 
 
     public void buyFarm(Farms farm) {
-        if (this.cash >= farm.price) {
-            this.cash -= farm.price;
 
-            this.yourFarms.add(farm);
-            System.out.println("You bought: " + farm.name);
+        if (this.cash >= farm.price) {
+            if (this.farm == null) {
+                this.cash -= farm.price;
+                this.farm = farm;
+                System.out.println("You bought: " + farm.name);
+            } else if (this.farm == farm) {
+                System.out.println("You already have: " + farm.name);
+            } else {
+                this.cash -= farm.price;
+                this.farm = farm;
+                System.out.println("You bought: " + farm.name);
+            }
+
         } else {
             System.out.println("You don't have enough money to buy: " + farm.name);
         }
     }
+
 
     public void buyMoreField(Farms farm, double amount) {
 
         double valueOfTransaction = farm.priceForField * amount;
 
         if (this.cash >= valueOfTransaction) {
-            if (this.yourFarms.contains(farm)) {
+            if (this.farm == farm) {
                 if (farm.maxFieldsSlots >= amount && this.cash >= valueOfTransaction && farm.fieldsSlots < farm.maxFieldsSlots) {
                     farm.fieldsSlots += amount;
                     this.cash -= valueOfTransaction;
@@ -99,7 +73,7 @@ public class Players implements Selling, BuyingPlants {
 
     public void sellField(Farms farm, double amount) {
         double valueOfTransaction = amount * RandomNumberGenerator.randomBetween(10, 20);
-        if (yourFarms.contains(farm)) {
+        if (this.farm == farm) {
             if (farm.fieldsSlots > amount) {
                 this.cash += valueOfTransaction;
                 farm.fieldsSlots -= amount;
@@ -113,8 +87,8 @@ public class Players implements Selling, BuyingPlants {
 
 
     public void buyBuildings(Farms farm, Buildings buildings) {
-        if (yourFarms.isEmpty()) {
-            System.out.println("You don't have Farm, buy farm first");
+        if (this.farm == null) {
+            System.out.println("You don't have " + farm.name );
         } else {
             if (this.cash > buildings.price) {
                 if (farm.fieldsSlots > 0) {
@@ -133,7 +107,7 @@ public class Players implements Selling, BuyingPlants {
 
     public void buyAnimals(Farms farm, Buildings building, Animals animal, double amount) {
         double valueOfTransaction = amount * animal.costOfPurchase;
-        if (yourFarms.contains(farm)) {
+        if (this.farm == farm) {
             if (yourBuildings.contains(building)) {
                 if (this.cash >= valueOfTransaction) {
                     if (amount < building.capacity) {
