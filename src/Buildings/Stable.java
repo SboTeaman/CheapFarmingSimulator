@@ -7,5 +7,15 @@ public class Stable extends Buildings {
         super(name, price, fieldRequired, capacity);
     }
 
+
+    @Override
+    public String toString() {
+        return "Stable{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", fieldRequired=" + fieldRequired +
+                ", capacity=" + capacity +
+                '}';
+    }
 }
 

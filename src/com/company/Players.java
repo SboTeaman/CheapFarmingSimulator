@@ -16,10 +16,10 @@ public class Players implements Selling, BuyingPlants {
 
     private final String name;
     public double cash;
-    public List<Plants> inventory = new ArrayList<>(100);
-    public List<Farms> yourFarms = new ArrayList<>(100);
-    public List<Animals> yourAnimals = new ArrayList<>(100);
-    public List<Buildings> yourBuildings = new ArrayList<>(100);
+    public List<Plants> inventory = new ArrayList<>();
+    public List<Farms> yourFarms = new ArrayList<>();
+    public List<Animals> yourAnimals = new ArrayList<>();
+    public List<Buildings> yourBuildings = new ArrayList<>();
 
     Players(String name) {
         this.name = name;
@@ -28,7 +28,7 @@ public class Players implements Selling, BuyingPlants {
 
 
     @Override
-    public void buyPlant(Plants plants, Double amount) {
+    public void buyPlant(Plants plants, int amount) {
 
         if (this.cash >= plants.value_kg) {
             double valueOfTransaction = amount * plants.value_kg;
@@ -78,7 +78,7 @@ public class Players implements Selling, BuyingPlants {
 
     public void buyMoreField(Farms farm, double amount) {
 
-        double valueOfTransaction = amount * RandomNumberGenerator.randomBetween(10, 20);
+        double valueOfTransaction = farm.priceForField * amount;
 
         if (this.cash >= valueOfTransaction) {
             if (this.yourFarms.contains(farm)) {

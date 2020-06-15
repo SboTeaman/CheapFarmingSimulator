@@ -1,5 +1,7 @@
 package Buildings;
 
+import Interfaces.RandomNumberGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +13,10 @@ public class Farms  {
     public double garageSlots;
     public String name;
     public double price;
+    public double priceForField = RandomNumberGenerator.randomBetween(10,10);
 
-    List<Farms> farmList = new ArrayList();
+    public List<Farms> farmList = new ArrayList();
+
 
     public Farms(String name, double price, double fieldsSlots, double maxFieldsSlots, double silosSlots, double garageSlots) {
         this.name = name;
