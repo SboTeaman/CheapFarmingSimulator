@@ -14,7 +14,9 @@ public class Players {
     private final String name;
     public double cash;
     public static Farms farm;
-    public List<Plants> inventory = new ArrayList<>();
+    public boolean isSilos= false;
+    public List<Plants> yourSeeds = new ArrayList<>();
+    public List<Plants> yourPlants = new ArrayList<>(20);
     public List<Animals> yourAnimals = new ArrayList<>();
     public List<Buildings> yourBuildings = new ArrayList<>();
 

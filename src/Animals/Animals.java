@@ -4,7 +4,7 @@ import Interfaces.Buyable;
 import com.company.Plants;
 import com.company.Players;
 
-public class Animals implements Buyable {
+public class Animals  {
     public String name;
     public double costOfPurchase;
     public double timeToGrowUp;
@@ -35,10 +35,12 @@ public class Animals implements Buyable {
     public String toString(){
         return this.name;
     }
-
+/*
     @Override
     public void buy(Players player, int amount) {
 
     }
+
+ */
 }
 

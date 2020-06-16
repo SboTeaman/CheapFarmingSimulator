@@ -3,14 +3,14 @@ package com.company;
 import Interfaces.Buyable;
 import Interfaces.Saleable;
 
-public class Plants implements Buyable, Saleable {
+public class Plants {
     public final String name;
     public final double value_kg;
     private final double costOfPlanting;
     private final double costOfProtectingFromParasite;
     private final double efficiency_ha;
     private final double costOfHarvesting;
-    public double amountInInventory = 0.0;
+    public int amountInInventory = 0;
     private double timeToGrow;
 
     public Plants(String name,
@@ -31,14 +31,14 @@ public class Plants implements Buyable, Saleable {
 
     }
 
-    Plants(String name,
-           double costOfPlanting,
-           double costOfProtectingFromParasite,
-           double efficiency_Ha,
-           double timeToGrow,
-           double costOfHarvesting,
-           double value_KG,
-           double amountInInventory) {
+    public Plants(String name,
+                  double costOfPlanting,
+                  double costOfProtectingFromParasite,
+                  double efficiency_Ha,
+                  double timeToGrow,
+                  double costOfHarvesting,
+                  double value_KG,
+                  int amountInInventory) {
 
         this.name = name;
         this.costOfPlanting = costOfPlanting;
@@ -47,7 +47,7 @@ public class Plants implements Buyable, Saleable {
         this.timeToGrow = timeToGrow;
         this.costOfHarvesting = costOfHarvesting;
         this.value_kg = value_KG;
-        this.amountInInventory = 0.0;
+        this.amountInInventory = amountInInventory;
     }
 
 
@@ -57,11 +57,8 @@ public class Plants implements Buyable, Saleable {
     public void Harvest() {
     }
 
-    public void Store() {
-    }
 
     public void GrowingProcess() {
-
 
         if (this.timeToGrow <= 0) {
             System.out.println("Ready to harvest");
@@ -70,7 +67,7 @@ public class Plants implements Buyable, Saleable {
             System.out.println("Time left to grown " + this.timeToGrow);
         }
     }
-
+/*
     @Override
     public void buy(Players player, int amount) {
 
@@ -104,6 +101,8 @@ public class Plants implements Buyable, Saleable {
         }
     }
 
+
+ */
     public String toString() {
         return "\nName: " + this.name +
                 //"\nCost of Planting: "+this.costOfPlanting+
@@ -112,7 +111,7 @@ public class Plants implements Buyable, Saleable {
                 //"\nTime to grow: "+this.timeToGrow+
                 //"\nCost of harvesting: " +this.costOfHarvesting+
                 // "\nValue for one Kilogram: "+this.value_kg+
-                "\nAmount: " + this.amountInInventory;
+                " Amount: " + this.amountInInventory;
     }
 
 }

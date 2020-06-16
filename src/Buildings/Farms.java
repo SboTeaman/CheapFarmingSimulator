@@ -15,6 +15,7 @@ public class Farms  {
     public double price;
     public double priceForField = RandomNumberGenerator.randomBetween(10,10);
 
+
     public List<Farms> farmList = new ArrayList();
 
 

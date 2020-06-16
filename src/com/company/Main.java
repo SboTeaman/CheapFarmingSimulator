@@ -5,50 +5,70 @@ import Buildings.Buildings;
 import Buildings.Cowshed;
 import Buildings.Pigsty;
 import Buildings.Stable;
+import Buildings.Silos;
 import Buildings.Farms;
+import Interfaces.Buyable;
 import Interfaces.RandomNumberGenerator;
-
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        /*PLANTS */
+        Plants cornSeed = new Plants("cornSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+        Plants carrotSeed = new Plants("carrotSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
+        Plants sunflowerSeed = new Plants("sunflowerSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+        Plants oliveSeed = new Plants("oliveSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
+        Plants rapeseedSeed = new Plants("rapeseedSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+        Plants potatoSeed = new Plants("potatoSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
+        Plants ryeSeed = new Plants("ryeSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+        Plants wheatSeed = new Plants("wheatSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
+        Plants riceSeed = new Plants("riceSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
+        Plants oatsSeed = new Plants("oatsSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+        Plants broccoliSeed = new Plants("broccoliSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
+        Plants cauliflowerSeed = new Plants("cauliflowerSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+        Plants onionSeed = new Plants("onionSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+        Plants chiveSeed = new Plants("chiveSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
+        Plants garlicSeed = new Plants("garlicSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+        Plants arugulaSeed = new Plants("arugulaSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
+        Plants lettuceSeed = new Plants("lettuceSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+        Plants tomatoSeed = new Plants("tomatoSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
 
-        Plants corn = new Plants("corn", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
-        Plants carrot = new Plants("carrot", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
+        Plants appleSeed = new Plants("appleSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
+        Plants pearSeed = new Plants("pearSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+        Plants plumSeed = new Plants("plumSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
+        Plants cherrySeed = new Plants("cherrySeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+        Plants melonSeed = new Plants("melonSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
+        Plants watermelonSeed = new Plants("watermelonSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+        Plants lemonSeed = new Plants("lemonSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+        Plants raspberriesSeed = new Plants("raspberriesSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
+        Plants strawberriesSeed = new Plants("strawberriesSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
 
-        Farms oldFarm = new Farms(
-                "Old Farm",
-                RandomNumberGenerator.randomBetween(100, 900),
-                RandomNumberGenerator.randomBetween(1, 2),
-                10.0,
-                1,
-                0);
+        /*ANIMALS */
+        Animals cow = new Animals("cow", 100.0, 10.0, 2.0, 2.0, cornSeed, 2.0);
+        Animals sheep = new Animals("sheep", 100.0, 10.0, 2.0, 2.0, cornSeed, 2.0);
+        Animals pig = new Animals("pig", 100.0, 10.0, 2.0, 2.0, cornSeed, 2.0);
+        Animals chicken = new Animals("chicken", 100.0, 10.0, 2.0, 2.0, cornSeed, 2.0);
+        Animals dog = new Animals("dog", 100.0, 10.0, 2.0, 2.0, cornSeed, 2.0);
+        Animals cat = new Animals("cat", 100.0, 10.0, 2.0, 2.0, cornSeed, 2.0);
 
-        Farms startedFarm = new Farms(
-                "startedFarm",
-                RandomNumberGenerator.randomBetween(900, 3000),
-                RandomNumberGenerator.randomBetween(3, 4),
-                20.0,
-                RandomNumberGenerator.randomBetween(2, 3),
-                1);
-
+        /*FARMS */
+        Farms oldFarm = new Farms("Old Farm", RandomNumberGenerator.randomBetween(100, 900), RandomNumberGenerator.randomBetween(1, 2), 10.0, 1, 0);
+        Farms startedFarm = new Farms("startedFarm", RandomNumberGenerator.randomBetween(900, 3000), RandomNumberGenerator.randomBetween(3, 4), 20.0, RandomNumberGenerator.randomBetween(2, 3), 1);
         Farms advancedFarm = new Farms("advancedFarm", RandomNumberGenerator.randomBetween(5000, 8000), RandomNumberGenerator.randomBetween(4, 5), 30.0, RandomNumberGenerator.randomBetween(3, 4), 2);
         Farms highTierFarm = new Farms("highTierFarm", RandomNumberGenerator.randomBetween(10000, 15000), RandomNumberGenerator.randomBetween(6, 7), 40.0, RandomNumberGenerator.randomBetween(5, 6), 3);
         Farms ultimateFarm = new Farms("ultimateFarm", RandomNumberGenerator.randomBetween(20000, 30000), RandomNumberGenerator.randomBetween(7, 10), 50.0, RandomNumberGenerator.randomBetween(7, 10), 5);
 
-
-        Animals cow = new Animals("cow", 100.0, 10.0, 2.0, 2.0, corn, 2.0);
-
-        //System.out.println(randomBetween(10, 100));
-
-
-        Players FirstPlayer = new Players("me");
-        Players SecondPlayer = new Players("Not_me");
-
-
+        /*BUILDINGS */
         Buildings smallCowshed = new Cowshed("smallCowshed", 1000.0, 2.0, 3);
         Buildings smallPigsty = new Pigsty("smallPigsty", 1000.0, 2.0, 3);
         Buildings smallStable = new Stable("smallStable", 1000.0, 2.0, 3);
+        Buildings silos =new Silos("silos",1000.0);
+
+
+        Players firstPlayer = new Players("me");
+        Players secondPlayer = new Players("Not_me");
+
+
 
         /*
         int choiceMenu;
@@ -209,10 +229,13 @@ public class Main {
          */ // MENU!!! DO NOT REMOVE THIS!!!
 
 
+        Buyable.buyPlantSeed(firstPlayer, 10, cornSeed);
+        Buyable.buyPlantSeed(firstPlayer, 10, cornSeed);
+        Buyable.buyPlantSeed(firstPlayer, 10, carrotSeed);
+        Buyable.buyPlantSeed(firstPlayer, 10, carrotSeed);
 
-        FirstPlayer.buyFarm(startedFarm);
-        FirstPlayer.buyBuildings(Players.farm,smallCowshed);
-        FirstPlayer.buyAnimals(Players.farm,smallCowshed,cow,1.0);
+
+        System.out.println(firstPlayer.yourSeeds);
 
     }
 
