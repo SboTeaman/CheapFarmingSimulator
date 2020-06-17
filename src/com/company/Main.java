@@ -17,39 +17,39 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         /*PLANTS*/
-        Plants corn = new Plants("corn", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+        Plants corn = new Plants("corn", 2.0, 0.5, 200, 5, 0.25, 5);
 
 
         /*PLANTS SEEDS */
 
-        Plants cornSeed = new Plants("cornSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
-        Plants carrotSeed = new Plants("carrotSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
-        Plants sunflowerSeed = new Plants("sunflowerSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
-        Plants oliveSeed = new Plants("oliveSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
-        Plants rapeseedSeed = new Plants("rapeseedSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
-        Plants potatoSeed = new Plants("potatoSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
-        Plants ryeSeed = new Plants("ryeSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
-        Plants wheatSeed = new Plants("wheatSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
-        Plants riceSeed = new Plants("riceSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
-        Plants oatsSeed = new Plants("oatsSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
-        Plants broccoliSeed = new Plants("broccoliSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
-        Plants cauliflowerSeed = new Plants("cauliflowerSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
-        Plants onionSeed = new Plants("onionSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
-        Plants chiveSeed = new Plants("chiveSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
-        Plants garlicSeed = new Plants("garlicSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
-        Plants arugulaSeed = new Plants("arugulaSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
-        Plants lettuceSeed = new Plants("lettuceSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
-        Plants tomatoSeed = new Plants("tomatoSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
-
-        Plants appleSeed = new Plants("appleSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
-        Plants pearSeed = new Plants("pearSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
-        Plants plumSeed = new Plants("plumSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
-        Plants cherrySeed = new Plants("cherrySeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
-        Plants melonSeed = new Plants("melonSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
-        Plants watermelonSeed = new Plants("watermelonSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
-        Plants lemonSeed = new Plants("lemonSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
-        Plants raspberriesSeed = new Plants("raspberriesSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
-        Plants strawberriesSeed = new Plants("strawberriesSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+        Plants cornSeed = new Plants("cornSeed", 2.0, 0.5, 200, 5, 0.25, 5);
+        Plants carrotSeed = new Plants("carrotSeed", 3.0, 0.8, 210, 3, 0.3, 4);
+//        Plants sunflowerSeed = new Plants("sunflowerSeed", 2.0, 0.5, 200, 5.0, 0.25, 5);
+//        Plants oliveSeed = new Plants("oliveSeed", 3.0, 0.8, 210, 3.0, 0.3, 4);
+//        Plants rapeseedSeed = new Plants("rapeseedSeed", 2.0, 0.5, 200, 5.0, 0.25, 5.0);
+//        Plants potatoSeed = new Plants("potatoSeed", 3.0, 0.8, 210, 3.0, 0.3, 4.0);
+//        Plants ryeSeed = new Plants("ryeSeed", 2.0, 0.5, 200, 5.0, 0.25, 5.0);
+//        Plants wheatSeed = new Plants("wheatSeed", 3.0, 0.8, 210, 3.0, 0.3, 4.0);
+//        Plants riceSeed = new Plants("riceSeed", 3.0, 0.8, 210, 3.0, 0.3, 4.0);
+//        Plants oatsSeed = new Plants("oatsSeed", 2.0, 0.5, 200, 5.0, 0.25, 5.0);
+//        Plants broccoliSeed = new Plants("broccoliSeed", 3.0, 0.8, 210, 3.0, 0.3, 4.0);
+//        Plants cauliflowerSeed = new Plants("cauliflowerSeed", 2.0, 0.5, 200, 5.0, 0.25, 5.0);
+//        Plants onionSeed = new Plants("onionSeed", 2.0, 0.5, 200, 5.0, 0.25, 5.0);
+//        Plants chiveSeed = new Plants("chiveSeed", 3.0, 0.8, 210, 3.0, 0.3, 4.0);
+//        Plants garlicSeed = new Plants("garlicSeed", 2.0, 0.5, 200, 5.0, 0.25, 5.0);
+//        Plants arugulaSeed = new Plants("arugulaSeed", 3.0, 0.8, 210, 3.0, 0.3, 4.0);
+//        Plants lettuceSeed = new Plants("lettuceSeed", 2.0, 0.5, 200, 5.0, 0.25, 5.0);
+//        Plants tomatoSeed = new Plants("tomatoSeed", 3.0, 0.8, 210, 3.0, 0.3, 4.0);
+//
+//        Plants appleSeed = new Plants("appleSeed", 3.0, 0.8, 210, 3.0, 0.3, 4.0);
+//        Plants pearSeed = new Plants("pearSeed", 2.0, 0.5, 200, 5.0, 0.25, 5.0);
+//        Plants plumSeed = new Plants("plumSeed", 3.0, 0.8, 210, 3.0, 0.3, 4.0);
+//        Plants cherrySeed = new Plants("cherrySeed", 2.0, 0.5, 200, 5.0, 0.25, 5.0);
+//        Plants melonSeed = new Plants("melonSeed", 3.0, 0.8, 210, 3.0, 0.3, 4.0);
+//        Plants watermelonSeed = new Plants("watermelonSeed", 2.0, 0.5, 200, 5.0, 0.25, 5.0);
+//        Plants lemonSeed = new Plants("lemonSeed", 2.0, 0.5, 200, 5.0, 0.25, 5.0);
+//        Plants raspberriesSeed = new Plants("raspberriesSeed", 3.0, 0.8, 210, 3.0, 0.3, 4.0);
+//        Plants strawberriesSeed = new Plants("strawberriesSeed", 2.0, 0.5, 200, 5.0, 0.25, 5.0);
 
         /*ANIMALS */
         Animals cow = new Animals("cow", 100.0, 10.0, 2.0, 2.0, cornSeed, 2.0);
@@ -240,13 +240,29 @@ public class Main {
         Buyable.buyPlantSeed(firstPlayer, carrotSeed, 10);
 
 
-        Saleable.sellPlantSeed(firstPlayer, carrotSeed, 5);
-        Saleable.sellPlantSeed(firstPlayer, carrotSeed, 5);
+        //Saleable.sellPlantSeed(firstPlayer, carrotSeed, 5);
 
 
-
+        firstPlayer.buyFarm(oldFarm);
+        //Buyable.buySilos(firstPlayer, silos);
+        System.out.println(firstPlayer.isSilos);
+        firstPlayer.buyMoreField(oldFarm, 10.0);
 
         System.out.println(firstPlayer.yourSeeds);
+
+        Plants.plant(firstPlayer, carrotSeed, 9);
+
+        System.out.println(firstPlayer.yourSeeds);
+        System.out.println(firstPlayer.yourPlantedPlants);
+        Plants.growingProcess(firstPlayer);
+        Plants.growingProcess(firstPlayer);
+        Plants.growingProcess(firstPlayer);
+        Plants.growingProcess(firstPlayer);
+        System.out.println(firstPlayer.cash);
+        Plants.harvest(firstPlayer, carrotSeed);
+        System.out.println(firstPlayer.cash);
+        System.out.println(firstPlayer.yourPlants);
+
 
 
     }

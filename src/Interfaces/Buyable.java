@@ -12,14 +12,14 @@ public class Buyable {
         if (player.cash >= plant.value_kg) {
 
             if (player.yourSeeds.isEmpty()) {
-                player.yourSeeds.add(new Plants(plant.name, 2.0, 0.5, 200.0, 5.0, 0.25, 5.0, amount));
+                player.yourSeeds.add(new Plants(plant.name, 2.0, 0.5, 200, 5, 0.25, 5, amount));
                 player.yourSeeds.get(0).name.equals(plant.name);
             } else {
                 if (player.yourSeeds.size() == 1 && player.yourSeeds.get(0).name.equals(plant.name)) {
                     player.yourSeeds.get(0).amountInInventory += amount;
                 } else {
                     if (player.yourSeeds.size() == 1) {
-                        player.yourSeeds.add(new Plants(plant.name, 2.0, 0.5, 200.0, 5.0, 0.25, 5.0, amount));
+                        player.yourSeeds.add(new Plants(plant.name, 2.0, 0.5, 200, 5, 0.25, 5, amount));
                     } else
                         one:{
                             for (int i = 0; i < player.yourSeeds.size(); i++) {
@@ -28,7 +28,7 @@ public class Buyable {
                                     break one;
                                 }
                             }
-                            player.yourSeeds.add(new Plants(plant.name, 2.0, 0.5, 200.0, 5.0, 0.25, 5.0, amount));
+                            player.yourSeeds.add(new Plants(plant.name, 2.0, 0.5, 200, 5, 0.25, 5, amount));
                         }
                 }
             }

@@ -33,10 +33,10 @@ public class Farms  {
         return
                 " name: " + this.name +
                 " price: " + this.price +
-                " field Slots " + this.fieldsSlots +
-                "max field slots" + this.maxFieldsSlots +
-                " silos Slots " + this.silosSlots +
-                " garage Slots " + this.garageSlots;
+                " field Slots: " + this.fieldsSlots +
+                " max field slots: " + this.maxFieldsSlots +
+                " silos Slots: " + this.silosSlots +
+                " garage Slots: " + this.garageSlots;
     }
 
 }

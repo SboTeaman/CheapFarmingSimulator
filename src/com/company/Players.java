@@ -10,21 +10,23 @@ import java.util.List;
 
 public class Players {
 
+    public static Farms farm;
     private final String name;
     public double cash;
-    public static Farms farm;
-    public boolean isSilos= false;
+    public boolean isSilos = false;
     public List<Plants> yourSeeds = new ArrayList<>();
     public List<Plants> yourPlantedPlants = new ArrayList<>();
     public List<Plants> yourPlants = new ArrayList<>();
     public List<Animals> yourAnimals = new ArrayList<>();
     public List<Buildings> yourBuildings = new ArrayList<>();
-
     Players(String name) {
         this.name = name;
         this.cash = 1500000.0;
     }
 
+    public static Farms getFarm() {
+        return farm;
+    }
 
     public String toString() {
         return "name: " + this.name + "\ncash: " + this.cash;
@@ -90,7 +92,7 @@ public class Players {
 
     public void buyBuildings(Farms farm, Buildings buildings) {
         if (this.farm == null) {
-            System.out.println("You don't have " + farm.name );
+            System.out.println("You don't have " + farm.name);
         } else {
             if (this.cash > buildings.price) {
                 if (farm.fieldsSlots > 0) {
