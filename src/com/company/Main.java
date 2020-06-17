@@ -22,7 +22,7 @@ public class Main {
 
         /*PLANTS SEEDS */
 
-            Plants cornSeed = new Plants("cornSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+        Plants cornSeed = new Plants("cornSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
         Plants carrotSeed = new Plants("carrotSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
         Plants sunflowerSeed = new Plants("sunflowerSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
         Plants oliveSeed = new Plants("oliveSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
@@ -237,32 +237,17 @@ public class Main {
 
 
         Buyable.buyPlantSeed(firstPlayer, cornSeed, 10);
-        Buyable.buyPlantSeed(firstPlayer, appleSeed, 10);
-
         Buyable.buyPlantSeed(firstPlayer, carrotSeed, 10);
-        Buyable.buyPlantSeed(firstPlayer, arugulaSeed, 10);
-
-        Buyable.buyPlantSeed(firstPlayer, cauliflowerSeed, 10);
-        Buyable.buyPlantSeed(firstPlayer, cauliflowerSeed, 10);
-
-        Buyable.buyPlantSeed(firstPlayer, cornSeed, 10);
-        Buyable.buyPlantSeed(firstPlayer, cornSeed, 10);
 
 
+        Saleable.sellPlantSeed(firstPlayer, carrotSeed, 5);
+        Saleable.sellPlantSeed(firstPlayer, carrotSeed, 5);
 
 
 
 
         System.out.println(firstPlayer.yourSeeds);
 
-       // Plants.plant(firstPlayer,cornSeed,8);
-
-//    Plants.plant(firstPlayer, cornSeed, 10);
-//        Plants.plant(firstPlayer, cornSeed, 10);
-//
-//        //Buyable.buySilos(firstPlayer, silos);
-//        System.out.println(firstPlayer.yourSeeds);
-//        System.out.println(firstPlayer.yourPlants);
 
     }
 

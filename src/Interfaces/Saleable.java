@@ -28,9 +28,7 @@ public class Saleable {
                     System.out.println("You don't have enough " + plant.name + " to sell");
                 }
 
-            } else {
-                System.out.println("You don't have " + plant.name);
-                break;
+
             }
         }
     }
