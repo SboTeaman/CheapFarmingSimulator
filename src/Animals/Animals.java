@@ -1,8 +1,6 @@
 package Animals;
 
-import Interfaces.Buyable;
 import com.company.Plants;
-import com.company.Players;
 
 public class Animals  {
     public String name;

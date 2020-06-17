@@ -7,27 +7,26 @@ import java.util.Random;
 
 public class Saleable {
 
-    public static void sellPlantSeed(Plants plant, Players player, int amount) {
-        for (int i = 0; i < player.yourPlants.size(); i++) {
+    public static void sellPlantSeed(Players player, Plants plant, int amount) {
 
-            if (player.yourPlants.get(i).name.equals(plant.name)) {
-                if (player.yourPlants.get(i).amountInInventory >= amount) {
+        for (int i = 0; i < player.yourSeeds.size(); i++) {
+
+            if (player.yourSeeds.get(i).name.equals(plant.name)) {
+                if (player.yourSeeds.get(i).amountInInventory >= amount) {
                     Random rn = new Random();
                     double valueOfTransaction = amount * plant.value_kg * rn.nextDouble();
                     player.cash += valueOfTransaction;
                     System.out.println("You successful sell " + amount + " of " + plant.name);
-                    player.yourPlants.get(i).amountInInventory -= amount;
+                    player.yourSeeds.get(i).amountInInventory -= amount;
 
-                    if (player.yourPlants.get(i).amountInInventory == 0) {
-                        player.yourPlants.remove(i);
+                    if (player.yourSeeds.get(i).amountInInventory == 0) {
+                        player.yourSeeds.remove(i);
                         break;
                     }
-                    break;
-                } else if (player.yourPlants.get(i).amountInInventory < amount) {
-                    System.out.println("You don't have enough " + plant.name + " to sell");
-                    break;
-                }
 
+                } else if (player.yourSeeds.get(i).amountInInventory < amount) {
+                    System.out.println("You don't have enough " + plant.name + " to sell");
+                }
 
             } else {
                 System.out.println("You don't have " + plant.name);
@@ -35,6 +34,5 @@ public class Saleable {
             }
         }
     }
-
 }
 

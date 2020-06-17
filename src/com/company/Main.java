@@ -9,12 +9,20 @@ import Buildings.Silos;
 import Buildings.Farms;
 import Interfaces.Buyable;
 import Interfaces.RandomNumberGenerator;
+import Interfaces.Saleable;
+
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        /*PLANTS */
-        Plants cornSeed = new Plants("cornSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+    public static void main(String[] args) {
+        /*PLANTS*/
+        Plants corn = new Plants("corn", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
+
+
+        /*PLANTS SEEDS */
+
+            Plants cornSeed = new Plants("cornSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
         Plants carrotSeed = new Plants("carrotSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
         Plants sunflowerSeed = new Plants("sunflowerSeed", 2.0, 0.5, 200.0, 5.0, 0.25, 5.0);
         Plants oliveSeed = new Plants("oliveSeed", 3.0, 0.8, 210.0, 3.0, 0.3, 4.0);
@@ -62,7 +70,7 @@ public class Main {
         Buildings smallCowshed = new Cowshed("smallCowshed", 1000.0, 2.0, 3);
         Buildings smallPigsty = new Pigsty("smallPigsty", 1000.0, 2.0, 3);
         Buildings smallStable = new Stable("smallStable", 1000.0, 2.0, 3);
-        Buildings silos =new Silos("silos",1000.0);
+        Buildings silos = new Silos("silos", 1000.0);
 
 
         Players firstPlayer = new Players("me");
@@ -70,7 +78,7 @@ public class Main {
 
 
 
-        /*
+/*
         int choiceMenu;
         for (int i = 1; i > 0; i++) {
             System.out.println("Week:" + i);
@@ -118,19 +126,19 @@ public class Main {
                                 int choicePurchaseFarm = scannerPurchaseFarm.nextInt();
                                 switch (choicePurchaseFarm) {
                                     case 1:
-                                        FirstPlayer.buyFarm(oldFarm);
+                                        firstPlayer.buyFarm(oldFarm);
                                         break;
                                     case 2:
-                                        FirstPlayer.buyFarm(startedFarm);
+                                        firstPlayer.buyFarm(startedFarm);
                                         break;
                                     case 3:
-                                        FirstPlayer.buyFarm(advancedFarm);
+                                        firstPlayer.buyFarm(advancedFarm);
                                         break;
                                     case 4:
-                                        FirstPlayer.buyFarm(highTierFarm);
+                                        firstPlayer.buyFarm(highTierFarm);
                                         break;
                                     case 5:
-                                        FirstPlayer.buyFarm(ultimateFarm);
+                                        firstPlayer.buyFarm(ultimateFarm);
                                         break;
                                 }
 
@@ -149,7 +157,7 @@ public class Main {
 
                                 switch (choicePurchaseBuilding) {
                                     case 1:
-                                        FirstPlayer.buyBuildings(oldFarm,smallCowshed); // some improvement needed
+                                        firstPlayer.buyBuildings(oldFarm,smallCowshed); // some improvement needed
                                     case 2:
                                     case 3:
                                 }
@@ -158,8 +166,8 @@ public class Main {
                             case 3:
                                 System.out.println("Buy Plants");
                                 System.out.println("---------------------");
-                                System.out.println("1 - " + corn.toString());
-                                System.out.println("2 - " + carrot.toString());
+                                System.out.println("1 - " + cornSeed.toString());
+                                System.out.println("2 - " + carrotSeed.toString());
 
                                 Scanner scannerPlant = new Scanner(System.in);
                                 int choicePlant = scannerFarm.nextInt();
@@ -169,7 +177,7 @@ public class Main {
                                         System.out.println("How much corn you want to buy?");
                                         Scanner scannerAmount = new Scanner(System.in);
                                         int choiceAmount = scannerFarm.nextInt();
-                                        FirstPlayer.buyPlant(corn, choiceAmount);
+                                        Buyable.buyPlantSeed(firstPlayer,cornSeed, choiceAmount);
                                 }
                         }
 
@@ -192,19 +200,18 @@ public class Main {
                         switch (choiceStatistic) {
                             case 1:
                                 System.out.println("List of your farms:");
-                                System.out.println(FirstPlayer.yourFarms);
                                 break;
                             case 2:
                                 System.out.println("List of your buildings:");
-                                System.out.println(FirstPlayer.yourBuildings);
+                                System.out.println(firstPlayer.yourBuildings);
                                 break;
                             case 3:
                                 System.out.println("List of your Animals:");
-                                System.out.println(FirstPlayer.yourAnimals);
+                                System.out.println(firstPlayer.yourAnimals);
                                 break;
                             case 4:
-                                System.out.println("List of your Plants:");
-                                System.out.println(FirstPlayer.inventory);
+                                System.out.println("List of your Seeds:");
+                                System.out.println(firstPlayer.yourSeeds);
                                 break;
 
                         }
@@ -226,16 +233,36 @@ public class Main {
         }
 
 
-         */ // MENU!!! DO NOT REMOVE THIS!!!
+ */ // MENU!!! DO NOT REMOVE THIS!!!
 
 
-        Buyable.buyPlantSeed(firstPlayer, 10, cornSeed);
-        Buyable.buyPlantSeed(firstPlayer, 10, cornSeed);
-        Buyable.buyPlantSeed(firstPlayer, 10, carrotSeed);
-        Buyable.buyPlantSeed(firstPlayer, 10, carrotSeed);
+        Buyable.buyPlantSeed(firstPlayer, cornSeed, 10);
+        Buyable.buyPlantSeed(firstPlayer, appleSeed, 10);
+
+        Buyable.buyPlantSeed(firstPlayer, carrotSeed, 10);
+        Buyable.buyPlantSeed(firstPlayer, arugulaSeed, 10);
+
+        Buyable.buyPlantSeed(firstPlayer, cauliflowerSeed, 10);
+        Buyable.buyPlantSeed(firstPlayer, cauliflowerSeed, 10);
+
+        Buyable.buyPlantSeed(firstPlayer, cornSeed, 10);
+        Buyable.buyPlantSeed(firstPlayer, cornSeed, 10);
+
+
+
+
 
 
         System.out.println(firstPlayer.yourSeeds);
+
+       // Plants.plant(firstPlayer,cornSeed,8);
+
+//    Plants.plant(firstPlayer, cornSeed, 10);
+//        Plants.plant(firstPlayer, cornSeed, 10);
+//
+//        //Buyable.buySilos(firstPlayer, silos);
+//        System.out.println(firstPlayer.yourSeeds);
+//        System.out.println(firstPlayer.yourPlants);
 
     }
 

@@ -4,7 +4,6 @@ import Buildings.Farms;
 import Animals.Animals;
 import Buildings.Buildings;
 import Interfaces.RandomNumberGenerator;
-import Interfaces.Saleable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,8 @@ public class Players {
     public static Farms farm;
     public boolean isSilos= false;
     public List<Plants> yourSeeds = new ArrayList<>();
-    public List<Plants> yourPlants = new ArrayList<>(20);
+    public List<Plants> yourPlantedPlants = new ArrayList<>();
+    public List<Plants> yourPlants = new ArrayList<>();
     public List<Animals> yourAnimals = new ArrayList<>();
     public List<Buildings> yourBuildings = new ArrayList<>();
 

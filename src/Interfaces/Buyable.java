@@ -1,7 +1,6 @@
 package Interfaces;
 
 import Buildings.Buildings;
-import Buildings.Silos;
 import com.company.Plants;
 import com.company.Players;
 
@@ -9,42 +8,44 @@ import java.util.Random;
 
 public class Buyable {
 
-    public static void buyPlantSeed(Players player, int amount, Plants plant) {
+    public static void buyPlantSeed(Players player, Plants plant, int amount) {
         if (player.cash >= plant.value_kg) {
-
-            Random randomModifier = new Random();
-            double valueOfTransaction = amount * plant.value_kg * randomModifier.nextDouble();
-            player.cash -= valueOfTransaction;
 
             if (player.yourSeeds.isEmpty()) {
                 player.yourSeeds.add(new Plants(plant.name, 2.0, 0.5, 200.0, 5.0, 0.25, 5.0, amount));
-                System.out.println(player.yourSeeds.size());
+                player.yourSeeds.get(0).name.equals(plant.name);
             } else {
-                for (int i = 0; i < player.yourSeeds.size(); i++) {
-
-                    if (player.yourSeeds.get(i).name.equals(plant.name)) {
-                        player.yourSeeds.get(i).amountInInventory += amount;
-
-                    } else {
+                if (player.yourSeeds.size() == 1 && player.yourSeeds.get(0).name.equals(plant.name)) {
+                    player.yourSeeds.get(0).amountInInventory += amount;
+                } else {
+                    if (player.yourSeeds.size() == 1) {
                         player.yourSeeds.add(new Plants(plant.name, 2.0, 0.5, 200.0, 5.0, 0.25, 5.0, amount));
-                       break;
-                    }
-
+                    } else
+                        one:{
+                            for (int i = 0; i < player.yourSeeds.size(); i++) {
+                                if (player.yourSeeds.get(i).name.contains(plant.name)) {
+                                    player.yourSeeds.get(i).amountInInventory += amount;
+                                    break one;
+                                }
+                            }
+                            player.yourSeeds.add(new Plants(plant.name, 2.0, 0.5, 200.0, 5.0, 0.25, 5.0, amount));
+                        }
                 }
             }
+        } else {
+            System.out.println("You don't have enough money!");
         }
     }
 
-public static void buySilos(Players player, Buildings silos){
-        if(player.cash>silos.price){
-            player.cash-=silos.price;
-            player.isSilos=true;
-            System.out.println("You bought "+silos.name);
+    public static void buySilos(Players player, Buildings silos) {
+        if (player.cash > silos.price) {
+            player.cash -= silos.price;
+            player.isSilos = true;
+            System.out.println("You bought " + silos.name);
+        } else {
+            System.out.println("You don't have money for " + silos.name);
         }
-        else{
-            System.out.println("You don't have money for "+silos.name);
-        }
-}
+    }
 
 
 }
