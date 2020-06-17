@@ -1,5 +1,6 @@
 package Interfaces;
 
+import Animals.Animals;
 import Buildings.Buildings;
 import com.company.Plants;
 import com.company.Players;
@@ -29,6 +30,35 @@ public class Buyable {
                                 }
                             }
                             player.yourSeeds.add(new Plants(plant.name, 2.0, 0.5, 200, 5, 0.25, 5, amount));
+                        }
+                }
+            }
+        } else {
+            System.out.println("You don't have enough money!");
+        }
+    }
+
+    public static void buyAnimal(Players player, Animals animal, int amount) {
+        if (player.cash >= animal.costOfPurchase) {
+
+            if (player.yourAnimals.isEmpty()) {
+                player.yourAnimals.add(new Animals(animal.name, 100.0, 5.0, 2.0, 5, "corn", 0.1, amount));
+                player.yourAnimals.get(0).name.equals(animal.name);
+            } else {
+                if (player.yourAnimals.size() == 1 && player.yourAnimals.get(0).name.equals(animal.name)) {
+                    player.yourAnimals.get(0).amountInBuilding += amount;
+                } else {
+                    if (player.yourAnimals.size() == 1) {
+                        player.yourAnimals.add(new Animals(animal.name, 100.0, 5.0, 2.0, 5, "corn", 0.1, amount));
+                    } else
+                        one:{
+                            for (int i = 0; i < player.yourSeeds.size(); i++) {
+                                if (player.yourAnimals.get(i).name.contains(animal.name)) {
+                                    player.yourAnimals.get(i).amountInBuilding += amount;
+                                    break one;
+                                }
+                            }
+                            player.yourAnimals.add(new Animals(animal.name, 100.0, 5.0, 2.0, 5, "corn", 0.1, amount));
                         }
                 }
             }

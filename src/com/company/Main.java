@@ -52,12 +52,12 @@ public class Main {
 //        Plants strawberriesSeed = new Plants("strawberriesSeed", 2.0, 0.5, 200, 5.0, 0.25, 5.0);
 
         /*ANIMALS */
-        Animals cow = new Animals("cow", 100.0, 10.0, 2.0, 2.0, cornSeed, 2.0);
-        Animals sheep = new Animals("sheep", 100.0, 10.0, 2.0, 2.0, cornSeed, 2.0);
-        Animals pig = new Animals("pig", 100.0, 10.0, 2.0, 2.0, cornSeed, 2.0);
-        Animals chicken = new Animals("chicken", 100.0, 10.0, 2.0, 2.0, cornSeed, 2.0);
-        Animals dog = new Animals("dog", 100.0, 10.0, 2.0, 2.0, cornSeed, 2.0);
-        Animals cat = new Animals("cat", 100.0, 10.0, 2.0, 2.0, cornSeed, 2.0);
+        Animals cow = new Animals("cow", 100.0, 10.0, 2.0, 2.0, "corn", 2.0);
+        Animals sheep = new Animals("sheep", 100.0, 10.0, 2.0, 2.0, "cornSeed", 2.0);
+        Animals pig = new Animals("pig", 100.0, 10.0, 2.0, 2.0, "cornSeed", 2.0);
+        Animals chicken = new Animals("chicken", 100.0, 10.0, 2.0, 2.0, "cornSeed", 2.0);
+        Animals dog = new Animals("dog", 100.0, 10.0, 2.0, 2.0, "cornSeed", 2.0);
+        Animals cat = new Animals("cat", 100.0, 10.0, 2.0, 2.0, "cornSeed", 2.0);
 
         /*FARMS */
         Farms oldFarm = new Farms("Old Farm", RandomNumberGenerator.randomBetween(100, 900), RandomNumberGenerator.randomBetween(1, 2), 10.0, 1, 0);
@@ -263,7 +263,26 @@ public class Main {
         System.out.println(firstPlayer.cash);
         System.out.println(firstPlayer.yourPlants);
 
+        Saleable.sellPlantSeed(firstPlayer, carrotSeed, 100);
 
+        Buyable.buyAnimal(firstPlayer, cow, 1);
+        Buyable.buyAnimal(firstPlayer, cow, 1);
+        Buyable.buyAnimal(firstPlayer, sheep, 1);
+        Buyable.buyAnimal(firstPlayer, sheep, 1);
+        Buyable.buyAnimal(firstPlayer, cow, 1);
+        Buyable.buyAnimal(firstPlayer, cow, 1);
+        System.out.println(firstPlayer.yourAnimals);
+
+        Saleable.sellAnimal(firstPlayer, cow, 1);
+        Saleable.sellAnimal(firstPlayer, cow, 1);
+        Saleable.sellAnimal(firstPlayer, cow, 1);
+        Saleable.sellAnimal(firstPlayer, cow, 1);
+        Saleable.sellAnimal(firstPlayer, sheep, 100);
+        Saleable.sellAnimal(firstPlayer, sheep, 1);
+        Saleable.sellAnimal(firstPlayer, sheep, 1);
+
+
+        System.out.println(firstPlayer.yourAnimals);
 
     }
 
