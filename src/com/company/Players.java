@@ -19,19 +19,38 @@ public class Players {
     public List<Plants> yourPlants = new ArrayList<>();
     public List<Animals> yourAnimals = new ArrayList<>();
     public List<Buildings> yourBuildings = new ArrayList<>();
+    public int week=31;
+
     Players(String name) {
         this.name = name;
-        this.cash = 1500000.0;
+        this.cash = 1500.0;
     }
 
     public static Farms getFarm() {
         return farm;
     }
 
+
+    public static void isCash(Players player) {
+        if (player.cash <= 0) {
+            for (int i = 0; i < player.yourPlantedPlants.size(); i++) {
+                if (RandomNumberGenerator.randomBetween(0, 10) == 5) {
+                    player.yourPlantedPlants.get(i).amountInInventory -= RandomNumberGenerator.randomBetween(0, player.yourPlantedPlants.get(i).amountInInventory);
+                    if (player.yourPlantedPlants.get(i).amountInInventory == 0) {
+                        player.yourPlantedPlants.remove(i);
+                    }
+                }
+            }
+
+            for (int i = 0; i < player.yourAnimals.size(); i++) {
+                player.yourAnimals.get(i).weight -= 1;
+            }
+        }
+    }
+
     public String toString() {
         return "name: " + this.name + "\ncash: " + this.cash;
     }
-
 
     public void buyFarm(Farms farm) {
 
@@ -52,7 +71,6 @@ public class Players {
             System.out.println("You don't have enough money to buy: " + farm.name);
         }
     }
-
 
     public void buyMoreField(Farms farm, double amount) {
 
@@ -89,9 +107,8 @@ public class Players {
         }
     }
 
-
     public void buyBuildings(Farms farm, Buildings buildings) {
-        if (this.farm == null) {
+        if (Players.farm == null) {
             System.out.println("You don't have " + farm.name);
         } else {
             if (this.cash > buildings.price) {
@@ -109,42 +126,42 @@ public class Players {
         }
     }
 
-    public void buyAnimals(Farms farm, Buildings building, Animals animal, double amount) {
-        double valueOfTransaction = amount * animal.costOfPurchase;
-        if (this.farm == farm) {
-            if (yourBuildings.contains(building)) {
-                if (this.cash >= valueOfTransaction) {
-                    if (amount < building.capacity) {
-                        animal.amountInBuilding += amount;
-                        yourAnimals.add(animal);
-                        System.out.println("You successful buy " + amount + " " + animal.name);
-                    } else {
-                        System.out.println("You don't have space for " + amount + " " + animal);
-                    }
-                } else {
-                    System.out.println("You don't have enough money for " + amount + " " + animal);
-                }
-            } else {
-                System.out.println("You don't have " + building.name + " for " + animal.name);
-            }
-        } else {
-            System.out.println("You don't have any farm");
-        }
-    }
+//    public void buyAnimals(Farms farm, Buildings building, Animals animal, double amount) {
+//        double valueOfTransaction = amount * animal.costOfPurchase;
+//        if (this.farm == farm) {
+//            if (yourBuildings.contains(building)) {
+//                if (this.cash >= valueOfTransaction) {
+//                    if (amount < building.capacity) {
+//                        animal.amountInBuilding += amount;
+//                        yourAnimals.add(animal);
+//                        System.out.println("You successful buy " + amount + " " + animal.name);
+//                    } else {
+//                        System.out.println("You don't have space for " + amount + " " + animal);
+//                    }
+//                } else {
+//                    System.out.println("You don't have enough money for " + amount + " " + animal);
+//                }
+//            } else {
+//                System.out.println("You don't have " + building.name + " for " + animal.name);
+//            }
+//        } else {
+//            System.out.println("You don't have any farm");
+//        }
+//    }
 
-    public void sellAnimal(Farms farm, Buildings building, Animals animal, double amount) {
-        double valueOfTransaction = amount * animal.costOfPurchase;
-        if (yourAnimals.contains(animal)) {
-            if (animal.amountInBuilding >= amount) {
-                animal.amountInBuilding -= amount;
-                this.cash += valueOfTransaction;
-                if (animal.amountInBuilding == 0) {
-                    yourAnimals.remove(animal);
-                }
-            } else {
-                System.out.println("You don't have enough " + animal.name + " to sell");
-            }
-        }
-    }
+//    public void sellAnimal(Farms farm, Buildings building, Animals animal, double amount) {
+//        double valueOfTransaction = amount * animal.costOfPurchase;
+//        if (yourAnimals.contains(animal)) {
+//            if (animal.amountInBuilding >= amount) {
+//                animal.amountInBuilding -= amount;
+//                this.cash += valueOfTransaction;
+//                if (animal.amountInBuilding == 0) {
+//                    yourAnimals.remove(animal);
+//                }
+//            } else {
+//                System.out.println("You don't have enough " + animal.name + " to sell");
+//            }
+//        }
+//    }
 
 }

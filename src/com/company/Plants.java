@@ -1,5 +1,9 @@
 package com.company;
 
+import Interfaces.RandomNumberGenerator;
+
+import java.util.Random;
+
 public class Plants {
 
 
@@ -7,9 +11,9 @@ public class Plants {
     public final int value_kg;
     private final double costOfPlanting;
     private final int costOfProtectingFromParasite;
-    private final int efficiency_ha;
     private final double costOfHarvesting;
     public int amountInInventory = 0;
+    private int efficiency_ha;
     private int timeToGrow;
 
     public Plants(
@@ -125,6 +129,33 @@ public class Plants {
         }
     }
 
+    public static void disasters(Players player) {
+        int flood = RandomNumberGenerator.randomBetween(0, 10);
+        int drought = RandomNumberGenerator.randomBetween(0, 10);
+        int groaning = RandomNumberGenerator.randomBetween(0, 10);
+
+        if (!player.yourPlantedPlants.isEmpty()) {
+            for (int i = 0; i < player.yourPlantedPlants.size(); i++) {
+                if (player.week > 10 && player.week < 20) {
+                    if (flood == 5) {
+                        player.yourPlantedPlants.get(i).timeToGrow += RandomNumberGenerator.randomBetween(10, 15);
+                    }
+                }
+                if (player.week > 20 && player.week < 30) {
+                    if (drought == 6) {
+                        player.yourPlantedPlants.get(i).efficiency_ha *= 0.7;
+                    }
+                }
+                if (player.week > 30 && player.week < 40) {
+                    if (groaning == 3) {
+                        player.yourPlantedPlants.get(i).amountInInventory *= 0.5;
+                    }
+                }
+            }
+        }
+
+    }
+
 
     public void setAmountInInventory(int amountInInventory) {
         this.amountInInventory += amountInInventory;
@@ -134,8 +165,8 @@ public class Plants {
         return "\nName: " + this.name +
                 //"\nCost of Planting: "+this.costOfPlanting+
                 //"\nCost of protecting frm parasite: "+this.costOfProtectingFromParasite+
-                //"\nEfficiency for one hectare: "+this.efficiency_ha+
-                //"\nTime to grow: "+this.timeToGrow+
+                "\nEfficiency for one hectare: " + this.efficiency_ha +
+                "\nTime to grow: " + this.timeToGrow +
                 //"\nCost of harvesting: " +this.costOfHarvesting+
                 // "\nValue for one Kilogram: "+this.value_kg+
                 " Amount: " + this.amountInInventory;

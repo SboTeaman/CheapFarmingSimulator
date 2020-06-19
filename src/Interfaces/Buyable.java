@@ -42,14 +42,14 @@ public class Buyable {
         if (player.cash >= animal.costOfPurchase) {
 
             if (player.yourAnimals.isEmpty()) {
-                player.yourAnimals.add(new Animals(animal.name, 100.0, 5.0, 2.0, 5, "corn", 0.1, amount));
+                player.yourAnimals.add(new Animals(animal.name, 100.0,10.0, 5.0, 2.0, 5, "corn", 0.1, amount));
                 player.yourAnimals.get(0).name.equals(animal.name);
             } else {
                 if (player.yourAnimals.size() == 1 && player.yourAnimals.get(0).name.equals(animal.name)) {
                     player.yourAnimals.get(0).amountInBuilding += amount;
                 } else {
                     if (player.yourAnimals.size() == 1) {
-                        player.yourAnimals.add(new Animals(animal.name, 100.0, 5.0, 2.0, 5, "corn", 0.1, amount));
+                        player.yourAnimals.add(new Animals(animal.name, 100.0,10.0, 5.0, 2.0, 5, "corn", 0.1, amount));
                     } else
                         one:{
                             for (int i = 0; i < player.yourAnimals.size(); i++) {
@@ -58,7 +58,7 @@ public class Buyable {
                                     break one;
                                 }
                             }
-                            player.yourAnimals.add(new Animals(animal.name, 100.0, 5.0, 2.0, 5, "corn", 0.1, amount));
+                            player.yourAnimals.add(new Animals(animal.name, 100.0, 10.0,5.0, 2.0, 5, "corn", 0.1, amount));
                         }
                 }
             }
