@@ -13,14 +13,14 @@ public class Buyable {
         if (player.cash >= plant.value_kg) {
 
             if (player.yourSeeds.isEmpty()) {
-                player.yourSeeds.add(new Plants(plant.name, 2.0, 0.5, 200, 5, 0.25, 5, amount));
+                player.yourSeeds.add(new Plants(plant.name, 2.0, 1, 200, 5, 0.25, 5, amount));
                 player.yourSeeds.get(0).name.equals(plant.name);
             } else {
                 if (player.yourSeeds.size() == 1 && player.yourSeeds.get(0).name.equals(plant.name)) {
                     player.yourSeeds.get(0).amountInInventory += amount;
                 } else {
                     if (player.yourSeeds.size() == 1) {
-                        player.yourSeeds.add(new Plants(plant.name, 2.0, 0.5, 200, 5, 0.25, 5, amount));
+                        player.yourSeeds.add(new Plants(plant.name, 2.0, 1, 200, 5, 0.25, 5, amount));
                     } else
                         one:{
                             for (int i = 0; i < player.yourSeeds.size(); i++) {
@@ -29,7 +29,7 @@ public class Buyable {
                                     break one;
                                 }
                             }
-                            player.yourSeeds.add(new Plants(plant.name, 2.0, 0.5, 200, 5, 0.25, 5, amount));
+                            player.yourSeeds.add(new Plants(plant.name, 2.0, 1, 200, 5, 0.25, 5, amount));
                         }
                 }
             }
@@ -52,7 +52,7 @@ public class Buyable {
                         player.yourAnimals.add(new Animals(animal.name, 100.0, 5.0, 2.0, 5, "corn", 0.1, amount));
                     } else
                         one:{
-                            for (int i = 0; i < player.yourSeeds.size(); i++) {
+                            for (int i = 0; i < player.yourAnimals.size(); i++) {
                                 if (player.yourAnimals.get(i).name.contains(animal.name)) {
                                     player.yourAnimals.get(i).amountInBuilding += amount;
                                     break one;

@@ -17,14 +17,14 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         /*PLANTS*/
-        Plants corn = new Plants("corn", 2.0, 0.5, 200, 5, 0.25, 5);
+        Plants corn = new Plants("corn", 2.0, 1, 200, 5, 0.25, 5);
 
 
         /*PLANTS SEEDS */
 
-        Plants cornSeed = new Plants("cornSeed", 2.0, 0.5, 200, 5, 0.25, 5);
-        Plants carrotSeed = new Plants("carrotSeed", 3.0, 0.8, 210, 3, 0.3, 4);
-//        Plants sunflowerSeed = new Plants("sunflowerSeed", 2.0, 0.5, 200, 5.0, 0.25, 5);
+        Plants cornSeed = new Plants("cornSeed", 2.0, 1, 200, 5, 0.25, 5);
+        Plants carrotSeed = new Plants("carrotSeed", 3.0, 1, 210, 3, 0.3, 4);
+      Plants sunflowerSeed = new Plants("sunflowerSeed", 2.0, 1, 200, 5, 0.25, 5);
 //        Plants oliveSeed = new Plants("oliveSeed", 3.0, 0.8, 210, 3.0, 0.3, 4);
 //        Plants rapeseedSeed = new Plants("rapeseedSeed", 2.0, 0.5, 200, 5.0, 0.25, 5.0);
 //        Plants potatoSeed = new Plants("potatoSeed", 3.0, 0.8, 210, 3.0, 0.3, 4.0);
@@ -238,52 +238,62 @@ public class Main {
 
         Buyable.buyPlantSeed(firstPlayer, cornSeed, 10);
         Buyable.buyPlantSeed(firstPlayer, carrotSeed, 10);
+        Buyable.buyPlantSeed(firstPlayer, carrotSeed, 10);
+        Buyable.buyPlantSeed(firstPlayer,sunflowerSeed , 10);
+        Buyable.buyPlantSeed(firstPlayer,sunflowerSeed , 10);
+        Buyable.buyPlantSeed(firstPlayer, carrotSeed, 10);
 
 
-        //Saleable.sellPlantSeed(firstPlayer, carrotSeed, 5);
 
-
+//        //Saleable.sellPlantSeed(firstPlayer, carrotSeed, 5);
+//
+//
         firstPlayer.buyFarm(oldFarm);
-        //Buyable.buySilos(firstPlayer, silos);
-        System.out.println(firstPlayer.isSilos);
+//        //Buyable.buySilos(firstPlayer, silos);
+//        System.out.println(firstPlayer.isSilos);
         firstPlayer.buyMoreField(oldFarm, 10.0);
+//
+//        System.out.println(firstPlayer.yourSeeds);
+//
+//        Plants.plant(firstPlayer, carrotSeed, 9);
+//
+//        System.out.println(firstPlayer.yourSeeds);
+//        System.out.println(firstPlayer.yourPlantedPlants);
+//        Plants.growingProcess(firstPlayer);
+//        Plants.growingProcess(firstPlayer);
+//        Plants.growingProcess(firstPlayer);
+//
+//        System.out.println(firstPlayer.cash);
+//        Plants.harvest(firstPlayer, carrotSeed);
+//        System.out.println(firstPlayer.cash);
+//        System.out.println(firstPlayer.yourPlants);
+//
+//        Saleable.sellPlantSeed(firstPlayer, carrotSeed, 100);
+//
+//        Buyable.buyAnimal(firstPlayer, cow, 1);
+//        Buyable.buyAnimal(firstPlayer, cow, 1);
+//        Buyable.buyAnimal(firstPlayer, sheep, 1);
+//        Buyable.buyAnimal(firstPlayer, pig, 1);
+//        Buyable.buyAnimal(firstPlayer, sheep, 1);
+//        Buyable.buyAnimal(firstPlayer, pig, 1);
+//
+//        System.out.println(firstPlayer.yourAnimals);
+//
+//
+//
+//       Animals.reproduction(firstPlayer);
+//        System.out.println(firstPlayer.yourAnimals);
 
-        System.out.println(firstPlayer.yourSeeds);
+      Plants.plant(firstPlayer,carrotSeed,1);
+      Plants.plant(firstPlayer,carrotSeed,1);
 
-        Plants.plant(firstPlayer, carrotSeed, 9);
+      Plants.plant(firstPlayer,corn,1);
+      Plants.plant(firstPlayer,corn,1);
 
-        System.out.println(firstPlayer.yourSeeds);
-        System.out.println(firstPlayer.yourPlantedPlants);
-        Plants.growingProcess(firstPlayer);
-        Plants.growingProcess(firstPlayer);
-        Plants.growingProcess(firstPlayer);
-        Plants.growingProcess(firstPlayer);
-        System.out.println(firstPlayer.cash);
-        Plants.harvest(firstPlayer, carrotSeed);
-        System.out.println(firstPlayer.cash);
-        System.out.println(firstPlayer.yourPlants);
-
-        Saleable.sellPlantSeed(firstPlayer, carrotSeed, 100);
-
-        Buyable.buyAnimal(firstPlayer, cow, 1);
-        Buyable.buyAnimal(firstPlayer, cow, 1);
-        Buyable.buyAnimal(firstPlayer, sheep, 1);
-        Buyable.buyAnimal(firstPlayer, sheep, 1);
-        Buyable.buyAnimal(firstPlayer, cow, 1);
-        Buyable.buyAnimal(firstPlayer, cow, 1);
-        System.out.println(firstPlayer.yourAnimals);
-
-        Saleable.sellAnimal(firstPlayer, cow, 1);
-        Saleable.sellAnimal(firstPlayer, cow, 1);
-        Saleable.sellAnimal(firstPlayer, cow, 1);
-        Saleable.sellAnimal(firstPlayer, cow, 1);
-        Saleable.sellAnimal(firstPlayer, sheep, 100);
-        Saleable.sellAnimal(firstPlayer, sheep, 1);
-        Saleable.sellAnimal(firstPlayer, sheep, 1);
-
-
-        System.out.println(firstPlayer.yourAnimals);
-
+      System.out.println(firstPlayer.yourPlantedPlants);
+      System.out.println(firstPlayer.cash);
+       Plants.protectFromParasite(firstPlayer);
+      System.out.println(firstPlayer.cash);
     }
 
 }

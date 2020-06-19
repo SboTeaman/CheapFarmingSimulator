@@ -1,6 +1,8 @@
 package Animals;
 
+import Interfaces.RandomNumberGenerator;
 import com.company.Plants;
+import com.company.Players;
 
 public class Animals {
     public String name;
@@ -36,12 +38,19 @@ public class Animals {
 
     }
 
-
-
-    public void Feed() {
+    public static void reproduction(Players player) {
+        if (!player.yourAnimals.isEmpty()) {
+            for (int i = 0; i < player.yourAnimals.size(); i++) {
+                if (player.yourAnimals.get(i).amountInBuilding >= 2) {
+                    if (RandomNumberGenerator.randomBetween(0, 10) == 5) {
+                        player.yourAnimals.get(i).amountInBuilding += 1;
+                    }
+                }
+            }
+        }
     }
 
-    public void Reproduction() {
+    public void Feed() {
     }
 
 
@@ -57,13 +66,13 @@ public class Animals {
     public String toString() {
         return "\nYours Animals: " +
                 "\nname: " + name +
-                "\ncostOfPurchase: " + costOfPurchase +
-                "\ntimeToGrowUp: " + timeToGrowUp +
-                "\ngainWeightForWeek: " + gainWeightForWeek +
-                "\namountOfFoodPerWeek: " + amountOfFoodPerWeek +
-                "\ntypeOfFoodThatCanEat: " + typeOfFoodThatCanEat +
-                "\nchanceForReproduction: " + chanceForReproduction +
-                "\namountInBuilding: " + amountInBuilding +"\n";
+              //  "\ncostOfPurchase: " + costOfPurchase +
+               // "\ntimeToGrowUp: " + timeToGrowUp +
+              //  "\ngainWeightForWeek: " + gainWeightForWeek +
+              //  "\namountOfFoodPerWeek: " + amountOfFoodPerWeek +
+              //  "\ntypeOfFoodThatCanEat: " + typeOfFoodThatCanEat +
+              //  "\nchanceForReproduction: " + chanceForReproduction +
+                "\namountInBuilding: " + amountInBuilding + "\n";
     }
 }
 
