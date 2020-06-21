@@ -5,7 +5,7 @@ import Interfaces.RandomNumberGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Farms  {
+public class Farm {
 
     public double fieldsSlots;
     public double maxFieldsSlots;
@@ -16,10 +16,10 @@ public class Farms  {
     public double priceForField = RandomNumberGenerator.randomBetween(10,10);
 
 
-    public List<Farms> farmList = new ArrayList();
+    public List<Farm> farmList = new ArrayList();
 
 
-    public Farms(String name, double price, double fieldsSlots, double maxFieldsSlots, double silosSlots, double garageSlots) {
+    public Farm(String name, double price, double fieldsSlots, double maxFieldsSlots, double silosSlots, double garageSlots) {
         this.name = name;
         this.price = price;
         this.fieldsSlots = fieldsSlots;

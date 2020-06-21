@@ -1,24 +1,24 @@
 package Buildings;
 
 
-public class Buildings {
+public class Building {
 
     public String name;
     public double price;
     public double fieldRequired;
     public double capacity;
 
-    public Buildings(String name, double price, double fieldRequired) {
+    public Building(String name, double price, double fieldRequired) {
         this.name = name;
         this.price = price;
         this.fieldRequired = fieldRequired;
 
-    } public Buildings(String name, double price) {
+    } public Building(String name, double price) {
         this.name = name;
         this.price = price;
 
     }
-    public Buildings(String name, double price, double fieldRequired, double capacity) {
+    public Building(String name, double price, double fieldRequired, double capacity) {
         this.name = name;
         this.price = price;
         this.fieldRequired = fieldRequired;

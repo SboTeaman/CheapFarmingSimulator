@@ -1,11 +1,9 @@
 package Animals;
 
-import Buildings.Farms;
 import Interfaces.RandomNumberGenerator;
-import com.company.Plants;
-import com.company.Players;
+import com.company.Player;
 
-public class Animals {
+public class Animal {
     public String name;
     public double costOfPurchase;
     public double weight;
@@ -17,7 +15,7 @@ public class Animals {
     public String productForSelling;
     public int amountInBuilding = 0;
 
-    public Animals(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, double chanceForReproduction, String productForSelling) {
+    public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, double chanceForReproduction, String productForSelling) {
         this.name = name;
         this.costOfPurchase = costOfPurchase;
         this.weight = weight;
@@ -30,7 +28,7 @@ public class Animals {
 
     }
 
-    public Animals(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, double chanceForReproduction) {
+    public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, double chanceForReproduction) {
         this.name = name;
         this.costOfPurchase = costOfPurchase;
         this.weight = weight;
@@ -42,8 +40,7 @@ public class Animals {
 
     }
 
-
-    public Animals(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, double chanceForReproduction, int amountInBuilding) {
+    public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, double chanceForReproduction, int amountInBuilding) {
         this.name = name;
         this.costOfPurchase = costOfPurchase;
         this.weight = weight;
@@ -56,20 +53,18 @@ public class Animals {
 
     }
 
-    public static void growingProcess(Players player) {
+    public static void growingProcess(Player player) {
         if (!player.yourAnimals.isEmpty()) {
             for (int i = 0; i < player.yourAnimals.size(); i++) {
                 if (player.yourAnimals.get(i).timeToGrowUp > 0) {
                     player.yourAnimals.get(i).timeToGrowUp -= 1;
                     player.yourAnimals.get(i).weight += player.yourAnimals.get(i).gainWeightForWeek;
-
-
                 }
             }
         }
     }
 
-    public static void reproduction(Players player) {
+    public static void reproduction(Player player) {
         if (!player.yourAnimals.isEmpty()) {
             for (int i = 0; i < player.yourAnimals.size(); i++) {
                 if (player.yourAnimals.get(i).amountInBuilding >= 2 && player.yourAnimals.get(i).timeToGrowUp <= 0) {
@@ -81,7 +76,7 @@ public class Animals {
         }
     }
 
-    public static void feed(Players player) {
+    public static void feed(Player player) {
         if (!player.yourAnimals.isEmpty()) {
             double value;
             for (int i = 0; i < player.yourAnimals.size(); i++) {
@@ -96,7 +91,7 @@ public class Animals {
         }
     }
 
-    public static void productionItem(Players player) {
+    public static void productionItem(Player player) {
         if (!player.yourAnimals.isEmpty()) {
             for (int i = 0; i < player.yourAnimals.size(); i++) {
                 if (player.yourAnimals.get(i).name.equals("cow") || player.yourAnimals.get(i).name.equals("chicken") || player.yourAnimals.get(i).name.equals("cheap")) {

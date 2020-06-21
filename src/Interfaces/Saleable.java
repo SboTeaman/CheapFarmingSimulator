@@ -1,14 +1,15 @@
 package Interfaces;
 
-import Animals.Animals;
-import com.company.Plants;
-import com.company.Players;
+import Animals.Animal;
+import Buildings.Farm;
+import com.company.Plant;
+import com.company.Player;
 
 import java.util.Random;
 
 public class Saleable {
 
-    public static void sellPlantSeed(Players player, Plants plant, int amount) {
+    public static void sellPlantSeed(Player player, Plant plant, int amount) {
 
         for (int i = 0; i < player.yourSeeds.size(); i++) {
 
@@ -28,37 +29,47 @@ public class Saleable {
                 } else if (player.yourSeeds.get(i).amountInInventory < amount) {
                     System.out.println("You don't have enough " + plant.name + " to sell");
                 }
-
-
             }
         }
-
     }
-        public static void sellAnimal (Players player, Animals animal, int amount){
 
-            for (int i = 0; i < player.yourAnimals.size(); i++) {
+    public static void sellAnimal(Player player, Animal animal, int amount) {
 
-                if (player.yourAnimals.get(i).name.equals(animal.name)) {
-                    if (player.yourAnimals.get(i).amountInBuilding >= amount) {
-                        Random rn = new Random();
-                        double valueOfTransaction = amount * animal.costOfPurchase * rn.nextDouble();
-                        player.cash += valueOfTransaction;
-                        System.out.println("You successful sell " + amount + " of " + animal.name);
-                        player.yourAnimals.get(i).amountInBuilding -= amount;
+        for (int i = 0; i < player.yourAnimals.size(); i++) {
 
-                        if (player.yourAnimals.get(i).amountInBuilding == 0) {
-                            player.yourAnimals.remove(i);
-                            break;
-                        }
+            if (player.yourAnimals.get(i).name.equals(animal.name)) {
+                if (player.yourAnimals.get(i).amountInBuilding >= amount) {
+                    Random rn = new Random();
+                    double valueOfTransaction = amount * animal.costOfPurchase * rn.nextDouble();
+                    player.cash += valueOfTransaction;
+                    System.out.println("You successful sell " + amount + " of " + animal.name);
+                    player.yourAnimals.get(i).amountInBuilding -= amount;
 
-                    } else if (player.yourAnimals.get(i).amountInBuilding < amount) {
-                        System.out.println("You don't have enough " + animal.name + " to sell");
+                    if (player.yourAnimals.get(i).amountInBuilding == 0) {
+                        player.yourAnimals.remove(i);
+                        break;
                     }
 
-
+                } else if (player.yourAnimals.get(i).amountInBuilding < amount) {
+                    System.out.println("You don't have enough " + animal.name + " to sell");
                 }
             }
         }
     }
+
+    public void sellField(Player player, Farm farm, double amount) {
+        double valueOfTransaction = amount * RandomNumberGenerator.randomBetween(10, 20);
+        if (player.getFarm() == farm) {
+            if (farm.fieldsSlots > amount) {
+                player.cash += valueOfTransaction;
+                farm.fieldsSlots -= amount;
+            } else {
+                System.out.println("You don't have enough field to sell");
+            }
+        } else {
+            System.out.println("You don't any have farm");
+        }
+    }
+}
 
 

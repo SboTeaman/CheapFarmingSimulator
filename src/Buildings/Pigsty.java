@@ -1,6 +1,6 @@
 package Buildings;
 
-public class Pigsty extends Buildings {
+public class Pigsty extends Building {
 
 
     public Pigsty(String name, double price, double fieldRequired, double capacity) {

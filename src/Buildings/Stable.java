@@ -1,6 +1,6 @@
 package Buildings;
 
-public class Stable extends Buildings {
+public class Stable extends Building {
 
 
     public Stable(String name, double price, double fieldRequired, double capacity) {

@@ -1,6 +1,6 @@
 package Buildings;
 
-public class Silos extends Buildings {
+public class Silos extends Building {
 
 
     public Silos(String name, double price) {
