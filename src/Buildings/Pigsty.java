@@ -8,7 +8,7 @@ public class Pigsty extends Building {
 
     @Override
     public String toString() {
-        return "Cowshed{" +
+        return
                 "name='" + name + '\'' +
                 ", price=" + price +
                 ", fieldRequired=" + fieldRequired +

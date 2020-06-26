@@ -423,12 +423,47 @@ public class Main {
                                     }
                                     break;
                                 case 7:
+                                    System.out.println("Sell Animals");
+                                    System.out.println("---------------------");
+                                    System.out.println("1 - " + cow.name);
+                                    System.out.println("2 - " + sheep.name);
+                                    System.out.println("3 - " + pig.name);
+                                    System.out.println("4 - " + chicken.name);
+                                    System.out.println("5 - " + cat.name);
+                                    System.out.println("6 - " + dog.name);
 
+                                    Scanner scannerSellAnimal = new Scanner(System.in);
+                                    int choiceSellAnimal = scannerSellAnimal.nextInt();
 
+                                    System.out.println("How much you want to buy?");
+                                    Scanner scannerAnimalAmountToSell = new Scanner(System.in);
+                                    int choiceAnimalAmountToSell = scannerAnimalAmountToSell.nextInt();
+
+                                    switch (choiceSellAnimal) {
+                                        case 1:
+                                            Saleable.sellAnimal(Player.playerList.get(whichPlayer), cow, choiceAnimalAmountToSell);
+                                            break;
+                                        case 2:
+                                            Saleable.sellAnimal(Player.playerList.get(whichPlayer), sheep, choiceAnimalAmountToSell);
+                                            break;
+                                        case 3:
+                                            Saleable.sellAnimal(Player.playerList.get(whichPlayer), pig, choiceAnimalAmountToSell);
+                                            break;
+                                        case 4:
+                                            Saleable.sellAnimal(Player.playerList.get(whichPlayer), chicken, choiceAnimalAmountToSell);
+                                            break;
+                                        case 5:
+                                            Saleable.sellAnimal(Player.playerList.get(whichPlayer), dog, choiceAnimalAmountToSell);
+                                            break;
+                                        case 6:
+                                            Saleable.sellAnimal(Player.playerList.get(whichPlayer), cat, choiceAnimalAmountToSell);
+                                            break;
+                                    }
                                     break;
                             }
-                            break;
+
                         }
+                        break;
                         case 2:
                             System.out.println("Statistic of yours Farms");
                             System.out.println("---------------------");
@@ -585,6 +620,7 @@ public class Main {
                 Animal.growingProcess(Player.playerList.get(whichPlayer));
                 Animal.reproduction(Player.playerList.get(whichPlayer));
                 Animal.productionItem(Player.playerList.get(whichPlayer));
+                Animal.feed(Player.playerList.get(whichPlayer));
 
                 if (Player.playerList.get(whichPlayer).getFarm().equals(ultimateFarm) && Player.playerList.get(whichPlayer).cash == 1000000.0) {
                     System.out.println("Player:" + Player.playerList.get(whichPlayer).getName() + " win the game!!!");

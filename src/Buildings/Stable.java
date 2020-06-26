@@ -10,7 +10,7 @@ public class Stable extends Building {
 
     @Override
     public String toString() {
-        return "Stable{" +
+        return
                 "name='" + name + '\'' +
                 ", price=" + price +
                 ", fieldRequired=" + fieldRequired +

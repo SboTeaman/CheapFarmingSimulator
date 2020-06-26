@@ -36,22 +36,24 @@ public class Saleable {
     public static void sellAnimal(Player player, Animal animal, int amount) {
 
         for (int i = 0; i < player.yourAnimals.size(); i++) {
+            if (player.yourBuildings.get(i).type.equals(animal.buildingRequired)) {
 
-            if (player.yourAnimals.get(i).name.equals(animal.name)) {
-                if (player.yourAnimals.get(i).amountInBuilding >= amount) {
-                    Random rn = new Random();
-                    double valueOfTransaction = amount * animal.costOfPurchase * rn.nextDouble();
-                    player.cash += valueOfTransaction;
-                    System.out.println("You successful sell " + amount + " of " + animal.name);
-                    player.yourAnimals.get(i).amountInBuilding -= amount;
+                if (player.yourAnimals.get(i).name.equals(animal.name)) {
+                    if (player.yourAnimals.get(i).amountInBuilding >= amount) {
+                        Random rn = new Random();
+                        double valueOfTransaction = amount * animal.costOfPurchase * rn.nextDouble();
+                        player.cash += valueOfTransaction;
+                        System.out.println("You successful sell " + amount + " of " + animal.name);
+                        player.yourAnimals.get(i).amountInBuilding -= amount;
+                        player.yourBuildings.get(i).capacity += amount;
+                        if (player.yourAnimals.get(i).amountInBuilding == 0) {
+                            player.yourAnimals.remove(i);
+                            break;
+                        }
 
-                    if (player.yourAnimals.get(i).amountInBuilding == 0) {
-                        player.yourAnimals.remove(i);
-                        break;
+                    } else if (player.yourAnimals.get(i).amountInBuilding < amount) {
+                        System.out.println("You don't have enough " + animal.name + " to sell");
                     }
-
-                } else if (player.yourAnimals.get(i).amountInBuilding < amount) {
-                    System.out.println("You don't have enough " + animal.name + " to sell");
                 }
             }
         }
