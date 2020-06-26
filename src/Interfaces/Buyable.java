@@ -12,14 +12,15 @@ public class Buyable {
         if (player.cash >= plant.value_kg) {
 
             if (player.yourSeeds.isEmpty()) {
-                player.yourSeeds.add(new Plant(plant.name, 2.0, 1, 200, 5, 0.25, 5, amount));
-                player.yourSeeds.get(0).name.equals(plant.name);
+                player.yourSeeds.add(new Plant(plant.name, plant.costOfPlanting, plant.costOfProtectingFromParasite, plant.efficiency_ha, plant.timeToGrow, plant.costOfHarvesting, plant.value_kg, amount, plant.product));
+                //player.yourSeeds.get(0).name.equals(plant.name);
             } else {
                 if (player.yourSeeds.size() == 1 && player.yourSeeds.get(0).name.equals(plant.name)) {
                     player.yourSeeds.get(0).amountInInventory += amount;
                 } else {
                     if (player.yourSeeds.size() == 1) {
-                        player.yourSeeds.add(new Plant(plant.name, 2.0, 1, 200, 5, 0.25, 5, amount));
+                        player.yourSeeds.add(new Plant(plant.name, plant.costOfPlanting, plant.costOfProtectingFromParasite, plant.efficiency_ha, plant.timeToGrow, plant.costOfHarvesting, plant.value_kg, amount, plant.product));
+
                     } else
                         one:{
                             for (int i = 0; i < player.yourSeeds.size(); i++) {
@@ -28,41 +29,54 @@ public class Buyable {
                                     break one;
                                 }
                             }
-                            player.yourSeeds.add(new Plant(plant.name, 2.0, 1, 200, 5, 0.25, 5, amount));
+                            player.yourSeeds.add(new Plant(plant.name, plant.costOfPlanting, plant.costOfProtectingFromParasite, plant.efficiency_ha, plant.timeToGrow, plant.costOfHarvesting, plant.value_kg, amount, plant.product));
                         }
                 }
             }
+            System.out.println("You bought " + amount + " " + plant.name);
         } else {
             System.out.println("You don't have enough money!");
         }
     }
 
     public static void buyAnimal(Player player, Animal animal, int amount) {
-        if (player.cash >= animal.costOfPurchase) {
-
-            if (player.yourAnimals.isEmpty()) {
-                player.yourAnimals.add(new Animal(animal.name, 100.0, 10.0, 5.0, 2.0, 5, "corn", 0.1, amount));
-                player.yourAnimals.get(0).name.equals(animal.name);
-            } else {
-                if (player.yourAnimals.size() == 1 && player.yourAnimals.get(0).name.equals(animal.name)) {
-                    player.yourAnimals.get(0).amountInBuilding += amount;
-                } else {
-                    if (player.yourAnimals.size() == 1) {
-                        player.yourAnimals.add(new Animal(animal.name, 100.0, 10.0, 5.0, 2.0, 5, "corn", 0.1, amount));
-                    } else
-                        one:{
-                            for (int i = 0; i < player.yourAnimals.size(); i++) {
-                                if (player.yourAnimals.get(i).name.contains(animal.name)) {
-                                    player.yourAnimals.get(i).amountInBuilding += amount;
-                                    break one;
+        if (!player.yourBuildings.isEmpty()) {
+            for (int n = 0; n < player.yourBuildings.size(); n++) {
+                if (player.yourBuildings.get(n).type.equals(animal.buildingRequired)) {
+                    if (player.cash >= animal.costOfPurchase) {
+                        if (player.yourBuildings.get(n).capacity >= amount) {
+                            player.yourBuildings.get(n).capacity -= amount;
+                            if (player.yourAnimals.isEmpty()) {
+                                player.yourAnimals.add(new Animal(animal.name, animal.costOfPurchase, animal.weight, animal.timeToGrowUp, animal.gainWeightForWeek, animal.amountOfFoodPerWeek, animal.typeOfFoodThatCanEat, animal.chanceForReproduction, amount));
+                            } else {
+                                if (player.yourAnimals.size() == 1 && player.yourAnimals.get(0).name.equals(animal.name)) {
+                                    player.yourAnimals.get(0).amountInBuilding += amount;
+                                } else {
+                                    if (player.yourAnimals.size() == 1) {
+                                        player.yourAnimals.add(new Animal(animal.name, animal.costOfPurchase, animal.weight, animal.timeToGrowUp, animal.gainWeightForWeek, animal.amountOfFoodPerWeek, animal.typeOfFoodThatCanEat, animal.chanceForReproduction, amount));
+                                    } else
+                                        one:{
+                                            for (int i = 0; i < player.yourAnimals.size(); i++) {
+                                                if (player.yourAnimals.get(i).name.contains(animal.name)) {
+                                                    player.yourAnimals.get(i).amountInBuilding += amount;
+                                                    break one;
+                                                }
+                                            }
+                                            player.yourAnimals.add(new Animal(animal.name, animal.costOfPurchase, animal.weight, animal.timeToGrowUp, animal.gainWeightForWeek, animal.amountOfFoodPerWeek, animal.typeOfFoodThatCanEat, animal.chanceForReproduction, amount));
+                                        }
                                 }
                             }
-                            player.yourAnimals.add(new Animal(animal.name, 100.0, 10.0, 5.0, 2.0, 5, "corn", 0.1, amount));
+                            System.out.println("You bought " + amount + " of " + animal.name);
+                        } else {
+                            System.out.println("You don't enough space");
                         }
+                    } else {
+                        System.out.println("You don't have enough money!");
+                    }
                 }
             }
         } else {
-            System.out.println("You don't have enough money!");
+            System.out.println("You don't have any buildings");
         }
     }
 
@@ -116,7 +130,7 @@ public class Buyable {
         }
     }
 
-    public void buyMoreField(Player player,Farm farm, double amount) {
+    public static void buyMoreField(Player player, Farm farm, double amount) {
 
         double valueOfTransaction = farm.priceForField * amount;
 

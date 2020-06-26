@@ -4,12 +4,14 @@ import Buildings.Farm;
 import Animals.Animal;
 import Buildings.Building;
 import Interfaces.RandomNumberGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Player {
+    public static List<Player> playerList = new ArrayList<>();
     private final String name;
-
     public double cash;
     public boolean isSilos = false;
     public List<Plant> yourSeeds = new ArrayList<>();
@@ -17,21 +19,12 @@ public class Player {
     public List<Plant> yourPlants = new ArrayList<>();
     public List<Animal> yourAnimals = new ArrayList<>();
     public List<Building> yourBuildings = new ArrayList<>();
-    public int week = 31;
     private Farm farm;
 
-    Player(String name, double cash) {
+    Player(String name) {
         this.name = name;
         this.cash = 10000.0;
         Farm farm = null;
-    }
-
-    public Farm getFarm() {
-        return this.farm;
-    }
-
-    public void setFarm(Farm farm) {
-        this.farm = farm;
     }
 
     public static void isCash(Player player) {
@@ -48,6 +41,32 @@ public class Player {
                 player.yourAnimals.get(i).weight -= 1;
             }
         }
+    }
+
+    public static void newPlayer() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Type how many player:");
+        int howManyPlayer = scan.nextInt();
+        if (playerList.isEmpty()) {
+            for (int i = 0; i < howManyPlayer; i++) {
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Type a name:");
+                String name = scanner.nextLine();
+                playerList.add(new Player(name));
+            }
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Farm getFarm() {
+        return this.farm;
+    }
+
+    public void setFarm(Farm farm) {
+        this.farm = farm;
     }
 
     public String toString() {

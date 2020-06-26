@@ -6,10 +6,10 @@ public class Silos extends Building {
     public Silos(String name, double price) {
         super(name, price);
     }
+
     @Override
     public String toString() {
-        return "Cowshed{" +
-                "name='" + name + '\'' +
+        return "name='" + name + '\'' +
                 ", price=" + price +
                 ", fieldRequired=" + fieldRequired +
                 ", capacity=" + capacity +

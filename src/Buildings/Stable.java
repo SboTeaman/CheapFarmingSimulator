@@ -3,8 +3,8 @@ package Buildings;
 public class Stable extends Building {
 
 
-    public Stable(String name, double price, double fieldRequired, double capacity) {
-        super(name, price, fieldRequired, capacity);
+    public Stable(String name, double price, double fieldRequired, double capacity, String type) {
+        super(name, price, fieldRequired, capacity,type);
     }
 
 

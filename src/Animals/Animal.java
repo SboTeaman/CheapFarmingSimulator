@@ -14,6 +14,20 @@ public class Animal {
     public double chanceForReproduction;
     public String productForSelling;
     public int amountInBuilding = 0;
+    public String buildingRequired;
+
+    public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, double chanceForReproduction, String productForSelling, String buildingRequired) {
+        this.name = name;
+        this.costOfPurchase = costOfPurchase;
+        this.weight = weight;
+        this.timeToGrowUp = timeToGrowUp;
+        this.gainWeightForWeek = gainWeightForWeek;
+        this.amountOfFoodPerWeek = amountOfFoodPerWeek;
+        this.typeOfFoodThatCanEat = typeOfFoodThatCanEat;
+        this.chanceForReproduction = chanceForReproduction;
+        this.productForSelling = productForSelling;
+        this.buildingRequired = buildingRequired;
+    }
 
     public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, double chanceForReproduction, String productForSelling) {
         this.name = name;
@@ -95,9 +109,9 @@ public class Animal {
         if (!player.yourAnimals.isEmpty()) {
             for (int i = 0; i < player.yourAnimals.size(); i++) {
                 if (player.yourAnimals.get(i).name.equals("cow") || player.yourAnimals.get(i).name.equals("chicken") || player.yourAnimals.get(i).name.equals("cheap")) {
-                    int amount=0;
-                    amount+=player.yourAnimals.get(i).amountInBuilding;
-                    player.cash+=amount*RandomNumberGenerator.randomBetween(1,10);
+                    int amount = 0;
+                    amount += player.yourAnimals.get(i).amountInBuilding;
+                    player.cash += amount * RandomNumberGenerator.randomBetween(1, 10);
                 }
             }
         }

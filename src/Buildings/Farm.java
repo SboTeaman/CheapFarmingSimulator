@@ -7,8 +7,8 @@ import java.util.List;
 
 public class Farm {
 
-    public double fieldsSlots;
-    public double maxFieldsSlots;
+    public int fieldsSlots;
+    public int maxFieldsSlots;
     public double silosSlots;
     public double garageSlots;
     public String name;
@@ -19,7 +19,7 @@ public class Farm {
     public List<Farm> farmList = new ArrayList();
 
 
-    public Farm(String name, double price, double fieldsSlots, double maxFieldsSlots, double silosSlots, double garageSlots) {
+    public Farm(String name, double price, int fieldsSlots, int maxFieldsSlots, double silosSlots, double garageSlots) {
         this.name = name;
         this.price = price;
         this.fieldsSlots = fieldsSlots;

@@ -7,6 +7,15 @@ public class Building {
     public double price;
     public double fieldRequired;
     public double capacity;
+    public String type;
+
+    public Building(String name, double price, double fieldRequired, double capacity, String type) {
+        this.name = name;
+        this.price = price;
+        this.fieldRequired = fieldRequired;
+        this.capacity = capacity;
+        this.type = type;
+    }
 
     public Building(String name, double price, double fieldRequired) {
         this.name = name;
