@@ -104,15 +104,16 @@ public class Buyable {
 
         if (player.cash >= farm.price) {
 
-            if (player.getFarm() == null) {
+            if (player.farm.isEmpty()) {
                 player.cash -= farm.price;
-                player.setFarm(farm);
+                player.farm.add(new Farm(farm.name, farm.price,farm.fieldsSlots,farm.maxFieldsSlots,farm.silosSlots));
                 System.out.println("You bought: " + farm.name);
-            } else if (player.getFarm() == farm) {
+            } else if (player.farm.get(0).name.equals(farm.name)) {
                 System.out.println("You already have: " + farm.name);
             } else {
                 player.cash -= farm.price;
-                player.setFarm(farm);
+                player.farm.remove(0);
+                player.farm.add(new Farm(farm.name, farm.price,farm.fieldsSlots,farm.maxFieldsSlots,farm.silosSlots));
                 System.out.println("You bought: " + farm.name);
             }
 
@@ -122,7 +123,7 @@ public class Buyable {
     }
 
     public static void buyBuildings(Player player, Farm farm, Building building) {
-        if (player.getFarm() == null) {
+        if (player.farm.isEmpty()) {
             System.out.println("You don't have any farm");
         } else {
             if (player.cash > building.price) {
@@ -160,7 +161,7 @@ public class Buyable {
         double valueOfTransaction = farm.priceForField * amount;
 
         if (player.cash >= valueOfTransaction) {
-            if (player.getFarm() == farm) {
+            if (player.farm.get(0).name.equals(farm.name)) {
                 if (farm.maxFieldsSlots >= amount && player.cash >= valueOfTransaction && farm.fieldsSlots < farm.maxFieldsSlots) {
                     farm.fieldsSlots += amount;
                     player.cash -= valueOfTransaction;

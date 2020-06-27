@@ -14,12 +14,13 @@ public class Player {
     private final String name;
     public double cash;
     public boolean isSilos = false;
+    public List<Farm> farm = new ArrayList<>();
     public List<Plant> yourSeeds = new ArrayList<>();
     public List<Plant> yourPlantedPlants = new ArrayList<>();
     public List<Plant> yourPlants = new ArrayList<>();
     public List<Animal> yourAnimals = new ArrayList<>();
     public List<Building> yourBuildings = new ArrayList<>();
-    private Farm farm;
+    //private Farm farm;
 
     Player(String name) {
         this.name = name;
@@ -62,13 +63,7 @@ public class Player {
         return name;
     }
 
-    public Farm getFarm() {
-        return this.farm;
-    }
 
-    public void setFarm(Farm farm) {
-        this.farm = farm;
-    }
 
     public String toString() {
 

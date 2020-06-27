@@ -93,7 +93,7 @@ public class Animal {
                 if (!player.yourPlants.isEmpty() && player.yourPlants.get(i).name.equals(player.yourAnimals.get(i).typeOfFoodThatCanEat)) {
                     player.yourPlants.get(i).amountInInventory -= amount;
 
-                } else if (player.yourPlants.isEmpty() ) {
+                } else if (player.yourPlants.isEmpty()) {
                     player.cash -= amount * RandomNumberGenerator.randomBetween(1, 3);
                 }
             }
@@ -102,13 +102,13 @@ public class Animal {
 
     public static void productionItem(Player player) {
         if (!player.yourAnimals.isEmpty()) {
+            int amount = 0;
             for (int i = 0; i < player.yourAnimals.size(); i++) {
                 if (player.yourAnimals.get(i).name.equals("cow") || player.yourAnimals.get(i).name.equals("chicken") || player.yourAnimals.get(i).name.equals("cheap")) {
-                    int amount = 0;
                     amount += player.yourAnimals.get(i).amountInBuilding;
-                    player.cash += amount * RandomNumberGenerator.randomBetween(1, 10);
                 }
             }
+            player.cash += amount * RandomNumberGenerator.randomBetween(1, 10);
         }
     }
 

@@ -51,11 +51,11 @@ public class Main {
             Animal cat = new Animal("cat", 2200.0, 0.5, 100.0, 0.1, 2.0, "catFood");
 
             /*FARMS */
-            Farm oldFarm = new Farm("Old Farm", RandomNumberGenerator.randomBetween(100, 900), RandomNumberGenerator.randomBetween(1, 2), 10, 1, 0);
-            Farm startedFarm = new Farm("startedFarm", RandomNumberGenerator.randomBetween(900, 3000), RandomNumberGenerator.randomBetween(3, 4), 20, RandomNumberGenerator.randomBetween(2, 3), 1);
-            Farm advancedFarm = new Farm("advancedFarm", RandomNumberGenerator.randomBetween(5000, 8000), RandomNumberGenerator.randomBetween(4, 5), 30, RandomNumberGenerator.randomBetween(3, 4), 2);
-            Farm highTierFarm = new Farm("highTierFarm", RandomNumberGenerator.randomBetween(10000, 15000), RandomNumberGenerator.randomBetween(6, 7), 40, RandomNumberGenerator.randomBetween(5, 6), 3);
-            Farm ultimateFarm = new Farm("ultimateFarm", RandomNumberGenerator.randomBetween(20000, 30000), RandomNumberGenerator.randomBetween(7, 10), 50, RandomNumberGenerator.randomBetween(7, 10), 5);
+            Farm oldFarm = new Farm("Old Farm", RandomNumberGenerator.randomBetween(100, 900), RandomNumberGenerator.randomBetween(1, 2), 10, 1);
+            Farm startedFarm = new Farm("startedFarm", RandomNumberGenerator.randomBetween(900, 3000), RandomNumberGenerator.randomBetween(3, 4), 20, RandomNumberGenerator.randomBetween(2, 3));
+            Farm advancedFarm = new Farm("advancedFarm", RandomNumberGenerator.randomBetween(5000, 8000), RandomNumberGenerator.randomBetween(4, 5), 30, RandomNumberGenerator.randomBetween(3, 4));
+            Farm highTierFarm = new Farm("highTierFarm", RandomNumberGenerator.randomBetween(10000, 15000), RandomNumberGenerator.randomBetween(6, 7), 40, RandomNumberGenerator.randomBetween(5, 6));
+            Farm ultimateFarm = new Farm("ultimateFarm", RandomNumberGenerator.randomBetween(20000, 30000), RandomNumberGenerator.randomBetween(7, 10), 50, RandomNumberGenerator.randomBetween(7, 10));
 
             /*BUILDINGS */
             Building smallCowshed = new Cowshed("smallCowshed", 1000.0, 2.0, 10, "Cowshed");
@@ -169,40 +169,40 @@ public class Main {
 
                                     switch (choicePurchaseBuilding) {
                                         case 1:
-                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).getFarm(), smallCowshed);
+                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0), smallCowshed);
                                             break;
                                         case 2:
-                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).getFarm(), smallPigsty);
+                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0), smallPigsty);
                                             break;
                                         case 3:
-                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).getFarm(), smallStable);
+                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0), smallStable);
                                             break;
                                         case 4:
-                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).getFarm(), smallChickencoop);
+                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0), smallChickencoop);
                                             break;
                                         case 5:
-                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).getFarm(), mediumCowshed);
+                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0), mediumCowshed);
                                             break;
                                         case 6:
-                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).getFarm(), mediumPigsty);
+                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0), mediumPigsty);
                                             break;
                                         case 7:
-                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).getFarm(), mediumStable);
+                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0), mediumStable);
                                             break;
                                         case 8:
-                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).getFarm(), mediumChickencoop);
+                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0), mediumChickencoop);
                                             break;
                                         case 9:
-                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).getFarm(), bigCowshed);
+                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0), bigCowshed);
                                             break;
                                         case 10:
-                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).getFarm(), bigPigsty);
+                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0), bigPigsty);
                                             break;
                                         case 11:
-                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).getFarm(), bigStable);
+                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0), bigStable);
                                             break;
                                         case 12:
-                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).getFarm(), bigChickencoop);
+                                            Buyable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0), bigChickencoop);
                                             break;
                                         case 13:
                                             Buyable.buySilos(Player.playerList.get(whichPlayer), silos);
@@ -211,11 +211,11 @@ public class Main {
                                     break;
                                 case 3: {
                                     System.out.println("Buy more field");
-                                    System.out.println("You have " + Player.playerList.get(whichPlayer).getFarm().fieldsSlots + " from " + Player.playerList.get(whichPlayer).getFarm().maxFieldsSlots);
+                                    System.out.println("You have " + Player.playerList.get(whichPlayer).farm.get(0).fieldsSlots + " from " + Player.playerList.get(whichPlayer).farm.get(0).maxFieldsSlots);
 
                                     Scanner scannerField = new Scanner(System.in);
                                     int choiceHowMuchField = scannerField.nextInt();
-                                    Buyable.buyMoreField(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).getFarm(), choiceHowMuchField);
+                                    Buyable.buyMoreField(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0), choiceHowMuchField);
 
                                     break;
                                 }
@@ -344,7 +344,7 @@ public class Main {
                                     System.out.println("---------------------");
                                     System.out.println("Sell Plants");
                                     System.out.println("---------------------");
-                                    System.out.println("1 - " + cornSeed.name);
+                                    System.out.println("1 - " + cornSeed.name + " " + cornSeed.value_kg) ;
                                     System.out.println("2 - " + carrotSeed.name);
                                     System.out.println("3 - " + sunflowerSeed.name);
                                     System.out.println("4 - " + potatoSeed.name);
@@ -480,7 +480,7 @@ public class Main {
                             switch (choiceStatistic) {
                                 case 1:
                                     System.out.println("Your farm:");
-                                    System.out.println(Player.playerList.get(whichPlayer).getFarm());
+                                    System.out.println(Player.playerList.get(whichPlayer).farm);
                                     break;
                                 case 2:
                                     System.out.println("List of your buildings:");
@@ -620,7 +620,7 @@ public class Main {
                 Animal.feed(Player.playerList.get(whichPlayer));
 
                 /*GOAL*/
-                if (Player.playerList.get(whichPlayer).getFarm().equals(ultimateFarm) && Player.playerList.get(whichPlayer).cash == 1000000.0) {
+                if (Player.playerList.get(whichPlayer).farm.get(0).equals(ultimateFarm) && Player.playerList.get(whichPlayer).cash == 1000000.0) {
                     System.out.println("Player:" + Player.playerList.get(whichPlayer).getName() + " win the game!!!");
                     System.exit(0);
                 }

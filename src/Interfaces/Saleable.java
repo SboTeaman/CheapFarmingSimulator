@@ -61,7 +61,7 @@ public class Saleable {
 
     public void sellField(Player player, Farm farm, double amount) {
         double valueOfTransaction = amount * RandomNumberGenerator.randomBetween(10, 20);
-        if (player.getFarm() == farm) {
+        if (player.farm.get(0).equals(farm.name)) {
             if (farm.fieldsSlots > amount) {
                 player.cash += valueOfTransaction;
                 farm.fieldsSlots -= amount;

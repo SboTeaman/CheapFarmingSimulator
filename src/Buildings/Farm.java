@@ -10,7 +10,6 @@ public class Farm {
     public int fieldsSlots;
     public int maxFieldsSlots;
     public double silosSlots;
-    public double garageSlots;
     public String name;
     public double price;
     public double priceForField = RandomNumberGenerator.randomBetween(10,10);
@@ -19,13 +18,12 @@ public class Farm {
     public List<Farm> farmList = new ArrayList();
 
 
-    public Farm(String name, double price, int fieldsSlots, int maxFieldsSlots, double silosSlots, double garageSlots) {
+    public Farm(String name, double price, int fieldsSlots, int maxFieldsSlots, double silosSlots) {
         this.name = name;
         this.price = price;
         this.fieldsSlots = fieldsSlots;
         this.maxFieldsSlots = maxFieldsSlots;
         this.silosSlots = silosSlots;
-        this.garageSlots = garageSlots;
     }
 
 
@@ -35,8 +33,8 @@ public class Farm {
                 " price: " + this.price +
                 " field Slots: " + this.fieldsSlots +
                 " max field slots: " + this.maxFieldsSlots +
-                " silos Slots: " + this.silosSlots +
-                " garage Slots: " + this.garageSlots;
+                " silos Slots: " + this.silosSlots;
+
     }
 
 }

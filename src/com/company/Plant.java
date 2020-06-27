@@ -46,7 +46,7 @@ public class Plant {
         for (int i = 0; i < player.yourSeeds.size(); i++) {
             if ((player.yourSeeds.get(i).name.contains(plant.name))) {
                 if (player.yourSeeds.get(i).amountInInventory >= amount) {
-                    if (player.getFarm().fieldsSlots >= amount) {
+                    if (player.farm.get(0).fieldsSlots >= amount) {
                         if (player.yourSeeds.get(i).amountInInventory == 0) {
                             player.yourSeeds.remove(i);
                             break;
@@ -70,7 +70,7 @@ public class Plant {
                         double value = player.yourSeeds.get(i).costOfPlanting * amount;
                         System.out.println(value);
                         player.cash -= value;
-                        player.getFarm().fieldsSlots -= amount;
+                        player.farm.get(0).fieldsSlots -= amount;
 
                         if (player.yourSeeds.get(i).amountInInventory == 0)
                             player.yourSeeds.remove(i);
@@ -106,7 +106,7 @@ public class Plant {
                 if (player.yourPlantedPlants.get(i).timeToGrow <= 0) {
 
                     player.cash += amount * player.yourPlantedPlants.get(i).value_kg;
-                    player.getFarm().fieldsSlots += player.yourPlantedPlants.get(i).amountInInventory;
+                    player.farm.get(0).fieldsSlots += player.yourPlantedPlants.get(i).amountInInventory;
                     player.yourPlantedPlants.remove(i);
                     System.out.println("You successful harvest your plants");
                 }
@@ -127,7 +127,7 @@ public class Plant {
                             player.yourPlantedPlants.get(i).amountInInventory * player.yourPlantedPlants.get(i).efficiency_ha,
                             null));
 
-                    player.getFarm().fieldsSlots += player.yourPlantedPlants.get(i).amountInInventory;
+                    player.farm.get(0).fieldsSlots += player.yourPlantedPlants.get(i).amountInInventory;
                     player.yourPlantedPlants.remove(i);
                 }
             }
@@ -149,7 +149,7 @@ public class Plant {
 
             } else if (insects == 5) {
                 player.yourPlantedPlants.get(i).amountInInventory -= 1;
-                player.getFarm().fieldsSlots += 1;
+                player.farm.get(0).fieldsSlots += 1;
             }
         }
     }
