@@ -22,11 +22,14 @@ public class Building {
         this.price = price;
         this.fieldRequired = fieldRequired;
 
-    } public Building(String name, double price) {
+    }
+
+    public Building(String name, double price) {
         this.name = name;
         this.price = price;
 
     }
+
     public Building(String name, double price, double fieldRequired, double capacity) {
         this.name = name;
         this.price = price;
@@ -35,9 +38,8 @@ public class Building {
     }
 
     public String toString() {
-        return
-                " name: " + this.name +
-                        " price: " + this.price;
+        return " name: " + this.type +
+               " price: " + this.price;
 
     }
 }

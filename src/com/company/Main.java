@@ -6,8 +6,6 @@ import Interfaces.Buyable;
 import Interfaces.RandomNumberGenerator;
 import Interfaces.Saleable;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -20,66 +18,66 @@ public class Main {
         /*PLANTS*/
 
 
-
-        /*PLANTS SEEDS */
-
-        Plant cornSeed = new Plant("cornSeed", 2.0, 1, 200, 5, 0.25, 5, "corn");
-        Plant carrotSeed = new Plant("carrotSeed", 3.0, 1, 210, 3, 0.3, 4, "carrot");
-        Plant sunflowerSeed = new Plant("sunflowerSeed", 2.0, 1, 200, 5, 0.25, 5, "sunflower");
-        Plant potatoSeed = new Plant("potatoSeed", 3.0, 8, 210, 3, 0.3, 4, "potato");
-        Plant wheatSeed = new Plant("wheatSeed", 3.0, 8, 210, 3, 0.3, 4, "wheat");
-        Plant broccoliSeed = new Plant("broccoliSeed", 3.0, 8, 210, 3, 0.3, 4, "broccoli");
-        Plant onionSeed = new Plant("onionSeed", 2.0, 5, 200, 5, 0.25, 5, "onion");
-        Plant lettuceSeed = new Plant("lettuceSeed", 2.0, 5, 200, 5, 0.25, 5, "lettuce");
-        Plant tomatoSeed = new Plant("tomatoSeed", 3.0, 8, 210, 3, 0.3, 4, "tomato");
-
-        Plant appleSeed = new Plant("appleSeed", 3.0, 8, 210, 3, 0.3, 4, "apple");
-        Plant pearSeed = new Plant("pearSeed", 2.0, 5, 200, 5, 0.25, 5, "pear");
-        Plant cherrySeed = new Plant("cherrySeed", 2.0, 5, 200, 5, 0.25, 5, "cherry");
-        Plant melonSeed = new Plant("melonSeed", 3.0, 8, 210, 3, 0.3, 4, "melon");
-        Plant watermelonSeed = new Plant("watermelonSeed", 2.0, 5, 200, 5, 0.25, 5, "watermelon");
-        Plant lemonSeed = new Plant("lemonSeed", 2.0, 5, 200, 5, 0.25, 5, "lemon");
-        Plant strawberriesSeed = new Plant("strawberriesSeed", 2.0, 5, 200, 5, 0.25, 5, "strawberries");
-
-        /*ANIMALS */
-        Animal cow = new Animal("cow", 100.0, 10.0, 10.0, 2.0, 2.0, "corn", 2.0, "milk", "Cowshed");
-        Animal sheep = new Animal("sheep", 100.0, 10.0, 10.0, 2.0, 2.0, "cornSeed", 2.0, "wool", "Stable");
-        Animal pig = new Animal("pig", 100.0, 10.0, 10.0, 2.0, 2.0, "cornSeed", 2.0, null, "Pigsty");
-        Animal chicken = new Animal("chicken", 100.0, 10.0, 10.0, 2.0, 2.0, "cornSeed", 2.0, "egg", "Chickencoop");
-        Animal dog = new Animal("dog", 100.0, 10.0, 10.0, 2.0, 2.0, "cornSeed", 2.0);
-        Animal cat = new Animal("cat", 100.0, 10.0, 10.0, 2.0, 2.0, "cornSeed", 2.0);
-
-        /*FARMS */
-        Farm oldFarm = new Farm("Old Farm", RandomNumberGenerator.randomBetween(100, 900), RandomNumberGenerator.randomBetween(1, 2), 10, 1, 0);
-        Farm startedFarm = new Farm("startedFarm", RandomNumberGenerator.randomBetween(900, 3000), RandomNumberGenerator.randomBetween(3, 4), 20, RandomNumberGenerator.randomBetween(2, 3), 1);
-        Farm advancedFarm = new Farm("advancedFarm", RandomNumberGenerator.randomBetween(5000, 8000), RandomNumberGenerator.randomBetween(4, 5), 30, RandomNumberGenerator.randomBetween(3, 4), 2);
-        Farm highTierFarm = new Farm("highTierFarm", RandomNumberGenerator.randomBetween(10000, 15000), RandomNumberGenerator.randomBetween(6, 7), 40, RandomNumberGenerator.randomBetween(5, 6), 3);
-        Farm ultimateFarm = new Farm("ultimateFarm", RandomNumberGenerator.randomBetween(20000, 30000), RandomNumberGenerator.randomBetween(7, 10), 50, RandomNumberGenerator.randomBetween(7, 10), 5);
-
-        /*BUILDINGS */
-        Building smallCowshed = new Cowshed("smallCowshed", 1000.0, 2.0, 3, "Cowshed");
-        Building smallPigsty = new Pigsty("smallPigsty", 1000.0, 2.0, 3, "Pigsty");
-        Building smallStable = new Stable("smallStable", 1000.0, 2.0, 3, "Stable");
-        Building smallChickencoop = new Chickencoop("smallChickencoop", 1000.0, 1.0, 10, "Chickencoop");
-
-        Building mediumCowshed = new Cowshed("smallCowshed", 1000.0, 2.0, 3, "Cowshed");
-        Building mediumPigsty = new Pigsty("smallPigsty", 1000.0, 2.0, 3, "Pigsty");
-        Building mediumStable = new Stable("smallStable", 1000.0, 2.0, 3, "Stable");
-        Building mediumChickencoop = new Chickencoop("mediumChickencoop", 1000.0, 1.0, 10, "Chickencoop");
-
-        Building bigCowshed = new Cowshed("smallCowshed", 1000.0, 2.0, 3, "Cowshed");
-        Building bigPigsty = new Pigsty("smallPigsty", 1000.0, 2.0, 3, "Pigsty");
-        Building bigStable = new Stable("smallStable", 1000.0, 2.0, 3, "Stable");
-        Building bigChickencoop = new Chickencoop("bigChickencoop", 1000.0, 1.0, 10, "Chickencoop");
-
-        Building silos = new Silos("silos", 1000.0);
-
         int choiceMenu;
         int week;
         int year = 2020;
         for (week = 1; week > 0; week++) {
 
+            /*PLANTS SEEDS */
+            Plant cornSeed = new Plant("cornSeed", 25.0, 10, RandomNumberGenerator.randomBetween(200, 300), 52, 1.25, 2, "corn");
+            Plant carrotSeed = new Plant("carrotSeed", 33.50, 11, RandomNumberGenerator.randomBetween(100, 150), 50, 2.3, 3, "carrot");
+            Plant sunflowerSeed = new Plant("sunflowerSeed", 22.0, 15, RandomNumberGenerator.randomBetween(100, 220), 30, 0.25, 2, "sunflower");
+            Plant potatoSeed = new Plant("potatoSeed", 13.0, 8, RandomNumberGenerator.randomBetween(150, 200), 35, 4.3, 4, "potato");
+            Plant wheatSeed = new Plant("wheatSeed", 43.40, 8, RandomNumberGenerator.randomBetween(180, 200), 42, 2, 6, "wheat");
+            Plant broccoliSeed = new Plant("broccoliSeed", 13.0, 7, RandomNumberGenerator.randomBetween(100, 120), 25, 3, 7, "broccoli");
+            Plant onionSeed = new Plant("onionSeed", 23.0, 12, RandomNumberGenerator.randomBetween(100, 120), 30, 5.25, 2, "onion");
+            Plant lettuceSeed = new Plant("lettuceSeed", 26.60, 5, RandomNumberGenerator.randomBetween(160, 200), 20, 2.25, 2, "lettuce");
+            Plant tomatoSeed = new Plant("tomatoSeed", 33.0, 9, RandomNumberGenerator.randomBetween(100, 200), 33, 3.3, 4, "tomato");
+
+            Plant appleSeed = new Plant("appleSeed", 300.0, 20, RandomNumberGenerator.randomBetween(30, 50), 100, 0.3, 1, "apple");
+            Plant pearSeed = new Plant("pearSeed", 250.0, 22, RandomNumberGenerator.randomBetween(35, 55), 120, 0.25, 2, "pear");
+            Plant cherrySeed = new Plant("cherrySeed", 400.0, 21, RandomNumberGenerator.randomBetween(40, 60), 130, 0.25, 3, "cherry");
+            Plant melonSeed = new Plant("melonSeed", 50.0, 16, RandomNumberGenerator.randomBetween(80, 110), 40, 4.3, 2, "melon");
+            Plant watermelonSeed = new Plant("watermelonSeed", 55.50, 12, RandomNumberGenerator.randomBetween(90, 200), 47, 5.25, 3, "watermelon");
+            Plant lemonSeed = new Plant("lemonSeed", 27.0, 5, RandomNumberGenerator.randomBetween(100, 200), 60, 0.25, 2, "lemon");
+            Plant strawberriesSeed = new Plant("strawberriesSeed", 60.0, RandomNumberGenerator.randomBetween(100, 200), 200, 34, 6.25, 5, "strawberries");
+
+            /*ANIMALS */
+            Animal cow = new Animal("cow", 1000.0, 10.0, 400.0, 0.2, 2.0, "corn", "milk", "Cowshed");
+            Animal sheep = new Animal("sheep", 1200.0, 10.0, 350.0, 0.1, 2.0, "wheat", "wool", "Stable");
+            Animal pig = new Animal("pig", 800.0, 10.0, 200.0, 0.30, 2.0, "carrot", null, "Pigsty");
+            Animal chicken = new Animal("chicken", 200.0, 0.2, 50.0, 0.1, 2.0, "sunflower", "egg", "Chickencoop");
+            Animal dog = new Animal("dog", 2000.0, 1.0, 100.0, 0.2, 2.0, "dogFood");
+            Animal cat = new Animal("cat", 2200.0, 0.5, 100.0, 0.1, 2.0, "catFood");
+
+            /*FARMS */
+            Farm oldFarm = new Farm("Old Farm", RandomNumberGenerator.randomBetween(100, 900), RandomNumberGenerator.randomBetween(1, 2), 10, 1, 0);
+            Farm startedFarm = new Farm("startedFarm", RandomNumberGenerator.randomBetween(900, 3000), RandomNumberGenerator.randomBetween(3, 4), 20, RandomNumberGenerator.randomBetween(2, 3), 1);
+            Farm advancedFarm = new Farm("advancedFarm", RandomNumberGenerator.randomBetween(5000, 8000), RandomNumberGenerator.randomBetween(4, 5), 30, RandomNumberGenerator.randomBetween(3, 4), 2);
+            Farm highTierFarm = new Farm("highTierFarm", RandomNumberGenerator.randomBetween(10000, 15000), RandomNumberGenerator.randomBetween(6, 7), 40, RandomNumberGenerator.randomBetween(5, 6), 3);
+            Farm ultimateFarm = new Farm("ultimateFarm", RandomNumberGenerator.randomBetween(20000, 30000), RandomNumberGenerator.randomBetween(7, 10), 50, RandomNumberGenerator.randomBetween(7, 10), 5);
+
+            /*BUILDINGS */
+            Building smallCowshed = new Cowshed("smallCowshed", 1000.0, 2.0, 10, "Cowshed");
+            Building smallPigsty = new Pigsty("smallPigsty", 1000.0, 2.0, 10, "Pigsty");
+            Building smallStable = new Stable("smallStable", 1000.0, 2.0, 10, "Stable");
+            Building smallChickencoop = new Chickencoop("smallChickencoop", 1000.0, 1.0, 10, "Chickencoop");
+
+            Building mediumCowshed = new Cowshed("mediumCowshed", 1000.0, 2.0, 30, "Cowshed");
+            Building mediumPigsty = new Pigsty("mediumPigsty", 1000.0, 2.0, 30, "Pigsty");
+            Building mediumStable = new Stable("mediumStable", 1000.0, 2.0, 30, "Stable");
+            Building mediumChickencoop = new Chickencoop("mediumChickencoop", 1000.0, 1.0, 30, "Chickencoop");
+
+            Building bigCowshed = new Cowshed("bigCowshed", 1000.0, 2.0, 100, "Cowshed");
+            Building bigPigsty = new Pigsty("bigPigsty", 1000.0, 2.0, 100, "Pigsty");
+            Building bigStable = new Stable("bigStable", 1000.0, 2.0, 100, "Stable");
+            Building bigChickencoop = new Chickencoop("bigChickencoop", 1000.0, 1.0, 100, "Chickencoop");
+
+            Building silos = new Silos("silos", 1000.0);
+
+            /*MENU*/
             System.out.println("Year: " + year + " Week:" + week);
+
             for (int whichPlayer = 0; whichPlayer < Player.playerList.size(); whichPlayer++) {
                 do {
                     System.out.println("\n\n");
@@ -599,13 +597,11 @@ public class Main {
                                             break;
                                     }
                                 case 2:
-                                    Plant.harvest(Player.playerList.get(whichPlayer)); //
+                                    Plant.harvest(Player.playerList.get(whichPlayer));
                                     break;
                                 case 3:
                                     Animal.feed(Player.playerList.get(whichPlayer));
                                     break;
-
-
                             }
                     }
                 }
@@ -613,6 +609,7 @@ public class Main {
                 if (choiceMenu < 4) {
                     break;
                 }
+
                 /* Thinks that happened independently from player decision */
                 Plant.growingProcess(Player.playerList.get(whichPlayer));
                 Plant.protectFromParasite(Player.playerList.get(whichPlayer));
@@ -622,6 +619,7 @@ public class Main {
                 Animal.productionItem(Player.playerList.get(whichPlayer));
                 Animal.feed(Player.playerList.get(whichPlayer));
 
+                /*GOAL*/
                 if (Player.playerList.get(whichPlayer).getFarm().equals(ultimateFarm) && Player.playerList.get(whichPlayer).cash == 1000000.0) {
                     System.out.println("Player:" + Player.playerList.get(whichPlayer).getName() + " win the game!!!");
                     System.exit(0);

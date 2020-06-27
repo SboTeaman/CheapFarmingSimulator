@@ -10,26 +10,29 @@ public class Buyable {
 
     public static void buyPlantSeed(Player player, Plant plant, int amount) {
         if (player.cash >= plant.value_kg) {
-
+            double value = plant.value_kg * amount * 100;
             if (player.yourSeeds.isEmpty()) {
                 player.yourSeeds.add(new Plant(plant.name, plant.costOfPlanting, plant.costOfProtectingFromParasite, plant.efficiency_ha, plant.timeToGrow, plant.costOfHarvesting, plant.value_kg, amount, plant.product));
-                //player.yourSeeds.get(0).name.equals(plant.name);
+                player.cash -= value;
+
             } else {
                 if (player.yourSeeds.size() == 1 && player.yourSeeds.get(0).name.equals(plant.name)) {
                     player.yourSeeds.get(0).amountInInventory += amount;
                 } else {
                     if (player.yourSeeds.size() == 1) {
                         player.yourSeeds.add(new Plant(plant.name, plant.costOfPlanting, plant.costOfProtectingFromParasite, plant.efficiency_ha, plant.timeToGrow, plant.costOfHarvesting, plant.value_kg, amount, plant.product));
-
+                        player.cash -= value;
                     } else
                         one:{
                             for (int i = 0; i < player.yourSeeds.size(); i++) {
                                 if (player.yourSeeds.get(i).name.contains(plant.name)) {
                                     player.yourSeeds.get(i).amountInInventory += amount;
+                                    player.cash -= value;
                                     break one;
                                 }
                             }
                             player.yourSeeds.add(new Plant(plant.name, plant.costOfPlanting, plant.costOfProtectingFromParasite, plant.efficiency_ha, plant.timeToGrow, plant.costOfHarvesting, plant.value_kg, amount, plant.product));
+                            player.cash -= value;
                         }
                 }
             }
@@ -41,28 +44,34 @@ public class Buyable {
 
     public static void buyAnimal(Player player, Animal animal, int amount) {
         if (!player.yourBuildings.isEmpty()) {
+            double value = animal.costOfPurchase * amount;
             for (int n = 0; n < player.yourBuildings.size(); n++) {
                 if (player.yourBuildings.get(n).type.equals(animal.buildingRequired)) {
                     if (player.cash >= animal.costOfPurchase) {
                         if (player.yourBuildings.get(n).capacity >= amount) {
                             player.yourBuildings.get(n).capacity -= amount;
+
                             if (player.yourAnimals.isEmpty()) {
-                                player.yourAnimals.add(new Animal(animal.name, animal.costOfPurchase, animal.weight, animal.timeToGrowUp, animal.gainWeightForWeek, animal.amountOfFoodPerWeek, animal.typeOfFoodThatCanEat, animal.chanceForReproduction, amount));
+                                player.yourAnimals.add(new Animal(animal.name, animal.costOfPurchase, animal.weight, animal.timeToGrowUp, animal.gainWeightForWeek, animal.amountOfFoodPerWeek, animal.typeOfFoodThatCanEat, amount));
+                                player.cash -= value;
                             } else {
                                 if (player.yourAnimals.size() == 1 && player.yourAnimals.get(0).name.equals(animal.name)) {
                                     player.yourAnimals.get(0).amountInBuilding += amount;
                                 } else {
                                     if (player.yourAnimals.size() == 1) {
-                                        player.yourAnimals.add(new Animal(animal.name, animal.costOfPurchase, animal.weight, animal.timeToGrowUp, animal.gainWeightForWeek, animal.amountOfFoodPerWeek, animal.typeOfFoodThatCanEat, animal.chanceForReproduction, amount));
+                                        player.yourAnimals.add(new Animal(animal.name, animal.costOfPurchase, animal.weight, animal.timeToGrowUp, animal.gainWeightForWeek, animal.amountOfFoodPerWeek, animal.typeOfFoodThatCanEat, amount));
+                                        player.cash -= value;
                                     } else
                                         one:{
                                             for (int i = 0; i < player.yourAnimals.size(); i++) {
                                                 if (player.yourAnimals.get(i).name.contains(animal.name)) {
                                                     player.yourAnimals.get(i).amountInBuilding += amount;
+                                                    player.cash -= value;
                                                     break one;
                                                 }
                                             }
-                                            player.yourAnimals.add(new Animal(animal.name, animal.costOfPurchase, animal.weight, animal.timeToGrowUp, animal.gainWeightForWeek, animal.amountOfFoodPerWeek, animal.typeOfFoodThatCanEat, animal.chanceForReproduction, amount));
+                                            player.yourAnimals.add(new Animal(animal.name, animal.costOfPurchase, animal.weight, animal.timeToGrowUp, animal.gainWeightForWeek, animal.amountOfFoodPerWeek, animal.typeOfFoodThatCanEat, amount));
+                                            player.cash -= value;
                                         }
                                 }
                             }
@@ -74,6 +83,7 @@ public class Buyable {
                         System.out.println("You don't have enough money!");
                     }
                 }
+
             }
         } else {
             System.out.println("You don't have any buildings");
@@ -113,14 +123,29 @@ public class Buyable {
 
     public static void buyBuildings(Player player, Farm farm, Building building) {
         if (player.getFarm() == null) {
-            System.out.println("You don't have " + farm.name);
+            System.out.println("You don't have any farm");
         } else {
             if (player.cash > building.price) {
                 if (farm.fieldsSlots > 0) {
-                    player.cash -= building.price;
-                    farm.fieldsSlots -= 1;
-                    player.yourBuildings.add(building);
-                    System.out.println("You bought: " + building.name);
+
+                    if (player.yourBuildings.isEmpty()) {
+                        player.cash -= building.price;
+                        farm.fieldsSlots -= 1;
+                        player.yourBuildings.add(building);
+                        System.out.println("You bought: " + building.name);
+                    } else {
+                        one:
+                        {
+                            for (int i = 0; i < player.yourBuildings.size(); i++) {
+                                if (player.yourBuildings.get(i).type.equals(building.type)) {
+                                    player.yourBuildings.get(i).capacity += building.capacity;
+                                    break one;
+                                }
+                            }
+                            player.yourBuildings.add(building);
+                        }
+                    }
+
                 } else {
                     System.out.println("You don't have enough space for " + building.name);
                 }

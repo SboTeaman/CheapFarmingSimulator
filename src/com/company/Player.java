@@ -23,7 +23,7 @@ public class Player {
 
     Player(String name) {
         this.name = name;
-        this.cash = 10000.0;
+        this.cash = 100000.0;
         Farm farm = null;
     }
 
@@ -47,6 +47,7 @@ public class Player {
         Scanner scan = new Scanner(System.in);
         System.out.println("Type how many player:");
         int howManyPlayer = scan.nextInt();
+
         if (playerList.isEmpty()) {
             for (int i = 0; i < howManyPlayer; i++) {
                 Scanner scanner = new Scanner(System.in);

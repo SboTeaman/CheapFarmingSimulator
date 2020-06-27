@@ -11,7 +11,7 @@ public class Cowshed extends Building {
     @Override
     public String toString() {
         return
-                "name='" + name + '\'' +
+                "name='" + type + '\'' +
                 ", price=" + price +
                 ", fieldRequired=" + fieldRequired +
                 ", capacity=" + capacity +

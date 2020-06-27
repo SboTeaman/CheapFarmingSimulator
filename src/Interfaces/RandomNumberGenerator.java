@@ -4,6 +4,8 @@ import java.util.Random;
 
 public interface RandomNumberGenerator {
 
+
+
     static int randomBetween(int start, int end) {
         Random random = new Random();
 

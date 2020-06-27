@@ -11,12 +11,11 @@ public class Animal {
     public double gainWeightForWeek;
     public double amountOfFoodPerWeek;
     public String typeOfFoodThatCanEat;
-    public double chanceForReproduction;
     public String productForSelling;
     public int amountInBuilding = 0;
     public String buildingRequired;
 
-    public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, double chanceForReproduction, String productForSelling, String buildingRequired) {
+    public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, String productForSelling, String buildingRequired) {
         this.name = name;
         this.costOfPurchase = costOfPurchase;
         this.weight = weight;
@@ -24,12 +23,11 @@ public class Animal {
         this.gainWeightForWeek = gainWeightForWeek;
         this.amountOfFoodPerWeek = amountOfFoodPerWeek;
         this.typeOfFoodThatCanEat = typeOfFoodThatCanEat;
-        this.chanceForReproduction = chanceForReproduction;
         this.productForSelling = productForSelling;
         this.buildingRequired = buildingRequired;
     }
 
-    public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, double chanceForReproduction, String productForSelling) {
+    public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, String productForSelling) {
         this.name = name;
         this.costOfPurchase = costOfPurchase;
         this.weight = weight;
@@ -37,12 +35,11 @@ public class Animal {
         this.gainWeightForWeek = gainWeightForWeek;
         this.amountOfFoodPerWeek = amountOfFoodPerWeek;
         this.typeOfFoodThatCanEat = typeOfFoodThatCanEat;
-        this.chanceForReproduction = chanceForReproduction;
         this.productForSelling = productForSelling;
 
     }
 
-    public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, double chanceForReproduction) {
+    public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat) {
         this.name = name;
         this.costOfPurchase = costOfPurchase;
         this.weight = weight;
@@ -50,11 +47,10 @@ public class Animal {
         this.gainWeightForWeek = gainWeightForWeek;
         this.amountOfFoodPerWeek = amountOfFoodPerWeek;
         this.typeOfFoodThatCanEat = typeOfFoodThatCanEat;
-        this.chanceForReproduction = chanceForReproduction;
 
     }
 
-    public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, double chanceForReproduction, int amountInBuilding) {
+    public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, int amountInBuilding) {
         this.name = name;
         this.costOfPurchase = costOfPurchase;
         this.weight = weight;
@@ -62,7 +58,6 @@ public class Animal {
         this.gainWeightForWeek = gainWeightForWeek;
         this.amountOfFoodPerWeek = amountOfFoodPerWeek;
         this.typeOfFoodThatCanEat = typeOfFoodThatCanEat;
-        this.chanceForReproduction = chanceForReproduction;
         this.amountInBuilding = amountInBuilding;
 
     }
@@ -92,14 +87,14 @@ public class Animal {
 
     public static void feed(Player player) {
         if (!player.yourAnimals.isEmpty()) {
-            double value;
+            double amount;
             for (int i = 0; i < player.yourAnimals.size(); i++) {
-                value = player.yourAnimals.get(i).amountInBuilding * player.yourAnimals.get(i).amountOfFoodPerWeek;
+                amount = player.yourAnimals.get(i).amountInBuilding * player.yourAnimals.get(i).amountOfFoodPerWeek;
                 if (!player.yourPlants.isEmpty() && player.yourPlants.get(i).name.equals(player.yourAnimals.get(i).typeOfFoodThatCanEat)) {
-                    player.yourPlants.get(i).amountInInventory -= value;
+                    player.yourPlants.get(i).amountInInventory -= amount;
 
-                } else if (player.yourPlants.isEmpty()) {
-                    player.cash -= value * RandomNumberGenerator.randomBetween(1, 3);
+                } else if (player.yourPlants.isEmpty() ) {
+                    player.cash -= amount * RandomNumberGenerator.randomBetween(1, 3);
                 }
             }
         }

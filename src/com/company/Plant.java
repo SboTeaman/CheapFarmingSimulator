@@ -2,6 +2,8 @@ package com.company;
 
 import Interfaces.RandomNumberGenerator;
 
+import java.util.Random;
+
 public class Plant {
 
 
@@ -96,24 +98,25 @@ public class Plant {
 
     public static void harvest(Player player) {
         if (!player.isSilos) {
+
             for (int i = 0; i < player.yourPlantedPlants.size(); i++) {
-                int amount = player.yourPlantedPlants.get(i).amountInInventory * player.yourPlantedPlants.get(i).efficiency_ha * player.yourPlantedPlants.get(i).value_kg;
+                double amount = player.yourPlantedPlants.get(i).amountInInventory * player.yourPlantedPlants.get(i).efficiency_ha;
                 double value = player.yourSeeds.get(i).costOfHarvesting * amount;
                 player.cash -= value;
                 if (player.yourPlantedPlants.get(i).timeToGrow <= 0) {
 
-                    player.cash += amount;
+                    player.cash += amount * player.yourPlantedPlants.get(i).value_kg;
                     player.getFarm().fieldsSlots += player.yourPlantedPlants.get(i).amountInInventory;
                     player.yourPlantedPlants.remove(i);
                     System.out.println("You successful harvest your plants");
-
-
                 }
             }
         }
+
         if (player.isSilos) {
             for (int i = 0; i < player.yourPlantedPlants.size(); i++) {
                 if (player.yourPlantedPlants.get(i).timeToGrow <= 0) {
+
                     player.yourPlants.add(new Plant(player.yourPlantedPlants.get(i).product,
                             player.yourPlantedPlants.get(i).costOfPlanting,
                             player.yourPlantedPlants.get(i).costOfProtectingFromParasite,
@@ -123,6 +126,7 @@ public class Plant {
                             player.yourPlantedPlants.get(i).value_kg,
                             player.yourPlantedPlants.get(i).amountInInventory * player.yourPlantedPlants.get(i).efficiency_ha,
                             null));
+
                     player.getFarm().fieldsSlots += player.yourPlantedPlants.get(i).amountInInventory;
                     player.yourPlantedPlants.remove(i);
                 }
@@ -132,7 +136,9 @@ public class Plant {
 
     public static void protectFromParasite(Player player) {
         int insects = RandomNumberGenerator.randomBetween(0, 100);
+
         for (int i = 0; i < player.yourPlantedPlants.size(); i++) {
+
             if (!player.yourPlantedPlants.isEmpty()) {
                 int value = 0;
                 if (player.cash > value) {
@@ -140,8 +146,10 @@ public class Plant {
                     player.cash -= value;
                     System.out.println(value);
                 }
+
             } else if (insects == 5) {
                 player.yourPlantedPlants.get(i).amountInInventory -= 1;
+                player.getFarm().fieldsSlots += 1;
             }
         }
     }
