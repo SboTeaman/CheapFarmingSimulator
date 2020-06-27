@@ -10,7 +10,7 @@ public class Buyable {
 
     public static void buyPlantSeed(Player player, Plant plant, int amount) {
         if (player.cash >= plant.value_kg) {
-            double value = plant.value_kg * amount * 100;
+            double value = plant.costOfHarvesting * amount;
             if (player.yourSeeds.isEmpty()) {
                 player.yourSeeds.add(new Plant(plant.name, plant.costOfPlanting, plant.costOfProtectingFromParasite, plant.efficiency_ha, plant.timeToGrow, plant.costOfHarvesting, plant.value_kg, amount, plant.product));
                 player.cash -= value;

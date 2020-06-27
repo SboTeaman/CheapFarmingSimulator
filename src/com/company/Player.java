@@ -24,7 +24,7 @@ public class Player {
 
     Player(String name) {
         this.name = name;
-        this.cash = 100000.0;
+        this.cash = 10000000.0;
         Farm farm = null;
     }
 

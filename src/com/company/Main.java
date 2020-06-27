@@ -12,11 +12,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-
         Player.newPlayer();
-
-        /*PLANTS*/
-
 
         int choiceMenu;
         int week;
@@ -89,7 +85,8 @@ public class Main {
                     System.out.println("2 - Statistic of yours Farms");
                     System.out.println("3 - Manage your farms:");
                     System.out.println("---------------------");
-                    System.out.println("4 - end a week");
+                    System.out.println("0 - End a week");
+
 
 
                     Scanner scannerMenu = new Scanner(System.in);
@@ -108,7 +105,8 @@ public class Main {
                             System.out.println("6 - Sell Plants");
                             System.out.println("7 - Sell Animals");
                             System.out.println("---------------------");
-                            System.out.println("8 - return");
+                            System.out.println("9 - Return");
+
 
                             Scanner scannerFarm = new Scanner(System.in);
                             int choiceShop = scannerFarm.nextInt();
@@ -123,7 +121,7 @@ public class Main {
                                     System.out.println("4 - " + highTierFarm.toString());
                                     System.out.println("5 - " + ultimateFarm.toString());
                                     System.out.println("---------------------");
-                                    System.out.println("6 - return");
+                                    System.out.println("0 - Return");
 
                                     Scanner scannerPurchaseFarm = new Scanner(System.in);
                                     int choicePurchaseFarm = scannerPurchaseFarm.nextInt();
@@ -239,15 +237,20 @@ public class Main {
                                     System.out.println("14 - " + watermelonSeed.name + " " + watermelonSeed.costOfBuying + " for One Ha");
                                     System.out.println("15 - " + lemonSeed.name + " " + lemonSeed.costOfBuying + " for One Ha");
                                     System.out.println("16 - " + strawberriesSeed.name + " " + strawberriesSeed.costOfBuying + " for One Ha");
+                                    System.out.println("---------------------");
+                                    System.out.println("0 - Return");
+
                                     Scanner scannerPlant = new Scanner(System.in);
                                     int choicePlant = scannerFarm.nextInt();
+
 
                                     System.out.println("How much you want to buy?");
                                     Scanner scannerBuyAmount = new Scanner(System.in);
                                     int choiceBuyAmount = scannerBuyAmount.nextInt();
 
                                     switch (choicePlant) {
-
+                                        case 0:
+                                            break;
                                         case 1:
                                             Buyable.buyPlantSeed(Player.playerList.get(whichPlayer), cornSeed, choiceBuyAmount);
                                             break;
@@ -309,6 +312,9 @@ public class Main {
                                     System.out.println("4 - " + chicken.name + " " + chicken.costOfPurchase);
                                     System.out.println("5 - " + cat.name + " " + cat.costOfPurchase);
                                     System.out.println("6 - " + dog.name + " " + dog.costOfPurchase);
+                                    System.out.println("---------------------");
+                                    System.out.println("0 - Return");
+
 
 
                                     Scanner scannerAnimal = new Scanner(System.in);
@@ -360,6 +366,8 @@ public class Main {
                                     System.out.println("14 - " + watermelonSeed.name + " " + watermelonSeed.value_kg + "f or One Kg");
                                     System.out.println("15 - " + lemonSeed.name + " " + lemonSeed.value_kg + " for One Kg");
                                     System.out.println("16 - " + strawberriesSeed.name + " " + strawberriesSeed.value_kg + " for One Kg");
+                                    System.out.println("---------------------");
+                                    System.out.println("0 - Return");
 
                                     Scanner scannerSellPlant = new Scanner(System.in);
                                     int choiceSellPlant = scannerSellPlant.nextInt();
@@ -369,7 +377,8 @@ public class Main {
                                     int choiceSellAmount = scannerSellAmount.nextInt();
 
                                     switch (choiceSellPlant) {
-
+                                        case 0:
+                                            break;
                                         case 1:
                                             Saleable.sellPlant(Player.playerList.get(whichPlayer), cornSeed, choiceSellAmount);
                                             break;
@@ -429,15 +438,20 @@ public class Main {
                                     System.out.println("4 - " + chicken.name);
                                     System.out.println("5 - " + cat.name);
                                     System.out.println("6 - " + dog.name);
+                                    System.out.println("---------------------");
+                                    System.out.println("0- Return");
 
                                     Scanner scannerSellAnimal = new Scanner(System.in);
                                     int choiceSellAnimal = scannerSellAnimal.nextInt();
+
 
                                     System.out.println("How much you want to buy?");
                                     Scanner scannerAnimalAmountToSell = new Scanner(System.in);
                                     int choiceAnimalAmountToSell = scannerAnimalAmountToSell.nextInt();
 
                                     switch (choiceSellAnimal) {
+                                        case 0:
+                                            break;
                                         case 1:
                                             Saleable.sellAnimal(Player.playerList.get(whichPlayer), cow, choiceAnimalAmountToSell);
                                             break;
@@ -472,7 +486,8 @@ public class Main {
                             System.out.println("5 - List of your planted plants");
                             System.out.println("6 - List of your plants");
                             System.out.println("---------------------");
-                            System.out.println("6 - return");
+                            System.out.println("0 - Return");
+
 
                             Scanner scannerStatistic = new Scanner(System.in);
                             int choiceStatistic = scannerStatistic.nextInt();
@@ -512,7 +527,8 @@ public class Main {
                             System.out.println("2 - harvest ready plants");
                             System.out.println("3 - feed animals");
                             System.out.println("---------------------");
-                            System.out.println("4 - return");
+                            System.out.println("0 - Return");
+
 
                             Scanner scannerManageFarm = new Scanner(System.in);
                             int choiceManageFarm = scannerManageFarm.nextInt();
@@ -538,6 +554,8 @@ public class Main {
                                     System.out.println("15 - " + lemonSeed.name);
                                     System.out.println("16 - " + strawberriesSeed.name);
                                     System.out.println("---------------------");
+                                    System.out.println("0 - Return");
+
 
                                     Scanner scannerPlantSeed = new Scanner(System.in);
                                     int choicePlantSeed = scannerPlantSeed.nextInt();
@@ -620,11 +638,12 @@ public class Main {
                 Animal.feed(Player.playerList.get(whichPlayer));
 
                 /*GOAL*/
-                if (Player.playerList.get(whichPlayer).farm.get(0).equals(ultimateFarm) && Player.playerList.get(whichPlayer).cash == 1000000.0) {
+                if (Player.playerList.get(whichPlayer).farm.get(0).name.equals(ultimateFarm.name) && Player.playerList.get(whichPlayer).cash >= 1000000.0) {
                     System.out.println("Player:" + Player.playerList.get(whichPlayer).getName() + " win the game!!!");
                     System.exit(0);
                 }
             }
+
             if (week == 52) {
                 week = 0;
                 year++;
