@@ -24,23 +24,24 @@ public class Main {
         for (week = 1; week > 0; week++) {
 
             /*PLANTS SEEDS */
-            Plant cornSeed = new Plant("cornSeed", 25.0, 10, RandomNumberGenerator.randomBetween(200, 300), 52, 1.25, 2, "corn");
-            Plant carrotSeed = new Plant("carrotSeed", 33.50, 11, RandomNumberGenerator.randomBetween(100, 150), 50, 2.3, 3, "carrot");
-            Plant sunflowerSeed = new Plant("sunflowerSeed", 22.0, 15, RandomNumberGenerator.randomBetween(100, 220), 30, 0.25, 2, "sunflower");
-            Plant potatoSeed = new Plant("potatoSeed", 13.0, 8, RandomNumberGenerator.randomBetween(150, 200), 35, 4.3, 4, "potato");
-            Plant wheatSeed = new Plant("wheatSeed", 43.40, 8, RandomNumberGenerator.randomBetween(180, 200), 42, 2, 6, "wheat");
-            Plant broccoliSeed = new Plant("broccoliSeed", 13.0, 7, RandomNumberGenerator.randomBetween(100, 120), 25, 3, 7, "broccoli");
-            Plant onionSeed = new Plant("onionSeed", 23.0, 12, RandomNumberGenerator.randomBetween(100, 120), 30, 5.25, 2, "onion");
-            Plant lettuceSeed = new Plant("lettuceSeed", 26.60, 5, RandomNumberGenerator.randomBetween(160, 200), 20, 2.25, 2, "lettuce");
-            Plant tomatoSeed = new Plant("tomatoSeed", 33.0, 9, RandomNumberGenerator.randomBetween(100, 200), 33, 3.3, 4, "tomato");
 
-            Plant appleSeed = new Plant("appleSeed", 300.0, 20, RandomNumberGenerator.randomBetween(30, 50), 100, 0.3, 1, "apple");
-            Plant pearSeed = new Plant("pearSeed", 250.0, 22, RandomNumberGenerator.randomBetween(35, 55), 120, 0.25, 2, "pear");
-            Plant cherrySeed = new Plant("cherrySeed", 400.0, 21, RandomNumberGenerator.randomBetween(40, 60), 130, 0.25, 3, "cherry");
-            Plant melonSeed = new Plant("melonSeed", 50.0, 16, RandomNumberGenerator.randomBetween(80, 110), 40, 4.3, 2, "melon");
-            Plant watermelonSeed = new Plant("watermelonSeed", 55.50, 12, RandomNumberGenerator.randomBetween(90, 200), 47, 5.25, 3, "watermelon");
-            Plant lemonSeed = new Plant("lemonSeed", 27.0, 5, RandomNumberGenerator.randomBetween(100, 200), 60, 0.25, 2, "lemon");
-            Plant strawberriesSeed = new Plant("strawberriesSeed", 60.0, RandomNumberGenerator.randomBetween(100, 200), 200, 34, 6.25, 5, "strawberries");
+            Plant cornSeed = new Plant("cornSeed", 25.0, 10, RandomNumberGenerator.randomBetween(200, 300), 52, 1.25, 200, 2.0, "corn");
+            Plant carrotSeed = new Plant("carrotSeed", 33.50, 11, RandomNumberGenerator.randomBetween(100, 150), 50, 2.3, 300, 3, "carrot");
+            Plant sunflowerSeed = new Plant("sunflowerSeed", 22.0, 15, RandomNumberGenerator.randomBetween(100, 220), 30, 0.25, 200, 2, "sunflower");
+            Plant potatoSeed = new Plant("potatoSeed", 13.0, 8, RandomNumberGenerator.randomBetween(150, 200), 35, 4.3, 400, 4, "potato");
+            Plant wheatSeed = new Plant("wheatSeed", 43.40, 8, RandomNumberGenerator.randomBetween(180, 200), 42, 2, 600, 6, "wheat");
+            Plant broccoliSeed = new Plant("broccoliSeed", 13.0, 7, RandomNumberGenerator.randomBetween(100, 120), 25, 3, 700, 7, "broccoli");
+            Plant onionSeed = new Plant("onionSeed", 23.0, 12, RandomNumberGenerator.randomBetween(100, 120), 30, 5.25, 200, 2, "onion");
+            Plant lettuceSeed = new Plant("lettuceSeed", 26.60, 5, RandomNumberGenerator.randomBetween(160, 200), 20, 2.25, 200, 2, "lettuce");
+            Plant tomatoSeed = new Plant("tomatoSeed", 33.0, 9, RandomNumberGenerator.randomBetween(100, 200), 33, 3.3, 400, 4, "tomato");
+
+            Plant appleSeed = new Plant("appleSeed", 300.0, 20, RandomNumberGenerator.randomBetween(30, 50), 100, 0.3, 1000, 1, "apple");
+            Plant pearSeed = new Plant("pearSeed", 250.0, 22, RandomNumberGenerator.randomBetween(35, 55), 120, 0.25, 2000, 2, "pear");
+            Plant cherrySeed = new Plant("cherrySeed", 400.0, 21, RandomNumberGenerator.randomBetween(40, 60), 130, 0.25, 3000, 3, "cherry");
+            Plant melonSeed = new Plant("melonSeed", 50.0, 16, RandomNumberGenerator.randomBetween(80, 110), 40, 4.3, 200, 2, "melon");
+            Plant watermelonSeed = new Plant("watermelonSeed", 55.50, 12, RandomNumberGenerator.randomBetween(90, 200), 47, 5.25, 250, 3, "watermelon");
+            Plant lemonSeed = new Plant("lemonSeed", 27.0, 5, RandomNumberGenerator.randomBetween(100, 200), 60, 0.25, 200, 2, "lemon");
+            Plant strawberriesSeed = new Plant("strawberriesSeed", 60.0, RandomNumberGenerator.randomBetween(100, 200), 200, 34, 6.25, 500, 5, "strawberries");
 
             /*ANIMALS */
             Animal cow = new Animal("cow", 1000.0, 10.0, 400.0, 0.2, 2.0, "corn", "milk", "Cowshed");
@@ -51,29 +52,29 @@ public class Main {
             Animal cat = new Animal("cat", 2200.0, 0.5, 100.0, 0.1, 2.0, "catFood");
 
             /*FARMS */
-            Farm oldFarm = new Farm("Old Farm", RandomNumberGenerator.randomBetween(100, 900), RandomNumberGenerator.randomBetween(1, 2), 10, 1);
-            Farm startedFarm = new Farm("startedFarm", RandomNumberGenerator.randomBetween(900, 3000), RandomNumberGenerator.randomBetween(3, 4), 20, RandomNumberGenerator.randomBetween(2, 3));
-            Farm advancedFarm = new Farm("advancedFarm", RandomNumberGenerator.randomBetween(5000, 8000), RandomNumberGenerator.randomBetween(4, 5), 30, RandomNumberGenerator.randomBetween(3, 4));
-            Farm highTierFarm = new Farm("highTierFarm", RandomNumberGenerator.randomBetween(10000, 15000), RandomNumberGenerator.randomBetween(6, 7), 40, RandomNumberGenerator.randomBetween(5, 6));
-            Farm ultimateFarm = new Farm("ultimateFarm", RandomNumberGenerator.randomBetween(20000, 30000), RandomNumberGenerator.randomBetween(7, 10), 50, RandomNumberGenerator.randomBetween(7, 10));
+            Farm oldFarm = new Farm("Old Farm", RandomNumberGenerator.randomBetween(1000, 1500), RandomNumberGenerator.randomBetween(2, 5), 10);
+            Farm startedFarm = new Farm("startedFarm", RandomNumberGenerator.randomBetween(3000, 4000), RandomNumberGenerator.randomBetween(5, 10), 20);
+            Farm advancedFarm = new Farm("advancedFarm", RandomNumberGenerator.randomBetween(5000, 8000), RandomNumberGenerator.randomBetween(10, 15), 30);
+            Farm highTierFarm = new Farm("highTierFarm", RandomNumberGenerator.randomBetween(10000, 15000), RandomNumberGenerator.randomBetween(20, 25), 40);
+            Farm ultimateFarm = new Farm("ultimateFarm", RandomNumberGenerator.randomBetween(200000, 300000), RandomNumberGenerator.randomBetween(30, 40), 100);
 
             /*BUILDINGS */
-            Building smallCowshed = new Cowshed("smallCowshed", 1000.0, 2.0, 10, "Cowshed");
-            Building smallPigsty = new Pigsty("smallPigsty", 1000.0, 2.0, 10, "Pigsty");
-            Building smallStable = new Stable("smallStable", 1000.0, 2.0, 10, "Stable");
+            Building smallCowshed = new Cowshed("smallCowshed", 1000.0, 1.0, 10, "Cowshed");
+            Building smallPigsty = new Pigsty("smallPigsty", 1000.0, 1.0, 10, "Pigsty");
+            Building smallStable = new Stable("smallStable", 1000.0, 1.0, 10, "Stable");
             Building smallChickencoop = new Chickencoop("smallChickencoop", 1000.0, 1.0, 10, "Chickencoop");
 
-            Building mediumCowshed = new Cowshed("mediumCowshed", 1000.0, 2.0, 30, "Cowshed");
-            Building mediumPigsty = new Pigsty("mediumPigsty", 1000.0, 2.0, 30, "Pigsty");
-            Building mediumStable = new Stable("mediumStable", 1000.0, 2.0, 30, "Stable");
-            Building mediumChickencoop = new Chickencoop("mediumChickencoop", 1000.0, 1.0, 30, "Chickencoop");
+            Building mediumCowshed = new Cowshed("mediumCowshed", 5000.0, 1.0, 30, "Cowshed");
+            Building mediumPigsty = new Pigsty("mediumPigsty", 5000.0, 1.0, 30, "Pigsty");
+            Building mediumStable = new Stable("mediumStable", 5000.0, 1.0, 30, "Stable");
+            Building mediumChickencoop = new Chickencoop("mediumChickencoop", 5000.0, 1.0, 30, "Chickencoop");
 
-            Building bigCowshed = new Cowshed("bigCowshed", 1000.0, 2.0, 100, "Cowshed");
-            Building bigPigsty = new Pigsty("bigPigsty", 1000.0, 2.0, 100, "Pigsty");
-            Building bigStable = new Stable("bigStable", 1000.0, 2.0, 100, "Stable");
+            Building bigCowshed = new Cowshed("bigCowshed", 10000.0, 1.0, 100, "Cowshed");
+            Building bigPigsty = new Pigsty("bigPigsty", 10000.0, 1.0, 100, "Pigsty");
+            Building bigStable = new Stable("bigStable", 10000.0, 1.0, 100, "Stable");
             Building bigChickencoop = new Chickencoop("bigChickencoop", 1000.0, 1.0, 100, "Chickencoop");
 
-            Building silos = new Silos("silos", 1000.0);
+            Building silos = new Silos("silos", 2000.0);
 
             /*MENU*/
             System.out.println("Year: " + year + " Week:" + week);
@@ -81,7 +82,7 @@ public class Main {
             for (int whichPlayer = 0; whichPlayer < Player.playerList.size(); whichPlayer++) {
                 do {
                     System.out.println("\n\n");
-                    System.out.println("Turn:" + Player.playerList.get(whichPlayer).toString());
+                    System.out.println("Turn: " + Player.playerList.get(whichPlayer).toString());
                     System.out.println("MENU");
                     System.out.println("---------------------");
                     System.out.println("1 - SHOP ");
@@ -222,23 +223,22 @@ public class Main {
                                 case 4:
                                     System.out.println("Buy Plants");
                                     System.out.println("---------------------");
-                                    System.out.println("1 - " + cornSeed.name);
-                                    System.out.println("2 - " + carrotSeed.name);
-                                    System.out.println("3 - " + sunflowerSeed.name);
-                                    System.out.println("4 - " + potatoSeed.name);
-                                    System.out.println("5 - " + wheatSeed.name);
-                                    System.out.println("6 - " + broccoliSeed.name);
-                                    System.out.println("7 - " + onionSeed.name);
-                                    System.out.println("8 - " + lettuceSeed.name);
-                                    System.out.println("9 - " + tomatoSeed.name);
-                                    System.out.println("10 - " + appleSeed.name);
-                                    System.out.println("11 - " + pearSeed.name);
-                                    System.out.println("12 - " + cherrySeed.name);
-                                    System.out.println("13 - " + melonSeed.name);
-                                    System.out.println("14 - " + watermelonSeed.name);
-                                    System.out.println("15 - " + lemonSeed.name);
-                                    System.out.println("16 - " + strawberriesSeed.name);
-
+                                    System.out.println("1 - " + cornSeed.name + " " + cornSeed.costOfBuying + " for One Ha");
+                                    System.out.println("2 - " + carrotSeed.name + " " + carrotSeed.costOfBuying + " for One Ha");
+                                    System.out.println("3 - " + sunflowerSeed.name + " " + sunflowerSeed.costOfBuying + " for One Ha");
+                                    System.out.println("4 - " + potatoSeed.name + " " + potatoSeed.costOfBuying + " for One Ha");
+                                    System.out.println("5 - " + wheatSeed.name + " " + wheatSeed.costOfBuying + " for One Ha");
+                                    System.out.println("6 - " + broccoliSeed.name + " " + broccoliSeed.costOfBuying + " for One Ha");
+                                    System.out.println("7 - " + onionSeed.name + " " + onionSeed.costOfBuying + " for One Ha");
+                                    System.out.println("8 - " + lettuceSeed.name + " " + lettuceSeed.costOfBuying + " for One Ha");
+                                    System.out.println("9 - " + tomatoSeed.name + " " + tomatoSeed.costOfBuying + " for One Ha");
+                                    System.out.println("10 - " + appleSeed.name + " " + appleSeed.costOfBuying + " for One Ha");
+                                    System.out.println("11 - " + pearSeed.name + " " + pearSeed.costOfBuying + " for One Ha");
+                                    System.out.println("12 - " + cherrySeed.name + " " + cherrySeed.costOfBuying + " for One Ha");
+                                    System.out.println("13 - " + melonSeed.name + " " + melonSeed.costOfBuying + " for One Ha");
+                                    System.out.println("14 - " + watermelonSeed.name + " " + watermelonSeed.costOfBuying + " for One Ha");
+                                    System.out.println("15 - " + lemonSeed.name + " " + lemonSeed.costOfBuying + " for One Ha");
+                                    System.out.println("16 - " + strawberriesSeed.name + " " + strawberriesSeed.costOfBuying + " for One Ha");
                                     Scanner scannerPlant = new Scanner(System.in);
                                     int choicePlant = scannerFarm.nextInt();
 
@@ -303,12 +303,12 @@ public class Main {
                                 case 5:
                                     System.out.println("Buy Animals");
                                     System.out.println("---------------------");
-                                    System.out.println("1 - " + cow.name);
-                                    System.out.println("2 - " + sheep.name);
-                                    System.out.println("3 - " + pig.name);
-                                    System.out.println("4 - " + chicken.name);
-                                    System.out.println("5 - " + cat.name);
-                                    System.out.println("6 - " + dog.name);
+                                    System.out.println("1 - " + cow.name + " " + cow.costOfPurchase);
+                                    System.out.println("2 - " + sheep.name + " " + sheep.costOfPurchase);
+                                    System.out.println("3 - " + pig.name + " " + pig.costOfPurchase);
+                                    System.out.println("4 - " + chicken.name + " " + chicken.costOfPurchase);
+                                    System.out.println("5 - " + cat.name + " " + cat.costOfPurchase);
+                                    System.out.println("6 - " + dog.name + " " + dog.costOfPurchase);
 
 
                                     Scanner scannerAnimal = new Scanner(System.in);
@@ -344,22 +344,22 @@ public class Main {
                                     System.out.println("---------------------");
                                     System.out.println("Sell Plants");
                                     System.out.println("---------------------");
-                                    System.out.println("1 - " + cornSeed.name + " " + cornSeed.value_kg) ;
-                                    System.out.println("2 - " + carrotSeed.name);
-                                    System.out.println("3 - " + sunflowerSeed.name);
-                                    System.out.println("4 - " + potatoSeed.name);
-                                    System.out.println("5 - " + wheatSeed.name);
-                                    System.out.println("6 - " + broccoliSeed.name);
-                                    System.out.println("7 - " + onionSeed.name);
-                                    System.out.println("8 - " + lettuceSeed.name);
-                                    System.out.println("9 - " + tomatoSeed.name);
-                                    System.out.println("10 - " + appleSeed.name);
-                                    System.out.println("11 - " + pearSeed.name);
-                                    System.out.println("12 - " + cherrySeed.name);
-                                    System.out.println("13 - " + melonSeed.name);
-                                    System.out.println("14 - " + watermelonSeed.name);
-                                    System.out.println("15 - " + lemonSeed.name);
-                                    System.out.println("16 - " + strawberriesSeed.name);
+                                    System.out.println("1 - " + cornSeed.name + " " + cornSeed.value_kg + " for One Kg");
+                                    System.out.println("2 - " + carrotSeed.name + " " + carrotSeed.value_kg + " for One Kg");
+                                    System.out.println("3 - " + sunflowerSeed.name + " " + sunflowerSeed.value_kg + " for One Kg");
+                                    System.out.println("4 - " + potatoSeed.name + " " + potatoSeed.value_kg + " for One Kg");
+                                    System.out.println("5 - " + wheatSeed.name + " " + wheatSeed.value_kg + " for One Kg");
+                                    System.out.println("6 - " + broccoliSeed.name + " " + broccoliSeed.value_kg + " for One Kg");
+                                    System.out.println("7 - " + onionSeed.name + " " + onionSeed.value_kg + " for One Kg");
+                                    System.out.println("8 - " + lettuceSeed.name + " " + lettuceSeed.value_kg + " for One Kg");
+                                    System.out.println("9 - " + tomatoSeed.name + " " + tomatoSeed.value_kg + " for One Kg");
+                                    System.out.println("10 - " + appleSeed.name + " " + appleSeed.value_kg + " for One Kg");
+                                    System.out.println("11 - " + pearSeed.name + " " + pearSeed.value_kg + " for One Kg");
+                                    System.out.println("12 - " + cherrySeed.name + " " + cherrySeed.value_kg + " for One Kg");
+                                    System.out.println("13 - " + melonSeed.name + " " + melonSeed.value_kg + " for One Ha");
+                                    System.out.println("14 - " + watermelonSeed.name + " " + watermelonSeed.value_kg + "f or One Kg");
+                                    System.out.println("15 - " + lemonSeed.name + " " + lemonSeed.value_kg + " for One Kg");
+                                    System.out.println("16 - " + strawberriesSeed.name + " " + strawberriesSeed.value_kg + " for One Kg");
 
                                     Scanner scannerSellPlant = new Scanner(System.in);
                                     int choiceSellPlant = scannerSellPlant.nextInt();

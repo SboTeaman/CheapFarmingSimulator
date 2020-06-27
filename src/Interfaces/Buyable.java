@@ -106,14 +106,14 @@ public class Buyable {
 
             if (player.farm.isEmpty()) {
                 player.cash -= farm.price;
-                player.farm.add(new Farm(farm.name, farm.price,farm.fieldsSlots,farm.maxFieldsSlots,farm.silosSlots));
+                player.farm.add(new Farm(farm.name, farm.price,farm.fieldsSlots,farm.maxFieldsSlots));
                 System.out.println("You bought: " + farm.name);
             } else if (player.farm.get(0).name.equals(farm.name)) {
                 System.out.println("You already have: " + farm.name);
             } else {
                 player.cash -= farm.price;
                 player.farm.remove(0);
-                player.farm.add(new Farm(farm.name, farm.price,farm.fieldsSlots,farm.maxFieldsSlots,farm.silosSlots));
+                player.farm.add(new Farm(farm.name, farm.price,farm.fieldsSlots,farm.maxFieldsSlots));
                 System.out.println("You bought: " + farm.name);
             }
 

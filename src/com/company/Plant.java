@@ -7,38 +7,40 @@ import java.util.Random;
 public class Plant {
 
 
-    public final int value_kg;
+    public final double value_kg;
+    public double costOfBuying;
     public final double costOfPlanting;
     public final int costOfProtectingFromParasite;
     public final double costOfHarvesting;
     public String name;
     public int amountInInventory = 0;
     public int efficiency_ha;
-    public int timeToGrow;
+    public  int timeToGrow;
     public String product;
 
-    public Plant(String name, double costOfPlanting, int costOfProtectingFromParasite, int efficiency_Ha, int timeToGrow, double costOfHarvesting, int value_KG, String product) {
+    public Plant(String name, double costOfPlanting, int costOfProtectingFromParasite, int efficiency_Ha, int timeToGrow, double costOfHarvesting,double costOfBuying, double value_KG, String product) {
         this.name = name;
         this.costOfPlanting = costOfPlanting;
         this.costOfProtectingFromParasite = costOfProtectingFromParasite;
         this.efficiency_ha = efficiency_Ha;
         this.timeToGrow = timeToGrow;
         this.costOfHarvesting = costOfHarvesting;
+        this.costOfBuying=costOfBuying;
         this.value_kg = value_KG;
         this.product = product;
     }
 
-    public Plant(String name, double costOfPlanting, int costOfProtectingFromParasite, int efficiency_Ha, int timeToGrow, double costOfHarvesting, int value_KG, int amountInInventory, String product) {
-        this.name = name;
-        this.costOfPlanting = costOfPlanting;
-        this.costOfProtectingFromParasite = costOfProtectingFromParasite;
-        this.efficiency_ha = efficiency_Ha;
-        this.timeToGrow = timeToGrow;
-        this.costOfHarvesting = costOfHarvesting;
-        this.value_kg = value_KG;
-        this.amountInInventory = amountInInventory;
-        this.product = product;
-    }
+//    public Plant(String name, double costOfPlanting, int costOfProtectingFromParasite, int efficiency_Ha, int timeToGrow, double costOfHarvesting, int value_KG, int amountInInventory, String product) {
+//        this.name = name;
+//        this.costOfPlanting = costOfPlanting;
+//        this.costOfProtectingFromParasite = costOfProtectingFromParasite;
+//        this.efficiency_ha = efficiency_Ha;
+//        this.timeToGrow = timeToGrow;
+//        this.costOfHarvesting = costOfHarvesting;
+//        this.value_kg = value_KG;
+//        this.amountInInventory = amountInInventory;
+//        this.product = product;
+//    }
 
 
     public static void plant(Player player, Plant plant, int amount) {
