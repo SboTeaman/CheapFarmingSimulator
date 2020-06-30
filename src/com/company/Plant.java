@@ -1,31 +1,30 @@
 package com.company;
 
-import Interfaces.RandomNumberGenerator;
+import interfaces.RandomNumberGenerator;
 
-import java.util.Random;
-
+@SuppressWarnings("SuspiciousListRemoveInLoop")
 public class Plant {
 
 
     public final double value_kg;
-    public double costOfBuying;
+    public final double costOfBuying;
     public final double costOfPlanting;
     public final int costOfProtectingFromParasite;
     public final double costOfHarvesting;
-    public String name;
+    public final String name;
+    public final String product;
     public int amountInInventory = 0;
     public int efficiency_ha;
-    public  int timeToGrow;
-    public String product;
+    public int timeToGrow;
 
-    public Plant(String name, double costOfPlanting, int costOfProtectingFromParasite, int efficiency_Ha, int timeToGrow, double costOfHarvesting,double costOfBuying, double value_KG, String product) {
+    public Plant(String name, double costOfPlanting, int costOfProtectingFromParasite, int efficiency_Ha, int timeToGrow, double costOfHarvesting, double costOfBuying, double value_KG, String product) {
         this.name = name;
         this.costOfPlanting = costOfPlanting;
         this.costOfProtectingFromParasite = costOfProtectingFromParasite;
         this.efficiency_ha = efficiency_Ha;
         this.timeToGrow = timeToGrow;
         this.costOfHarvesting = costOfHarvesting;
-        this.costOfBuying=costOfBuying;
+        this.costOfBuying = costOfBuying;
         this.value_kg = value_KG;
         this.product = product;
     }
@@ -71,10 +70,11 @@ public class Plant {
                         player.yourSeeds.get(i).amountInInventory -= amount;
                         double value = player.yourSeeds.get(i).costOfPlanting * amount;
                         System.out.println(value);
-                        player.cash -= value;
+                        player.setCash(value);
                         player.farm.get(0).fieldsSlots -= amount;
 
                         if (player.yourSeeds.get(i).amountInInventory == 0)
+                            //noinspection SuspiciousListRemoveInLoop
                             player.yourSeeds.remove(i);
                     } else {
                         System.out.println("You don't have enough field");
@@ -104,10 +104,10 @@ public class Plant {
             for (int i = 0; i < player.yourPlantedPlants.size(); i++) {
                 double amount = player.yourPlantedPlants.get(i).amountInInventory * player.yourPlantedPlants.get(i).efficiency_ha;
                 double value = player.yourSeeds.get(i).costOfHarvesting * amount;
-                player.cash -= value;
+                player.setCash(value);
                 if (player.yourPlantedPlants.get(i).timeToGrow <= 0) {
 
-                    player.cash += amount * player.yourPlantedPlants.get(i).value_kg;
+                    player.setCash(amount * player.yourPlantedPlants.get(i).value_kg);
                     player.farm.get(0).fieldsSlots += player.yourPlantedPlants.get(i).amountInInventory;
                     player.yourPlantedPlants.remove(i);
                     System.out.println("You successful harvest your plants");
@@ -143,9 +143,9 @@ public class Plant {
 
             if (!player.yourPlantedPlants.isEmpty()) {
                 int value = 0;
-                if (player.cash > value) {
+                if (player.getCash() > value) {
                     value += player.yourPlantedPlants.get(i).costOfProtectingFromParasite * player.yourPlantedPlants.get(i).amountInInventory;
-                    player.cash -= value;
+                    player.setCash(value);
                     System.out.println(value);
                 }
 
@@ -158,13 +158,13 @@ public class Plant {
 
 
     public String toString() {
-        return "Name: " + this.name +
-                //"\nCost of Planting: "+this.costOfPlanting+
-                //"\nCost of protecting frm parasite: "+this.costOfProtectingFromParasite+
-                //"\nEfficiency for one hectare: " + this.efficiency_ha +
+        return "\nName: " + this.name +
+                "\nCost of Planting: " + this.costOfPlanting +
+                "\nCost of protecting frm parasite: " + this.costOfProtectingFromParasite +
+                "\nEfficiency for one hectare: " + this.efficiency_ha +
                 "\nTime to grow: " + this.timeToGrow +
-                //"\nCost of harvesting: " +this.costOfHarvesting+
-                // "\nValue for one Kilogram: "+this.value_kg+
+                "\nCost of harvesting: " + this.costOfHarvesting +
+                "\nValue for one Kilogram: " + this.value_kg +
                 " Amount: " + this.amountInInventory;
 
     }

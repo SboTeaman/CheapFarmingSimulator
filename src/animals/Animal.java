@@ -1,16 +1,16 @@
-package Animals;
+package animals;
 
-import Interfaces.RandomNumberGenerator;
+import interfaces.RandomNumberGenerator;
 import com.company.Player;
 
 public class Animal {
-    public String name;
-    public double costOfPurchase;
+    public final String name;
+    public final double costOfPurchase;
+    public final double gainWeightForWeek;
+    public final double amountOfFoodPerWeek;
+    public final String typeOfFoodThatCanEat;
     public double weight;
     public double timeToGrowUp;
-    public double gainWeightForWeek;
-    public double amountOfFoodPerWeek;
-    public String typeOfFoodThatCanEat;
     public String productForSelling;
     public int amountInBuilding = 0;
     public String buildingRequired;
@@ -94,7 +94,7 @@ public class Animal {
                     player.yourPlants.get(i).amountInInventory -= amount;
 
                 } else if (player.yourPlants.isEmpty()) {
-                    player.cash -= amount * RandomNumberGenerator.randomBetween(1, 3);
+                    player.setCash(amount * RandomNumberGenerator.randomBetween(1, 3));
                 }
             }
         }
@@ -108,21 +108,20 @@ public class Animal {
                     amount += player.yourAnimals.get(i).amountInBuilding;
                 }
             }
-            player.cash += amount * RandomNumberGenerator.randomBetween(1, 10);
+            player.setCash(amount * RandomNumberGenerator.randomBetween(1, 10));
         }
     }
 
     @Override
     public String toString() {
-        return "\nYours Animals: " +
+        return "Yours Animals: " +
                 "\nname: " + name +
-                //  "\ncostOfPurchase: " + costOfPurchase +
+                "\ncostOfPurchase: " + costOfPurchase +
                 "\nWeight: " + weight +
                 "\ntimeToGrowUp: " + timeToGrowUp +
-                //  "\ngainWeightForWeek: " + gainWeightForWeek +
-                //  "\namountOfFoodPerWeek: " + amountOfFoodPerWeek +
-                //  "\ntypeOfFoodThatCanEat: " + typeOfFoodThatCanEat +
-                //  "\nchanceForReproduction: " + chanceForReproduction +
+                "\ngainWeightForWeek: " + gainWeightForWeek +
+                "\namountOfFoodPerWeek: " + amountOfFoodPerWeek +
+                "\ntypeOfFoodThatCanEat: " + typeOfFoodThatCanEat +
                 "\namountInBuilding: " + amountInBuilding + "\n";
     }
 }

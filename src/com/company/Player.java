@@ -1,31 +1,30 @@
 package com.company;
 
-import Buildings.Farm;
-import Animals.Animal;
-import Buildings.Building;
-import Interfaces.RandomNumberGenerator;
+import buildings.Farm;
+import animals.Animal;
+import buildings.Building;
+import interfaces.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+@SuppressWarnings("SuspiciousListRemoveInLoop")
 public class Player {
     public static List<Player> playerList = new ArrayList<>();
     private final String name;
-    public double cash;
-    public boolean isSilos = false;
     public List<Farm> farm = new ArrayList<>();
     public List<Plant> yourSeeds = new ArrayList<>();
     public List<Plant> yourPlantedPlants = new ArrayList<>();
     public List<Plant> yourPlants = new ArrayList<>();
     public List<Animal> yourAnimals = new ArrayList<>();
     public List<Building> yourBuildings = new ArrayList<>();
-    //private Farm farm;
+    public boolean isSilos = false;
+    private double cash;
 
     Player(String name) {
         this.name = name;
-        this.cash = 10000000.0;
-        Farm farm = null;
+        this.cash = 5000.0;
     }
 
     public static void isCash(Player player) {
@@ -59,15 +58,23 @@ public class Player {
         }
     }
 
+    public double getCash() {
+        return cash;
+    }
+
+    public void setCash(double cash) {
+        this.cash += cash;
+    }
+
     public String getName() {
         return name;
     }
 
 
-
     public String toString() {
 
-        return "name: " + this.name + "\ncash: " + this.cash;
+        return "name: " + this.name +
+                "\ncash: " + this.cash;
     }
 
 

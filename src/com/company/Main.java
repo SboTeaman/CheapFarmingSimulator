@@ -1,10 +1,10 @@
 package com.company;
 
-import Animals.Animal;
-import Buildings.*;
-import Interfaces.Buyable;
-import Interfaces.RandomNumberGenerator;
-import Interfaces.Saleable;
+import animals.Animal;
+import buildings.*;
+import interfaces.Buyable;
+import interfaces.RandomNumberGenerator;
+import interfaces.Saleable;
 
 import java.util.Scanner;
 
@@ -78,7 +78,9 @@ public class Main {
             for (int whichPlayer = 0; whichPlayer < Player.playerList.size(); whichPlayer++) {
                 do {
                     System.out.println("\n\n");
+                    System.out.println("---------------------");
                     System.out.println("Turn: " + Player.playerList.get(whichPlayer).toString());
+                    System.out.println("---------------------");
                     System.out.println("MENU");
                     System.out.println("---------------------");
                     System.out.println("1 - SHOP ");
@@ -88,12 +90,12 @@ public class Main {
                     System.out.println("0 - End a week");
 
 
-
                     Scanner scannerMenu = new Scanner(System.in);
                     choiceMenu = scannerMenu.nextInt();
                     System.out.println(choiceMenu);
                     switch (choiceMenu) {
                         case 1: {
+                            System.out.println("---------------------");
                             System.out.println("Welcome in the Shop");
                             System.out.println("---------------------");
                             System.out.println("1 - Buy new Farm");
@@ -104,15 +106,17 @@ public class Main {
                             System.out.println("---------------------");
                             System.out.println("6 - Sell Plants");
                             System.out.println("7 - Sell Animals");
+                            System.out.println("8 - Sell Field");
                             System.out.println("---------------------");
                             System.out.println("9 - Return");
-
+                            System.out.println("---------------------");
 
                             Scanner scannerFarm = new Scanner(System.in);
                             int choiceShop = scannerFarm.nextInt();
 
                             switch (choiceShop) {
                                 case 1:
+                                    System.out.println("---------------------");
                                     System.out.println("Buy new Farm");
                                     System.out.println("---------------------");
                                     System.out.println("1 - " + oldFarm.toString());
@@ -122,6 +126,7 @@ public class Main {
                                     System.out.println("5 - " + ultimateFarm.toString());
                                     System.out.println("---------------------");
                                     System.out.println("0 - Return");
+                                    System.out.println("---------------------");
 
                                     Scanner scannerPurchaseFarm = new Scanner(System.in);
                                     int choicePurchaseFarm = scannerPurchaseFarm.nextInt();
@@ -145,6 +150,7 @@ public class Main {
                                     break;
 
                                 case 2:
+                                    System.out.println("---------------------");
                                     System.out.println(" Buy new Buildings");
                                     System.out.println("---------------------");
                                     System.out.println("1 - " + smallCowshed.toString());
@@ -162,6 +168,7 @@ public class Main {
                                     System.out.println("13 - " + silos.toString());
                                     System.out.println("---------------------");
                                     System.out.println("0 - return");
+                                    System.out.println("---------------------");
 
                                     Scanner scannerPurchaseBuilding = new Scanner(System.in);
                                     int choicePurchaseBuilding = scannerPurchaseBuilding.nextInt();
@@ -209,16 +216,26 @@ public class Main {
                                     }
                                     break;
                                 case 3: {
+                                    System.out.println("---------------------");
                                     System.out.println("Buy more field");
-                                    System.out.println("You have " + Player.playerList.get(whichPlayer).farm.get(0).fieldsSlots + " from " + Player.playerList.get(whichPlayer).farm.get(0).maxFieldsSlots);
+                                    System.out.println("---------------------");
 
-                                    Scanner scannerField = new Scanner(System.in);
-                                    int choiceHowMuchField = scannerField.nextInt();
-                                    Buyable.buyMoreField(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0), choiceHowMuchField);
+                                    if (Player.playerList.get(whichPlayer).farm == null) {
+                                        System.out.println("You don't have any farm");
+
+                                    } else {
+                                        System.out.println("You have " + Player.playerList.get(whichPlayer).farm.get(0).fieldsSlots + " from " + Player.playerList.get(whichPlayer).farm.get(0).maxFieldsSlots);
+                                        System.out.println("How much you want to buy?");
+
+                                        Scanner scannerField = new Scanner(System.in);
+                                        int choiceHowMuchField = scannerField.nextInt();
+                                        Buyable.buyMoreField(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0), choiceHowMuchField);
+                                    }
 
                                     break;
                                 }
                                 case 4:
+                                    System.out.println("---------------------");
                                     System.out.println("Buy Plants");
                                     System.out.println("---------------------");
                                     System.out.println("1 - " + cornSeed.name + " " + cornSeed.costOfBuying + " for One Ha");
@@ -241,7 +258,7 @@ public class Main {
                                     System.out.println("0 - Return");
 
                                     Scanner scannerPlant = new Scanner(System.in);
-                                    int choicePlant = scannerFarm.nextInt();
+                                    int choicePlant = scannerPlant.nextInt();
 
 
                                     System.out.println("How much you want to buy?");
@@ -304,17 +321,18 @@ public class Main {
 
 
                                 case 5:
+                                    System.out.println("---------------------");
                                     System.out.println("Buy Animals");
                                     System.out.println("---------------------");
-                                    System.out.println("1 - " + cow.name + " " + cow.costOfPurchase);
-                                    System.out.println("2 - " + sheep.name + " " + sheep.costOfPurchase);
-                                    System.out.println("3 - " + pig.name + " " + pig.costOfPurchase);
-                                    System.out.println("4 - " + chicken.name + " " + chicken.costOfPurchase);
-                                    System.out.println("5 - " + cat.name + " " + cat.costOfPurchase);
-                                    System.out.println("6 - " + dog.name + " " + dog.costOfPurchase);
+                                    System.out.println("1 - " + cow.name + " " + cow.costOfPurchase+" $");
+                                    System.out.println("2 - " + sheep.name + " " + sheep.costOfPurchase+" $");
+                                    System.out.println("3 - " + pig.name + " " + pig.costOfPurchase+" $");
+                                    System.out.println("4 - " + chicken.name + " " + chicken.costOfPurchase+" $");
+                                    System.out.println("5 - " + cat.name + " " + cat.costOfPurchase+" $");
+                                    System.out.println("6 - " + dog.name + " " + dog.costOfPurchase+" $");
                                     System.out.println("---------------------");
                                     System.out.println("0 - Return");
-
+                                    System.out.println("---------------------");
 
 
                                     Scanner scannerAnimal = new Scanner(System.in);
@@ -346,7 +364,8 @@ public class Main {
                                     }
                                     break;
                                 case 6:
-                                    System.out.println(Player.playerList.get(whichPlayer).yourPlants);
+                                    System.out.println("---------------------");
+                                    System.out.println("Your plants: "+Player.playerList.get(whichPlayer).yourPlants);
                                     System.out.println("---------------------");
                                     System.out.println("Sell Plants");
                                     System.out.println("---------------------");
@@ -368,6 +387,7 @@ public class Main {
                                     System.out.println("16 - " + strawberriesSeed.name + " " + strawberriesSeed.value_kg + " for One Kg");
                                     System.out.println("---------------------");
                                     System.out.println("0 - Return");
+                                    System.out.println("---------------------");
 
                                     Scanner scannerSellPlant = new Scanner(System.in);
                                     int choiceSellPlant = scannerSellPlant.nextInt();
@@ -430,6 +450,9 @@ public class Main {
                                     }
                                     break;
                                 case 7:
+                                    System.out.println("---------------------");
+                                    System.out.println("Yours animals"+ Player.playerList.get(whichPlayer).yourAnimals);
+                                    System.out.println("---------------------");
                                     System.out.println("Sell Animals");
                                     System.out.println("---------------------");
                                     System.out.println("1 - " + cow.name);
@@ -472,11 +495,24 @@ public class Main {
                                             break;
                                     }
                                     break;
+                                case 8:
+                                    System.out.println("---------------------");
+                                    System.out.println("Sell Field");
+                                    System.out.println("---------------------");
+
+                                    System.out.println("You have " + Player.playerList.get(whichPlayer).farm.get(0).fieldsSlots + " from " + Player.playerList.get(whichPlayer).farm.get(0).maxFieldsSlots);
+                                    System.out.println("How much you want to sell?");
+
+                                    Scanner scannerField = new Scanner(System.in);
+                                    int choiceHowMuchField = scannerField.nextInt();
+                                    Saleable.sellField(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0), choiceHowMuchField);
+
                             }
 
                         }
                         break;
                         case 2:
+                            System.out.println("---------------------");
                             System.out.println("Statistic of yours Farms");
                             System.out.println("---------------------");
                             System.out.println("1 - Your farm");
@@ -521,6 +557,7 @@ public class Main {
                             break;
 
                         case 3:
+                            System.out.println("---------------------");
                             System.out.println("Manage your farms:");
                             System.out.println("---------------------");
                             System.out.println("1 - plant seeds/saplings");
@@ -535,6 +572,7 @@ public class Main {
 
                             switch (choiceManageFarm) {
                                 case 1:
+                                    System.out.println("---------------------");
                                     System.out.println("which plant you want to plant:");
                                     System.out.println("---------------------");
                                     System.out.println("1 - " + cornSeed.name);
@@ -555,7 +593,7 @@ public class Main {
                                     System.out.println("16 - " + strawberriesSeed.name);
                                     System.out.println("---------------------");
                                     System.out.println("0 - Return");
-
+                                    System.out.println("---------------------");
 
                                     Scanner scannerPlantSeed = new Scanner(System.in);
                                     int choicePlantSeed = scannerPlantSeed.nextInt();
@@ -629,6 +667,7 @@ public class Main {
                 }
 
                 /* Thinks that happened independently from player decision */
+                Player.isCash(Player.playerList.get(whichPlayer));
                 Plant.growingProcess(Player.playerList.get(whichPlayer));
                 Plant.protectFromParasite(Player.playerList.get(whichPlayer));
                 World.disasters(Player.playerList.get(whichPlayer), week);
@@ -638,7 +677,7 @@ public class Main {
                 Animal.feed(Player.playerList.get(whichPlayer));
 
                 /*GOAL*/
-                if (Player.playerList.get(whichPlayer).farm.get(0).name.equals(ultimateFarm.name) && Player.playerList.get(whichPlayer).cash >= 1000000.0) {
+                if (Player.playerList.get(whichPlayer).farm.get(0).name.equals(ultimateFarm.name) && Player.playerList.get(whichPlayer).getCash() >= 1000000.0) {
                     System.out.println("Player:" + Player.playerList.get(whichPlayer).getName() + " win the game!!!");
                     System.exit(0);
                 }

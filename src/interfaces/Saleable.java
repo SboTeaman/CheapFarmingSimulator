@@ -1,7 +1,7 @@
-package Interfaces;
+package interfaces;
 
-import Animals.Animal;
-import Buildings.Farm;
+import animals.Animal;
+import buildings.Farm;
 import com.company.Plant;
 import com.company.Player;
 
@@ -17,7 +17,7 @@ public class Saleable {
                 if (player.yourPlants.get(i).amountInInventory >= amount) {
                     Random rn = new Random();
                     double valueOfTransaction = amount * plant.value_kg * rn.nextDouble();
-                    player.cash += valueOfTransaction;
+                    player.setCash(valueOfTransaction);
                     System.out.println("You successful sell " + amount + " of " + plant.name);
                     player.yourPlants.get(i).amountInInventory -= amount;
 
@@ -42,7 +42,7 @@ public class Saleable {
                     if (player.yourAnimals.get(i).amountInBuilding >= amount) {
                         Random rn = new Random();
                         double valueOfTransaction = amount * animal.costOfPurchase * rn.nextDouble();
-                        player.cash += valueOfTransaction;
+                        player.setCash(valueOfTransaction);
                         System.out.println("You successful sell " + amount + " of " + animal.name);
                         player.yourAnimals.get(i).amountInBuilding -= amount;
                         player.yourBuildings.get(i).capacity += amount;
@@ -59,11 +59,11 @@ public class Saleable {
         }
     }
 
-    public void sellField(Player player, Farm farm, double amount) {
+    public static void sellField(Player player, Farm farm, double amount) {
         double valueOfTransaction = amount * RandomNumberGenerator.randomBetween(10, 20);
-        if (player.farm.get(0).equals(farm.name)) {
+        if (player.farm.get(0).name.equals(farm.name)) {
             if (farm.fieldsSlots > amount) {
-                player.cash += valueOfTransaction;
+                player.setCash(valueOfTransaction);
                 farm.fieldsSlots -= amount;
             } else {
                 System.out.println("You don't have enough field to sell");

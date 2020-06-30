@@ -1,4 +1,4 @@
-package Buildings;
+package buildings;
 
 public class Chickencoop extends Building {
 
@@ -9,10 +9,9 @@ public class Chickencoop extends Building {
 
     @Override
     public String toString() {
-        return "name='" + type + '\'' +
-                ", price=" + price +
-                ", fieldRequired=" + fieldRequired +
-                ", capacity=" + capacity +
-                '}';
+        return " name: '" + type +
+                ", price: " + getPrice() +
+                ", fieldRequired: " + fieldRequired +
+                ", capacity: " + capacity;
     }
 }

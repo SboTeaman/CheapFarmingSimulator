@@ -1,7 +1,7 @@
 package com.company;
 
 
-import Interfaces.RandomNumberGenerator;
+import interfaces.RandomNumberGenerator;
 
 public  class World {
 

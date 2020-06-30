@@ -1,19 +1,19 @@
-package Interfaces;
+package interfaces;
 
-import Animals.Animal;
-import Buildings.Building;
-import Buildings.Farm;
+import animals.Animal;
+import buildings.Building;
+import buildings.Farm;
 import com.company.Plant;
 import com.company.Player;
 
 public class Buyable {
 
     public static void buyPlantSeed(Player player, Plant plant, int amount) {
-        if (player.cash >= plant.value_kg) {
+        if (player.getCash() >= plant.value_kg) {
             double value = plant.costOfHarvesting * amount;
             if (player.yourSeeds.isEmpty()) {
                 player.yourSeeds.add(new Plant(plant.name, plant.costOfPlanting, plant.costOfProtectingFromParasite, plant.efficiency_ha, plant.timeToGrow, plant.costOfHarvesting, plant.value_kg, amount, plant.product));
-                player.cash -= value;
+                player.setCash(-value);
 
             } else {
                 if (player.yourSeeds.size() == 1 && player.yourSeeds.get(0).name.equals(plant.name)) {
@@ -21,18 +21,18 @@ public class Buyable {
                 } else {
                     if (player.yourSeeds.size() == 1) {
                         player.yourSeeds.add(new Plant(plant.name, plant.costOfPlanting, plant.costOfProtectingFromParasite, plant.efficiency_ha, plant.timeToGrow, plant.costOfHarvesting, plant.value_kg, amount, plant.product));
-                        player.cash -= value;
+                        player.setCash(-value);
                     } else
                         one:{
                             for (int i = 0; i < player.yourSeeds.size(); i++) {
                                 if (player.yourSeeds.get(i).name.contains(plant.name)) {
                                     player.yourSeeds.get(i).amountInInventory += amount;
-                                    player.cash -= value;
+                                    player.setCash(-value);
                                     break one;
                                 }
                             }
                             player.yourSeeds.add(new Plant(plant.name, plant.costOfPlanting, plant.costOfProtectingFromParasite, plant.efficiency_ha, plant.timeToGrow, plant.costOfHarvesting, plant.value_kg, amount, plant.product));
-                            player.cash -= value;
+                            player.setCash(-value);
                         }
                 }
             }
@@ -47,31 +47,31 @@ public class Buyable {
             double value = animal.costOfPurchase * amount;
             for (int n = 0; n < player.yourBuildings.size(); n++) {
                 if (player.yourBuildings.get(n).type.equals(animal.buildingRequired)) {
-                    if (player.cash >= animal.costOfPurchase) {
+                    if (player.getCash() >= animal.costOfPurchase) {
                         if (player.yourBuildings.get(n).capacity >= amount) {
                             player.yourBuildings.get(n).capacity -= amount;
 
                             if (player.yourAnimals.isEmpty()) {
                                 player.yourAnimals.add(new Animal(animal.name, animal.costOfPurchase, animal.weight, animal.timeToGrowUp, animal.gainWeightForWeek, animal.amountOfFoodPerWeek, animal.typeOfFoodThatCanEat, amount));
-                                player.cash -= value;
+                                player.setCash(-value);
                             } else {
                                 if (player.yourAnimals.size() == 1 && player.yourAnimals.get(0).name.equals(animal.name)) {
                                     player.yourAnimals.get(0).amountInBuilding += amount;
                                 } else {
                                     if (player.yourAnimals.size() == 1) {
                                         player.yourAnimals.add(new Animal(animal.name, animal.costOfPurchase, animal.weight, animal.timeToGrowUp, animal.gainWeightForWeek, animal.amountOfFoodPerWeek, animal.typeOfFoodThatCanEat, amount));
-                                        player.cash -= value;
+                                        player.setCash(-value);
                                     } else
                                         one:{
                                             for (int i = 0; i < player.yourAnimals.size(); i++) {
                                                 if (player.yourAnimals.get(i).name.contains(animal.name)) {
                                                     player.yourAnimals.get(i).amountInBuilding += amount;
-                                                    player.cash -= value;
+                                                    player.setCash(-value);
                                                     break one;
                                                 }
                                             }
                                             player.yourAnimals.add(new Animal(animal.name, animal.costOfPurchase, animal.weight, animal.timeToGrowUp, animal.gainWeightForWeek, animal.amountOfFoodPerWeek, animal.typeOfFoodThatCanEat, amount));
-                                            player.cash -= value;
+                                            player.setCash(-value);
                                         }
                                 }
                             }
@@ -91,8 +91,8 @@ public class Buyable {
     }
 
     public static void buySilos(Player player, Building silos) {
-        if (player.cash > silos.price) {
-            player.cash -= silos.price;
+        if (player.getCash() > silos.getPrice()) {
+            player.setCash(-silos.getPrice());
             player.isSilos = true;
             System.out.println("You bought " + silos.name);
         } else {
@@ -102,18 +102,18 @@ public class Buyable {
 
     public static void buyFarm(Player player, Farm farm) {
 
-        if (player.cash >= farm.price) {
+        if (player.getCash() >= farm.price) {
 
             if (player.farm.isEmpty()) {
-                player.cash -= farm.price;
-                player.farm.add(new Farm(farm.name, farm.price,farm.fieldsSlots,farm.maxFieldsSlots));
+                player.setCash(-farm.price);
+                player.farm.add(new Farm(farm.name, farm.price, farm.fieldsSlots, farm.maxFieldsSlots));
                 System.out.println("You bought: " + farm.name);
             } else if (player.farm.get(0).name.equals(farm.name)) {
                 System.out.println("You already have: " + farm.name);
             } else {
-                player.cash -= farm.price;
+                player.setCash(-farm.price);
                 player.farm.remove(0);
-                player.farm.add(new Farm(farm.name, farm.price,farm.fieldsSlots,farm.maxFieldsSlots));
+                player.farm.add(new Farm(farm.name, farm.price, farm.fieldsSlots, farm.maxFieldsSlots));
                 System.out.println("You bought: " + farm.name);
             }
 
@@ -126,11 +126,11 @@ public class Buyable {
         if (player.farm.isEmpty()) {
             System.out.println("You don't have any farm");
         } else {
-            if (player.cash > building.price) {
+            if (player.getCash() > building.getPrice()) {
                 if (farm.fieldsSlots > 0) {
 
                     if (player.yourBuildings.isEmpty()) {
-                        player.cash -= building.price;
+                        player.setCash(-building.getPrice());
                         farm.fieldsSlots -= 1;
                         player.yourBuildings.add(building);
                         System.out.println("You bought: " + building.name);
@@ -158,13 +158,13 @@ public class Buyable {
 
     public static void buyMoreField(Player player, Farm farm, double amount) {
 
-        double valueOfTransaction = farm.priceForField * amount;
+        double valueOfTransaction = farm.priceForField * amount * RandomNumberGenerator.randomBetween(800, 1000);
 
-        if (player.cash >= valueOfTransaction) {
+        if (player.getCash() >= valueOfTransaction) {
             if (player.farm.get(0).name.equals(farm.name)) {
-                if (farm.maxFieldsSlots >= amount && player.cash >= valueOfTransaction && farm.fieldsSlots < farm.maxFieldsSlots) {
+                if (farm.maxFieldsSlots >= amount && player.getCash() >= valueOfTransaction && farm.fieldsSlots < farm.maxFieldsSlots) {
                     farm.fieldsSlots += amount;
-                    player.cash -= valueOfTransaction;
+                    player.setCash(-valueOfTransaction);
                     System.out.println("You successful expand your farm by " + amount + " new Ha of field");
                 } else {
                     System.out.println("You don't have enough space for new field");
