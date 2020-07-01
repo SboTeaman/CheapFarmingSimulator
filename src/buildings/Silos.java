@@ -9,10 +9,9 @@ public class Silos extends Building {
 
     @Override
     public String toString() {
-        return " name: '" + type +
-                ", price: " + getPrice() +
-                ", fieldRequired: " + fieldRequired +
-                ", capacity: " + capacity;
+        return " name: '" + name +
+                ", price: " + getPrice();
+
     }
 }
 

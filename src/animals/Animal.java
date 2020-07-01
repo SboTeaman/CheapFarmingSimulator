@@ -104,11 +104,11 @@ public class Animal {
         if (!player.yourAnimals.isEmpty()) {
             int amount = 0;
             for (int i = 0; i < player.yourAnimals.size(); i++) {
-                if (player.yourAnimals.get(i).name.equals("cow") || player.yourAnimals.get(i).name.equals("chicken") || player.yourAnimals.get(i).name.equals("cheap")) {
+                if (player.yourAnimals.get(i).name.equals("cow") || player.yourAnimals.get(i).name.equals("chicken") || player.yourAnimals.get(i).name.equals("cheap") || player.yourPlantedPlants.get(i).timeToGrow <= 0) {
                     amount += player.yourAnimals.get(i).amountInBuilding;
                 }
             }
-            player.setCash(amount * RandomNumberGenerator.randomBetween(1, 10));
+            player.setCash(amount * RandomNumberGenerator.randomBetween(2, 5));
         }
     }
 

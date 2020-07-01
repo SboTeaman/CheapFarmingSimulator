@@ -10,9 +10,9 @@ public class Buyable {
 
     public static void buyPlantSeed(Player player, Plant plant, int amount) {
         if (player.getCash() >= plant.value_kg) {
-            double value = plant.costOfHarvesting * amount;
+            double value = plant.costOfBuying * amount;
             if (player.yourSeeds.isEmpty()) {
-                player.yourSeeds.add(new Plant(plant.name, plant.costOfPlanting, plant.costOfProtectingFromParasite, plant.efficiency_ha, plant.timeToGrow, plant.costOfHarvesting, plant.value_kg, amount, plant.product));
+                player.yourSeeds.add(new Plant(plant.name, plant.costOfPlanting,plant.costOfProtectingFromParasite, plant.efficiency_ha, plant.timeToGrow, plant.costOfHarvesting, plant.product, amount, plant.value_kg));
                 player.setCash(-value);
 
             } else {
@@ -20,7 +20,7 @@ public class Buyable {
                     player.yourSeeds.get(0).amountInInventory += amount;
                 } else {
                     if (player.yourSeeds.size() == 1) {
-                        player.yourSeeds.add(new Plant(plant.name, plant.costOfPlanting, plant.costOfProtectingFromParasite, plant.efficiency_ha, plant.timeToGrow, plant.costOfHarvesting, plant.value_kg, amount, plant.product));
+                        player.yourSeeds.add(new Plant(plant.name, plant.costOfPlanting,plant.costOfProtectingFromParasite, plant.efficiency_ha, plant.timeToGrow, plant.costOfHarvesting, plant.product, amount, plant.value_kg));
                         player.setCash(-value);
                     } else
                         one:{
@@ -31,7 +31,7 @@ public class Buyable {
                                     break one;
                                 }
                             }
-                            player.yourSeeds.add(new Plant(plant.name, plant.costOfPlanting, plant.costOfProtectingFromParasite, plant.efficiency_ha, plant.timeToGrow, plant.costOfHarvesting, plant.value_kg, amount, plant.product));
+                            player.yourSeeds.add(new Plant(plant.name, plant.costOfPlanting,plant.costOfProtectingFromParasite, plant.efficiency_ha, plant.timeToGrow, plant.costOfHarvesting, plant.product, amount, plant.value_kg));
                             player.setCash(-value);
                         }
                 }

@@ -18,7 +18,7 @@ public class Saleable {
                     Random rn = new Random();
                     double valueOfTransaction = amount * plant.value_kg * rn.nextDouble();
                     player.setCash(valueOfTransaction);
-                    System.out.println("You successful sell " + amount + " of " + plant.name);
+                    System.out.println("You successful sell " + amount + " of " + plant.name + " for" + valueOfTransaction);
                     player.yourPlants.get(i).amountInInventory -= amount;
 
                     if (player.yourPlants.get(i).amountInInventory == 0) {
@@ -29,7 +29,10 @@ public class Saleable {
                 } else if (player.yourPlants.get(i).amountInInventory < amount) {
                     System.out.println("You don't have enough " + plant.name + " to sell");
                 }
+            }else {
+                System.out.println("You don't have " + plant.name + " to sell");
             }
+
         }
     }
 

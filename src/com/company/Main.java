@@ -21,28 +21,28 @@ public class Main {
 
             /*PLANTS SEEDS */
 
-            Plant cornSeed = new Plant("cornSeed", 25.0, 10, RandomNumberGenerator.randomBetween(200, 300), 52, 1.25, 200, 2.0, "corn");
-            Plant carrotSeed = new Plant("carrotSeed", 33.50, 11, RandomNumberGenerator.randomBetween(100, 150), 50, 2.3, 300, 3, "carrot");
-            Plant sunflowerSeed = new Plant("sunflowerSeed", 22.0, 15, RandomNumberGenerator.randomBetween(100, 220), 30, 0.25, 200, 2, "sunflower");
-            Plant potatoSeed = new Plant("potatoSeed", 13.0, 8, RandomNumberGenerator.randomBetween(150, 200), 35, 4.3, 400, 4, "potato");
-            Plant wheatSeed = new Plant("wheatSeed", 43.40, 8, RandomNumberGenerator.randomBetween(180, 200), 42, 2, 600, 6, "wheat");
-            Plant broccoliSeed = new Plant("broccoliSeed", 13.0, 7, RandomNumberGenerator.randomBetween(100, 120), 25, 3, 700, 7, "broccoli");
-            Plant onionSeed = new Plant("onionSeed", 23.0, 12, RandomNumberGenerator.randomBetween(100, 120), 30, 5.25, 200, 2, "onion");
-            Plant lettuceSeed = new Plant("lettuceSeed", 26.60, 5, RandomNumberGenerator.randomBetween(160, 200), 20, 2.25, 200, 2, "lettuce");
-            Plant tomatoSeed = new Plant("tomatoSeed", 33.0, 9, RandomNumberGenerator.randomBetween(100, 200), 33, 3.3, 400, 4, "tomato");
+            Plant cornSeed = new Plant("cornSeed", 25.0, 10, RandomNumberGenerator.randomBetween(200, 300), 2, 1.25, 200, 20, "corn");
+            Plant carrotSeed = new Plant("carrotSeed", 33.50, 11, RandomNumberGenerator.randomBetween(100, 150), 50, 2.3, 300, 30, "carrot");
+            Plant sunflowerSeed = new Plant("sunflowerSeed", 22.0, 15, RandomNumberGenerator.randomBetween(100, 220), 30, 0.25, 200, 20, "sunflower");
+            Plant potatoSeed = new Plant("potatoSeed", 13.0, 8, RandomNumberGenerator.randomBetween(150, 200), 35, 4.3, 400, 40, "potato");
+            Plant wheatSeed = new Plant("wheatSeed", 43.40, 8, RandomNumberGenerator.randomBetween(180, 200), 42, 2, 600, 60, "wheat");
+            Plant broccoliSeed = new Plant("broccoliSeed", 13.0, 7, RandomNumberGenerator.randomBetween(100, 120), 25, 3, 700, 70, "broccoli");
+            Plant onionSeed = new Plant("onionSeed", 23.0, 12, RandomNumberGenerator.randomBetween(100, 120), 30, 5.25, 200, 20, "onion");
+            Plant lettuceSeed = new Plant("lettuceSeed", 26.60, 5, RandomNumberGenerator.randomBetween(160, 200), 20, 2.25, 200, 20, "lettuce");
+            Plant tomatoSeed = new Plant("tomatoSeed", 33.0, 9, RandomNumberGenerator.randomBetween(100, 200), 33, 3.3, 400, 40, "tomato");
 
-            Plant appleSeed = new Plant("appleSeed", 300.0, 20, RandomNumberGenerator.randomBetween(30, 50), 100, 0.3, 1000, 1, "apple");
-            Plant pearSeed = new Plant("pearSeed", 250.0, 22, RandomNumberGenerator.randomBetween(35, 55), 120, 0.25, 2000, 2, "pear");
-            Plant cherrySeed = new Plant("cherrySeed", 400.0, 21, RandomNumberGenerator.randomBetween(40, 60), 130, 0.25, 3000, 3, "cherry");
-            Plant melonSeed = new Plant("melonSeed", 50.0, 16, RandomNumberGenerator.randomBetween(80, 110), 40, 4.3, 200, 2, "melon");
-            Plant watermelonSeed = new Plant("watermelonSeed", 55.50, 12, RandomNumberGenerator.randomBetween(90, 200), 47, 5.25, 250, 3, "watermelon");
-            Plant lemonSeed = new Plant("lemonSeed", 27.0, 5, RandomNumberGenerator.randomBetween(100, 200), 60, 0.25, 200, 2, "lemon");
-            Plant strawberriesSeed = new Plant("strawberriesSeed", 60.0, RandomNumberGenerator.randomBetween(100, 200), 200, 34, 6.25, 500, 5, "strawberries");
+            Plant appleSeed = new Plant("appleSeed", 300.0, 20, RandomNumberGenerator.randomBetween(30, 50), 100, 0.3, 1000, 10, "apple");
+            Plant pearSeed = new Plant("pearSeed", 250.0, 22, RandomNumberGenerator.randomBetween(35, 55), 120, 0.25, 2000, 20, "pear");
+            Plant cherrySeed = new Plant("cherrySeed", 400.0, 21, RandomNumberGenerator.randomBetween(40, 60), 130, 0.25, 3000, 30, "cherry");
+            Plant melonSeed = new Plant("melonSeed", 50.0, 16, RandomNumberGenerator.randomBetween(80, 110), 40, 4.3, 200, 20, "melon");
+            Plant watermelonSeed = new Plant("watermelonSeed", 55.50, 12, RandomNumberGenerator.randomBetween(90, 200), 47, 5.25, 250, 30, "watermelon");
+            Plant lemonSeed = new Plant("lemonSeed", 27.0, 5, RandomNumberGenerator.randomBetween(100, 200), 60, 0.25, 200, 20, "lemon");
+            Plant strawberriesSeed = new Plant("strawberriesSeed", 60.0, RandomNumberGenerator.randomBetween(100, 200), 200, 34, 6.25, 500, 50, "strawberries");
 
             /*ANIMALS */
-            Animal cow = new Animal("cow", 1000.0, 10.0, 400.0, 0.2, 2.0, "corn", "milk", "Cowshed");
-            Animal sheep = new Animal("sheep", 1200.0, 10.0, 350.0, 0.1, 2.0, "wheat", "wool", "Stable");
-            Animal pig = new Animal("pig", 800.0, 10.0, 200.0, 0.30, 2.0, "carrot", null, "Pigsty");
+            Animal cow = new Animal("cow", 1000.0, 10.0, 200.0, 0.2, 2.0, "corn", "milk", "Cowshed");
+            Animal sheep = new Animal("sheep", 1200.0, 10.0, 250.0, 0.1, 2.0, "wheat", "wool", "Stable");
+            Animal pig = new Animal("pig", 800.0, 10.0, 180.0, 0.30, 2.0, "carrot", null, "Pigsty");
             Animal chicken = new Animal("chicken", 200.0, 0.2, 50.0, 0.1, 2.0, "sunflower", "egg", "Chickencoop");
             Animal dog = new Animal("dog", 2000.0, 1.0, 100.0, 0.2, 2.0, "dogFood");
             Animal cat = new Animal("cat", 2200.0, 0.5, 100.0, 0.1, 2.0, "catFood");
@@ -324,12 +324,12 @@ public class Main {
                                     System.out.println("---------------------");
                                     System.out.println("Buy Animals");
                                     System.out.println("---------------------");
-                                    System.out.println("1 - " + cow.name + " " + cow.costOfPurchase+" $");
-                                    System.out.println("2 - " + sheep.name + " " + sheep.costOfPurchase+" $");
-                                    System.out.println("3 - " + pig.name + " " + pig.costOfPurchase+" $");
-                                    System.out.println("4 - " + chicken.name + " " + chicken.costOfPurchase+" $");
-                                    System.out.println("5 - " + cat.name + " " + cat.costOfPurchase+" $");
-                                    System.out.println("6 - " + dog.name + " " + dog.costOfPurchase+" $");
+                                    System.out.println("1 - " + cow.name + " " + cow.costOfPurchase + " $");
+                                    System.out.println("2 - " + sheep.name + " " + sheep.costOfPurchase + " $");
+                                    System.out.println("3 - " + pig.name + " " + pig.costOfPurchase + " $");
+                                    System.out.println("4 - " + chicken.name + " " + chicken.costOfPurchase + " $");
+                                    System.out.println("5 - " + cat.name + " " + cat.costOfPurchase + " $");
+                                    System.out.println("6 - " + dog.name + " " + dog.costOfPurchase + " $");
                                     System.out.println("---------------------");
                                     System.out.println("0 - Return");
                                     System.out.println("---------------------");
@@ -365,7 +365,7 @@ public class Main {
                                     break;
                                 case 6:
                                     System.out.println("---------------------");
-                                    System.out.println("Your plants: "+Player.playerList.get(whichPlayer).yourPlants);
+                                    System.out.println("Your plants: " + Player.playerList.get(whichPlayer).yourPlants);
                                     System.out.println("---------------------");
                                     System.out.println("Sell Plants");
                                     System.out.println("---------------------");
@@ -392,7 +392,7 @@ public class Main {
                                     Scanner scannerSellPlant = new Scanner(System.in);
                                     int choiceSellPlant = scannerSellPlant.nextInt();
 
-                                    System.out.println("How much you want to buy?");
+                                    System.out.println("How much you want to sell?");
                                     Scanner scannerSellAmount = new Scanner(System.in);
                                     int choiceSellAmount = scannerSellAmount.nextInt();
 
@@ -451,7 +451,7 @@ public class Main {
                                     break;
                                 case 7:
                                     System.out.println("---------------------");
-                                    System.out.println("Yours animals"+ Player.playerList.get(whichPlayer).yourAnimals);
+                                    System.out.println("Yours animals" + Player.playerList.get(whichPlayer).yourAnimals);
                                     System.out.println("---------------------");
                                     System.out.println("Sell Animals");
                                     System.out.println("---------------------");
@@ -521,6 +521,7 @@ public class Main {
                             System.out.println("4 - List of your seeds/saplings");
                             System.out.println("5 - List of your planted plants");
                             System.out.println("6 - List of your plants");
+                            System.out.println("7 - Silos status");
                             System.out.println("---------------------");
                             System.out.println("0 - Return");
 
@@ -552,6 +553,10 @@ public class Main {
                                 case 6:
                                     System.out.println("List of your plants:");
                                     System.out.println(Player.playerList.get(whichPlayer).yourPlants);
+                                    break;
+                                case 7:
+                                    System.out.println("Silos: "+Player.playerList.get(whichPlayer).isSilos);
+
                                     break;
                             }
                             break;
@@ -652,6 +657,7 @@ public class Main {
                                             Plant.plant(Player.playerList.get(whichPlayer), strawberriesSeed, choiceAmountToPlant);
                                             break;
                                     }
+                                    break;
                                 case 2:
                                     Plant.harvest(Player.playerList.get(whichPlayer));
                                     break;

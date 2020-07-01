@@ -7,7 +7,6 @@ public  class World {
 
     public static void disasters(Player player,int week) {
 
-
         if (!player.yourPlantedPlants.isEmpty()) {
             for (int i = 0; i < player.yourPlantedPlants.size(); i++) {
                 int flood = RandomNumberGenerator.randomBetween(0, 100);
