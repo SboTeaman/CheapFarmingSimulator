@@ -1,9 +1,8 @@
-package com.company;
+package notBuildings;
 
 import buildings.Farm;
-import animals.Animal;
 import buildings.Building;
-import interfaces.RandomNumberGenerator;
+import interfaces.RandomNumberGeneratorInt;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,14 +23,14 @@ public class Player {
 
     Player(String name) {
         this.name = name;
-        this.cash = 5000.0;
+        this.cash = 5000000.0;
     }
 
     public static void isCash(Player player) {
         if (player.cash <= 0) {
             for (int i = 0; i < player.yourPlantedPlants.size(); i++) {
-                if (RandomNumberGenerator.randomBetween(0, 10) == 5) {
-                    player.yourPlantedPlants.get(i).amountInInventory -= RandomNumberGenerator.randomBetween(0, player.yourPlantedPlants.get(i).amountInInventory);
+                if (RandomNumberGeneratorInt.randomBetween(0, 10) == 5) {
+                    player.yourPlantedPlants.get(i).amountInInventory -= RandomNumberGeneratorInt.randomBetween(0, player.yourPlantedPlants.get(i).amountInInventory);
                     if (player.yourPlantedPlants.get(i).amountInInventory == 0) {
                         player.yourPlantedPlants.remove(i);
                     }

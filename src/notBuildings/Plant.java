@@ -1,9 +1,12 @@
-package com.company;
+package notBuildings;
 
-import interfaces.RandomNumberGenerator;
+import interfaces.Buyable;
+import interfaces.RandomNumberGeneratorDouble;
+import interfaces.RandomNumberGeneratorInt;
+import interfaces.Saleable;
 
 @SuppressWarnings("SuspiciousListRemoveInLoop")
-public class Plant {
+public class Plant implements Buyable, Saleable {
 
     public final double value_kg;
     public final double costOfPlanting;
@@ -98,14 +101,14 @@ public class Plant {
 
             for (int i = 0; i < player.yourPlantedPlants.size(); i++) {
                 double amount = player.yourPlantedPlants.get(i).amountInInventory * player.yourPlantedPlants.get(i).efficiency_ha;
-                double value = player.yourSeeds.get(i).costOfHarvesting * amount;
+                double value = player.yourPlantedPlants.get(i).costOfHarvesting * amount;
 
                 if (player.yourPlantedPlants.get(i).timeToGrow <= 0) {
                     player.farm.get(0).fieldsSlots += player.yourPlantedPlants.get(i).amountInInventory;
-                    player.yourPlantedPlants.remove(i);
                     System.out.println("You successful harvest your plants");
-                    player.setCash(-value);
                     player.setCash(amount * player.yourPlantedPlants.get(i).value_kg);
+                    player.yourPlantedPlants.remove(i);
+                    player.setCash(-value);
                 }
             }
         } else if (player.isSilos) {
@@ -129,7 +132,7 @@ public class Plant {
     }
 
     public static void protectFromParasite(Player player) {
-        int insects = RandomNumberGenerator.randomBetween(0, 100);
+        int insects = RandomNumberGeneratorInt.randomBetween(0, 100);
 
         for (int i = 0; i < player.yourPlantedPlants.size(); i++) {
             int value = 0;
@@ -147,6 +150,69 @@ public class Plant {
         }
     }
 
+    @Override
+    public void sell(Player player, int amount) {
+
+        for (int i = 0; i < player.yourPlants.size(); i++) {
+
+            if (player.yourPlants.get(i).name.equals(this.product)) {
+                if (player.yourPlants.get(i).amountInInventory >= amount) {
+
+                    double valueOfTransaction = amount * this.value_kg * RandomNumberGeneratorDouble.randomBetween(0.8, 1.2);
+                    player.setCash(valueOfTransaction);
+                    System.out.println("You successful sell " + amount + " of " + this.name + " for" + valueOfTransaction);
+                    player.yourPlants.get(i).amountInInventory -= amount;
+
+                    if (player.yourPlants.get(i).amountInInventory == 0) {
+                        player.yourPlants.remove(i);
+                        break;
+                    }
+
+                } else if (player.yourPlants.get(i).amountInInventory < amount) {
+                    System.out.println("You don't have enough " + this.name + " to sell");
+                }
+            } else {
+                System.out.println("You don't have " + this.name + " to sell");
+            }
+
+        }
+    }
+
+    @Override
+    public void buy(Player player, int amount) {
+        if (player.getCash() >= this.value_kg) {
+            double value = this.costOfBuying * amount;
+            if (player.yourSeeds.isEmpty()) {
+                player.yourSeeds.add(new Plant(this.name, this.costOfPlanting, this.costOfProtectingFromParasite, this.efficiency_ha, this.timeToGrow, this.costOfHarvesting, this.product, amount, this.value_kg));
+                player.setCash(-value);
+
+            } else {
+                if (player.yourSeeds.size() == 1 && player.yourSeeds.get(0).name.equals(this.name)) {
+                    player.yourSeeds.get(0).amountInInventory += amount;
+                } else {
+                    if (player.yourSeeds.size() == 1) {
+                        player.yourSeeds.add(new Plant(this.name, this.costOfPlanting, this.costOfProtectingFromParasite, this.efficiency_ha, this.timeToGrow, this.costOfHarvesting, this.product, amount, this.value_kg));
+                        player.setCash(-value);
+                    } else
+                        one:{
+                            for (int i = 0; i < player.yourSeeds.size(); i++) {
+                                if (player.yourSeeds.get(i).name.contains(this.name)) {
+                                    player.yourSeeds.get(i).amountInInventory += amount;
+                                    player.setCash(-value);
+                                    break one;
+                                }
+                            }
+                            player.yourSeeds.add(new Plant(this.name, this.costOfPlanting, this.costOfProtectingFromParasite, this.efficiency_ha, this.timeToGrow, this.costOfHarvesting, this.product, amount, this.value_kg));
+                            player.setCash(-value);
+                        }
+                }
+            }
+            System.out.println("You bought " + amount + " " + this.name);
+        } else {
+            System.out.println("You don't have enough money!");
+        }
+    }
+
     public String toString() {
         return "\nName: " + this.name +
                 "\nCost of Planting: " + this.costOfPlanting +
@@ -158,6 +224,5 @@ public class Plant {
                 " Amount: " + this.amountInInventory + "\n";
 
     }
-
 }
 

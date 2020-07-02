@@ -2,7 +2,7 @@ package interfaces;
 
 import java.util.Random;
 
-public interface RandomNumberGenerator {
+public interface RandomNumberGeneratorInt {
 
     static int randomBetween(int start, int end) {
         Random random = new Random();

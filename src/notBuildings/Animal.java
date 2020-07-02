@@ -1,9 +1,11 @@
-package animals;
+package notBuildings;
 
-import interfaces.RandomNumberGenerator;
-import com.company.Player;
+import interfaces.Buyable;
+import interfaces.RandomNumberGeneratorDouble;
+import interfaces.RandomNumberGeneratorInt;
+import interfaces.Saleable;
 
-public class Animal {
+public class Animal implements Buyable,Saleable {
     public final String name;
     public final double costOfPurchase;
     public final double gainWeightForWeek;
@@ -77,7 +79,7 @@ public class Animal {
         if (!player.yourAnimals.isEmpty()) {
             for (int i = 0; i < player.yourAnimals.size(); i++) {
                 if (player.yourAnimals.get(i).amountInBuilding >= 2 && player.yourAnimals.get(i).timeToGrowUp <= 0) {
-                    if (RandomNumberGenerator.randomBetween(0, 10) == 5) {
+                    if (RandomNumberGeneratorInt.randomBetween(0, 10) == 5) {
                         player.yourAnimals.get(i).amountInBuilding += 1;
                     }
                 }
@@ -94,7 +96,7 @@ public class Animal {
                     player.yourPlants.get(i).amountInInventory -= amount;
 
                 } else if (player.yourPlants.isEmpty()) {
-                    player.setCash(amount * RandomNumberGenerator.randomBetween(1, 3));
+                    player.setCash(amount * RandomNumberGeneratorInt.randomBetween(1, 3));
                 }
             }
         }
@@ -108,7 +110,7 @@ public class Animal {
                     amount += player.yourAnimals.get(i).amountInBuilding;
                 }
             }
-            player.setCash(amount * RandomNumberGenerator.randomBetween(2, 5));
+            player.setCash(amount * RandomNumberGeneratorInt.randomBetween(2, 5));
         }
     }
 
@@ -123,6 +125,82 @@ public class Animal {
                 "\namountOfFoodPerWeek: " + amountOfFoodPerWeek +
                 "\ntypeOfFoodThatCanEat: " + typeOfFoodThatCanEat +
                 "\namountInBuilding: " + amountInBuilding + "\n";
+    }
+
+    @Override
+    public void sell(Player player, int amount) {
+        for (int i = 0; i < player.yourAnimals.size(); i++) {
+            if (player.yourBuildings.get(i).type.equals(this.buildingRequired)) {
+
+                if (player.yourAnimals.get(i).name.equals(this.name)) {
+                    if (player.yourAnimals.get(i).amountInBuilding >= amount) {
+
+                        double valueOfTransaction = amount * this.costOfPurchase * RandomNumberGeneratorDouble.randomBetween(0.8, 1.2);
+                        player.setCash(valueOfTransaction);
+                        System.out.println("You successful sell " + amount + " of " + this.name);
+                        player.yourAnimals.get(i).amountInBuilding -= amount;
+                        player.yourBuildings.get(i).capacity += amount;
+                        if (player.yourAnimals.get(i).amountInBuilding == 0) {
+                            player.yourAnimals.remove(i);
+                            break;
+                        }
+
+                    } else if (player.yourAnimals.get(i).amountInBuilding < amount) {
+                        System.out.println("You don't have enough " + this.name + " to sell");
+                    }
+                }
+                System.out.println("You don't have " + this.name + " to sell");
+            }
+        }
+    }
+
+    @Override
+    public void buy(Player player, int amount) {
+        if (!player.yourBuildings.isEmpty()) {
+            double value = this.costOfPurchase * amount;
+            for (int n = 0; n < player.yourBuildings.size(); n++) {
+                if (player.yourBuildings.get(n).type.equals(this.buildingRequired)) {
+                    if (player.getCash() >= this.costOfPurchase) {
+                        if (player.yourBuildings.get(n).capacity >= amount) {
+                            player.yourBuildings.get(n).capacity -= amount;
+
+                            if (player.yourAnimals.isEmpty()) {
+                                player.yourAnimals.add(new Animal(this.name, this.costOfPurchase, this.weight, this.timeToGrowUp, this.gainWeightForWeek, this.amountOfFoodPerWeek, this.typeOfFoodThatCanEat, amount));
+                                player.setCash(-value);
+                            } else {
+                                if (player.yourAnimals.size() == 1 && player.yourAnimals.get(0).name.equals(this.name)) {
+                                    player.yourAnimals.get(0).amountInBuilding += amount;
+                                } else {
+                                    if (player.yourAnimals.size() == 1) {
+                                        player.yourAnimals.add(new Animal(this.name, this.costOfPurchase, this.weight, this.timeToGrowUp, this.gainWeightForWeek, this.amountOfFoodPerWeek, this.typeOfFoodThatCanEat, amount));
+                                        player.setCash(-value);
+                                    } else
+                                        one:{
+                                            for (int i = 0; i < player.yourAnimals.size(); i++) {
+                                                if (player.yourAnimals.get(i).name.contains(this.name)) {
+                                                    player.yourAnimals.get(i).amountInBuilding += amount;
+                                                    player.setCash(-value);
+                                                    break one;
+                                                }
+                                            }
+                                            player.yourAnimals.add(new Animal(this.name, this.costOfPurchase, this.weight, this.timeToGrowUp, this.gainWeightForWeek, this.amountOfFoodPerWeek, this.typeOfFoodThatCanEat, amount));
+                                            player.setCash(-value);
+                                        }
+                                }
+                            }
+                            System.out.println("You bought " + amount + " of " + this.name);
+                        } else {
+                            System.out.println("You don't enough space");
+                        }
+                    } else {
+                        System.out.println("You don't have enough money!");
+                    }
+                }
+
+            }
+        } else {
+            System.out.println("You don't have any buildings");
+        }
     }
 }
 

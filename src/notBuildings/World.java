@@ -1,21 +1,21 @@
-package com.company;
+package notBuildings;
 
 
-import interfaces.RandomNumberGenerator;
+import interfaces.RandomNumberGeneratorInt;
 
 public  class World {
 
-    public static void disasters(Player player,int week) {
+    public static void disasters(Player player, int week) {
 
         if (!player.yourPlantedPlants.isEmpty()) {
             for (int i = 0; i < player.yourPlantedPlants.size(); i++) {
-                int flood = RandomNumberGenerator.randomBetween(0, 100);
-                int drought = RandomNumberGenerator.randomBetween(0, 100);
-                int insects = RandomNumberGenerator.randomBetween(0, 100);
+                int flood = RandomNumberGeneratorInt.randomBetween(0, 100);
+                int drought = RandomNumberGeneratorInt.randomBetween(0, 100);
+                int insects = RandomNumberGeneratorInt.randomBetween(0, 100);
 
                 if (week > 10 && week < 20) {
                     if (flood == 5) {
-                        player.yourPlantedPlants.get(i).timeToGrow += RandomNumberGenerator.randomBetween(10, 15);
+                        player.yourPlantedPlants.get(i).timeToGrow += RandomNumberGeneratorInt.randomBetween(10, 15);
                     }
                 }
                 if (week > 20 && week < 30) {
