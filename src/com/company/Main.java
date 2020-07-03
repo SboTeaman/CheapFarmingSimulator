@@ -87,7 +87,7 @@ public class Main {
                     System.out.println("2 - Statistic of yours Farms");
                     System.out.println("3 - Manage your farms:");
                     System.out.println("---------------------");
-                    System.out.println("0 - End a week");
+                    System.out.println("4 - End a week");
 
 
                     Scanner scannerMenu = new Scanner(System.in);
@@ -666,7 +666,7 @@ public class Main {
                     }
                 }
                 while (choiceMenu < 4);
-                if (choiceMenu < 4) {
+                if (choiceMenu >= 4) {
                     break;
                 }
 
