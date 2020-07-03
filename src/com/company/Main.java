@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 public class Main {
 
-
     public static void main(String[] args) {
         Player.newPlayer();
 
@@ -22,7 +21,7 @@ public class Main {
 
             /*PLANTS SEEDS */
 
-            Plant cornSeed = new Plant("cornSeed", 25.0, 10, RandomNumberGeneratorInt.randomBetween(200, 300), 2, 1.25, 200, 20, "corn");
+            Plant cornSeed = new Plant("cornSeed", 25.0, 10, RandomNumberGeneratorInt.randomBetween(200, 300), 20, 1.25, 200, 20, "corn");
             Plant carrotSeed = new Plant("carrotSeed", 33.50, 11, RandomNumberGeneratorInt.randomBetween(100, 150), 50, 2.3, 300, 30, "carrot");
             Plant sunflowerSeed = new Plant("sunflowerSeed", 22.0, 15, RandomNumberGeneratorInt.randomBetween(100, 220), 30, 0.25, 200, 20, "sunflower");
             Plant potatoSeed = new Plant("potatoSeed", 13.0, 8, RandomNumberGeneratorInt.randomBetween(150, 200), 35, 4.3, 400, 40, "potato");
@@ -232,7 +231,6 @@ public class Main {
                                         int choiceHowMuchField = scannerField.nextInt();
                                         Player.playerList.get(whichPlayer).farm.get(0).buy(Player.playerList.get(whichPlayer), choiceHowMuchField);
                                     }
-
                                     break;
                                 }
                                 case 4:
@@ -264,58 +262,58 @@ public class Main {
 
                                     System.out.println("How much you want to buy?");
                                     Scanner scannerBuyAmount = new Scanner(System.in);
-                                    int choiceBuyAmount = scannerBuyAmount.nextInt();
+                                    int choicePlantAmount = scannerBuyAmount.nextInt();
 
                                     switch (choicePlant) {
                                         case 0:
                                             break;
                                         case 1:
-                                            cornSeed.buy(Player.playerList.get(whichPlayer), choicePlant);
+                                            cornSeed.buy(Player.playerList.get(whichPlayer), choicePlantAmount);
                                             break;
                                         case 2:
-                                            carrotSeed.buy(Player.playerList.get(whichPlayer), choicePlant);
+                                            carrotSeed.buy(Player.playerList.get(whichPlayer), choicePlantAmount);
                                             break;
                                         case 3:
-                                            sunflowerSeed.buy(Player.playerList.get(whichPlayer), choicePlant);
+                                            sunflowerSeed.buy(Player.playerList.get(whichPlayer), choicePlantAmount);
                                             break;
                                         case 4:
-                                            potatoSeed.buy(Player.playerList.get(whichPlayer), choicePlant);
+                                            potatoSeed.buy(Player.playerList.get(whichPlayer), choicePlantAmount);
                                             break;
                                         case 5:
-                                            wheatSeed.buy(Player.playerList.get(whichPlayer), choicePlant);
+                                            wheatSeed.buy(Player.playerList.get(whichPlayer), choicePlantAmount);
                                             break;
                                         case 6:
-                                            broccoliSeed.buy(Player.playerList.get(whichPlayer), choicePlant);
+                                            broccoliSeed.buy(Player.playerList.get(whichPlayer), choicePlantAmount);
                                             break;
                                         case 7:
-                                            onionSeed.buy(Player.playerList.get(whichPlayer), choicePlant);
+                                            onionSeed.buy(Player.playerList.get(whichPlayer), choicePlantAmount);
                                             break;
                                         case 8:
-                                            lettuceSeed.buy(Player.playerList.get(whichPlayer), choicePlant);
+                                            lettuceSeed.buy(Player.playerList.get(whichPlayer), choicePlantAmount);
                                             break;
                                         case 9:
-                                            tomatoSeed.buy(Player.playerList.get(whichPlayer), choicePlant);
+                                            tomatoSeed.buy(Player.playerList.get(whichPlayer), choicePlantAmount);
                                             break;
                                         case 10:
-                                            appleSeed.buy(Player.playerList.get(whichPlayer), choicePlant);
+                                            appleSeed.buy(Player.playerList.get(whichPlayer), choicePlantAmount);
                                             break;
                                         case 11:
-                                            pearSeed.buy(Player.playerList.get(whichPlayer), choicePlant);
+                                            pearSeed.buy(Player.playerList.get(whichPlayer), choicePlantAmount);
                                             break;
                                         case 12:
-                                            cherrySeed.buy(Player.playerList.get(whichPlayer), choicePlant);
+                                            cherrySeed.buy(Player.playerList.get(whichPlayer), choicePlantAmount);
                                             break;
                                         case 13:
-                                            melonSeed.buy(Player.playerList.get(whichPlayer), choicePlant);
+                                            melonSeed.buy(Player.playerList.get(whichPlayer), choicePlantAmount);
                                             break;
                                         case 14:
-                                            watermelonSeed.buy(Player.playerList.get(whichPlayer), choicePlant);
+                                            watermelonSeed.buy(Player.playerList.get(whichPlayer), choicePlantAmount);
                                             break;
                                         case 15:
-                                            lemonSeed.buy(Player.playerList.get(whichPlayer), choicePlant);
+                                            lemonSeed.buy(Player.playerList.get(whichPlayer), choicePlantAmount);
                                             break;
                                         case 16:
-                                            strawberriesSeed.buy(Player.playerList.get(whichPlayer), choicePlant);
+                                            strawberriesSeed.buy(Player.playerList.get(whichPlayer), choicePlantAmount);
                                             break;
                                     }
                                     break;
@@ -370,22 +368,22 @@ public class Main {
                                     System.out.println("---------------------");
                                     System.out.println("Sell Plants");
                                     System.out.println("---------------------");
-                                    System.out.println("1 - " + cornSeed.name + " " + cornSeed.value_kg + " for One Kg");
-                                    System.out.println("2 - " + carrotSeed.name + " " + carrotSeed.value_kg + " for One Kg");
-                                    System.out.println("3 - " + sunflowerSeed.name + " " + sunflowerSeed.value_kg + " for One Kg");
-                                    System.out.println("4 - " + potatoSeed.name + " " + potatoSeed.value_kg + " for One Kg");
-                                    System.out.println("5 - " + wheatSeed.name + " " + wheatSeed.value_kg + " for One Kg");
-                                    System.out.println("6 - " + broccoliSeed.name + " " + broccoliSeed.value_kg + " for One Kg");
-                                    System.out.println("7 - " + onionSeed.name + " " + onionSeed.value_kg + " for One Kg");
-                                    System.out.println("8 - " + lettuceSeed.name + " " + lettuceSeed.value_kg + " for One Kg");
-                                    System.out.println("9 - " + tomatoSeed.name + " " + tomatoSeed.value_kg + " for One Kg");
-                                    System.out.println("10 - " + appleSeed.name + " " + appleSeed.value_kg + " for One Kg");
-                                    System.out.println("11 - " + pearSeed.name + " " + pearSeed.value_kg + " for One Kg");
-                                    System.out.println("12 - " + cherrySeed.name + " " + cherrySeed.value_kg + " for One Kg");
-                                    System.out.println("13 - " + melonSeed.name + " " + melonSeed.value_kg + " for One Ha");
-                                    System.out.println("14 - " + watermelonSeed.name + " " + watermelonSeed.value_kg + "f or One Kg");
-                                    System.out.println("15 - " + lemonSeed.name + " " + lemonSeed.value_kg + " for One Kg");
-                                    System.out.println("16 - " + strawberriesSeed.name + " " + strawberriesSeed.value_kg + " for One Kg");
+                                    System.out.println("1 - " + cornSeed.name);
+                                    System.out.println("2 - " + carrotSeed.name);
+                                    System.out.println("3 - " + sunflowerSeed.name);
+                                    System.out.println("4 - " + potatoSeed.name);
+                                    System.out.println("5 - " + wheatSeed.name);
+                                    System.out.println("6 - " + broccoliSeed.name);
+                                    System.out.println("7 - " + onionSeed.name);
+                                    System.out.println("8 - " + lettuceSeed.name);
+                                    System.out.println("9 - " + tomatoSeed.name);
+                                    System.out.println("10 - " + appleSeed.name);
+                                    System.out.println("11 - " + pearSeed.name);
+                                    System.out.println("12 - " + cherrySeed.name);
+                                    System.out.println("13 - " + melonSeed.name);
+                                    System.out.println("14 - " + watermelonSeed.name);
+                                    System.out.println("15 - " + lemonSeed.name);
+                                    System.out.println("16 - " + strawberriesSeed.name);
                                     System.out.println("---------------------");
                                     System.out.println("0 - Return");
                                     System.out.println("---------------------");
@@ -507,7 +505,6 @@ public class Main {
                                     Scanner scannerField = new Scanner(System.in);
                                     int choiceHowMuchField = scannerField.nextInt();
                                     Player.playerList.get(whichPlayer).farm.get(0).sell(Player.playerList.get(whichPlayer), choiceHowMuchField);
-
                             }
 
                         }
@@ -525,7 +522,6 @@ public class Main {
                             System.out.println("7 - Silos status");
                             System.out.println("---------------------");
                             System.out.println("0 - Return");
-
 
                             Scanner scannerStatistic = new Scanner(System.in);
                             int choiceStatistic = scannerStatistic.nextInt();
@@ -572,12 +568,13 @@ public class Main {
                             System.out.println("---------------------");
                             System.out.println("0 - Return");
 
-
                             Scanner scannerManageFarm = new Scanner(System.in);
                             int choiceManageFarm = scannerManageFarm.nextInt();
 
                             switch (choiceManageFarm) {
                                 case 1:
+                                    System.out.println("---------------------");
+                                    System.out.println("Your seeds: " + Player.playerList.get(whichPlayer).yourSeeds);
                                     System.out.println("---------------------");
                                     System.out.println("which plant you want to plant:");
                                     System.out.println("---------------------");

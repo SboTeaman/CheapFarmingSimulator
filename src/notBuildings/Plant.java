@@ -5,6 +5,8 @@ import interfaces.RandomNumberGeneratorDouble;
 import interfaces.RandomNumberGeneratorInt;
 import interfaces.Saleable;
 
+import java.util.Scanner;
+
 @SuppressWarnings("SuspiciousListRemoveInLoop")
 public class Plant implements Buyable, Saleable {
 
@@ -159,13 +161,22 @@ public class Plant implements Buyable, Saleable {
                 if (player.yourPlants.get(i).amountInInventory >= amount) {
 
                     double valueOfTransaction = amount * this.value_kg * RandomNumberGeneratorDouble.randomBetween(0.8, 1.2);
-                    player.setCash(valueOfTransaction);
-                    System.out.println("You successful sell " + amount + " of " + this.name + " for" + valueOfTransaction);
-                    player.yourPlants.get(i).amountInInventory -= amount;
 
-                    if (player.yourPlants.get(i).amountInInventory == 0) {
-                        player.yourPlants.remove(i);
-                        break;
+                    System.out.println("You can sell " + this.name + " for " + valueOfTransaction + "\nDo you want to do this \n 1- Yes\n 2- no");
+
+                    Scanner scannerYesOrNot = new Scanner(System.in);
+                    int choicerYesOrNot = scannerYesOrNot.nextInt();
+
+                    if (choicerYesOrNot == 1) {
+
+                        player.setCash(valueOfTransaction);
+                        System.out.println("You successful sell " + amount + " of " + this.name + " for" + valueOfTransaction);
+                        player.yourPlants.get(i).amountInInventory -= amount;
+                        if (player.yourPlants.get(i).amountInInventory == 0) {
+                            player.yourPlants.remove(i);
+                            break;
+                        }
+
                     }
 
                 } else if (player.yourPlants.get(i).amountInInventory < amount) {

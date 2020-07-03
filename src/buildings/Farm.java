@@ -10,7 +10,6 @@ public class Farm implements Buyable, Saleable {
     public final int maxFieldsSlots;
     public final String name;
     public final double price;
-    public final double priceForField = 1;
     public int fieldsSlots;
 
 
@@ -21,14 +20,11 @@ public class Farm implements Buyable, Saleable {
         this.maxFieldsSlots = maxFieldsSlots;
     }
 
-
     public String toString() {
         return " name: " + this.name +
                 " price: " + this.price +
                 " field Slots: " + this.fieldsSlots +
                 " max field slots: " + this.maxFieldsSlots;
-
-
     }
 
     public void buyFarm(Player player) {
@@ -54,7 +50,6 @@ public class Farm implements Buyable, Saleable {
             System.out.println("You don't have enough money to buy: " + this.name);
         }
     }
-
 
     /*Method is used for selling field in farm*/
     @Override
@@ -93,6 +88,5 @@ public class Farm implements Buyable, Saleable {
             System.out.println("You don't have enough money for new field!");
         }
     }
-
 }
 

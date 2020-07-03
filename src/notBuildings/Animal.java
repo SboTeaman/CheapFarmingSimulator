@@ -5,7 +5,9 @@ import interfaces.RandomNumberGeneratorDouble;
 import interfaces.RandomNumberGeneratorInt;
 import interfaces.Saleable;
 
-public class Animal implements Buyable,Saleable {
+import java.util.Scanner;
+
+public class Animal implements Buyable, Saleable {
     public final String name;
     public final double costOfPurchase;
     public final double gainWeightForWeek;
@@ -115,19 +117,6 @@ public class Animal implements Buyable,Saleable {
     }
 
     @Override
-    public String toString() {
-        return "Yours Animals: " +
-                "\nname: " + name +
-                "\ncostOfPurchase: " + costOfPurchase +
-                "\nWeight: " + weight +
-                "\ntimeToGrowUp: " + timeToGrowUp +
-                "\ngainWeightForWeek: " + gainWeightForWeek +
-                "\namountOfFoodPerWeek: " + amountOfFoodPerWeek +
-                "\ntypeOfFoodThatCanEat: " + typeOfFoodThatCanEat +
-                "\namountInBuilding: " + amountInBuilding + "\n";
-    }
-
-    @Override
     public void sell(Player player, int amount) {
         for (int i = 0; i < player.yourAnimals.size(); i++) {
             if (player.yourBuildings.get(i).type.equals(this.buildingRequired)) {
@@ -135,14 +124,24 @@ public class Animal implements Buyable,Saleable {
                 if (player.yourAnimals.get(i).name.equals(this.name)) {
                     if (player.yourAnimals.get(i).amountInBuilding >= amount) {
 
-                        double valueOfTransaction = amount * this.costOfPurchase * RandomNumberGeneratorDouble.randomBetween(0.8, 1.2);
-                        player.setCash(valueOfTransaction);
-                        System.out.println("You successful sell " + amount + " of " + this.name);
-                        player.yourAnimals.get(i).amountInBuilding -= amount;
-                        player.yourBuildings.get(i).capacity += amount;
-                        if (player.yourAnimals.get(i).amountInBuilding == 0) {
-                            player.yourAnimals.remove(i);
-                            break;
+                        double valueOfTransaction = amount * (this.costOfPurchase / 2) * RandomNumberGeneratorDouble.randomBetween(0.9, 1.2);
+
+                        System.out.println("You can sell " + this.name + " for " + valueOfTransaction + "\nDo you want to do this \n 1- Yes\n 2- no");
+
+                        Scanner scannerYesOrNot = new Scanner(System.in);
+                        int choicerYesOrNot = scannerYesOrNot.nextInt();
+
+                        if (choicerYesOrNot == 1) {
+
+                            player.setCash(valueOfTransaction);
+                            System.out.println("You successful sell " + amount + " of " + this.name);
+                            player.yourAnimals.get(i).amountInBuilding -= amount;
+                            player.yourBuildings.get(i).capacity += amount;
+
+                            if (player.yourAnimals.get(i).amountInBuilding == 0) {
+                                player.yourAnimals.remove(i);
+                                break;
+                            }
                         }
 
                     } else if (player.yourAnimals.get(i).amountInBuilding < amount) {
@@ -201,6 +200,19 @@ public class Animal implements Buyable,Saleable {
         } else {
             System.out.println("You don't have any buildings");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Yours Animals: " +
+                "\nname: " + name +
+                "\ncostOfPurchase: " + costOfPurchase +
+                "\nWeight: " + weight +
+                "\ntimeToGrowUp: " + timeToGrowUp +
+                "\ngainWeightForWeek: " + gainWeightForWeek +
+                "\namountOfFoodPerWeek: " + amountOfFoodPerWeek +
+                "\ntypeOfFoodThatCanEat: " + typeOfFoodThatCanEat +
+                "\namountInBuilding: " + amountInBuilding + "\n";
     }
 }
 

@@ -1,6 +1,5 @@
 package buildings;
 
-
 import notBuildings.Player;
 
 public class Building {
@@ -22,7 +21,6 @@ public class Building {
     public Building(String name, double price) {
         this.name = name;
         this.price = price;
-
     }
 
     public double getPrice() {

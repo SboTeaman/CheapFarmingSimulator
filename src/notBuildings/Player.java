@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 @SuppressWarnings("SuspiciousListRemoveInLoop")
 public class Player {
-    public static List<Player> playerList = new ArrayList<>();
+    public static final List<Player> playerList = new ArrayList<>();
     private final String name;
     public List<Farm> farm = new ArrayList<>();
     public List<Plant> yourSeeds = new ArrayList<>();
@@ -23,7 +23,7 @@ public class Player {
 
     Player(String name) {
         this.name = name;
-        this.cash = 5000000.0;
+        this.cash = 5000.0;
     }
 
     public static void isCash(Player player) {
@@ -69,9 +69,7 @@ public class Player {
         return name;
     }
 
-
     public String toString() {
-
         return "name: " + this.name +
                 "\ncash: " + this.cash;
     }
