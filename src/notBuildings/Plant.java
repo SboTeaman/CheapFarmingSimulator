@@ -21,6 +21,7 @@ public class Plant implements Buyable, Saleable {
     public int efficiency_ha;
     public int timeToGrow;
 
+
     public Plant(String name, double costOfPlanting, int costOfProtectingFromParasite, int efficiency_Ha, int timeToGrow, double costOfHarvesting, double costOfBuying, double value_KG, String product) {
         this.name = name;
         this.costOfPlanting = costOfPlanting;
@@ -31,6 +32,7 @@ public class Plant implements Buyable, Saleable {
         this.costOfBuying = costOfBuying;
         this.value_kg = value_KG;
         this.product = product;
+
     }
 
     public Plant(String name, double costOfPlanting, int costOfProtectingFromParasite, int efficiency_ha, int timeToGrow, double costOfHarvesting, String product, int amountInInventory, double value_kg) {
@@ -48,7 +50,7 @@ public class Plant implements Buyable, Saleable {
     public static void plant(Player player, Plant plant, int amount) {
 
         for (int i = 0; i < player.yourSeeds.size(); i++) {
-            if ((player.yourSeeds.get(i).name.contains(plant.name))) {
+            if (player.yourSeeds.get(i).name.contains(plant.name)) {
                 if (player.yourSeeds.get(i).amountInInventory >= amount) {
                     if (player.farm.get(0).fieldsSlots >= amount) {
                         if (player.yourSeeds.get(i).amountInInventory == 0) {
@@ -106,11 +108,17 @@ public class Plant implements Buyable, Saleable {
                 double value = player.yourPlantedPlants.get(i).costOfHarvesting * amount;
 
                 if (player.yourPlantedPlants.get(i).timeToGrow <= 0) {
-                    player.farm.get(0).fieldsSlots += player.yourPlantedPlants.get(i).amountInInventory;
                     System.out.println("You successful harvest your plants");
-                    player.setCash(amount * player.yourPlantedPlants.get(i).value_kg);
-                    player.yourPlantedPlants.remove(i);
-                    player.setCash(-value);
+                    if (player.yourPlantedPlants.get(i).name.equals("appleseed") || player.yourPlantedPlants.get(i).name.equals("pearSeed") || player.yourPlantedPlants.get(i).name.equals("cherrySeed") || player.yourPlantedPlants.get(i).name.equals("lemonSeed")) {
+                        player.setCash(amount * player.yourPlantedPlants.get(i).value_kg);
+                        player.yourPlantedPlants.get(i).timeToGrow = 52;
+                    } else {
+
+                        player.farm.get(0).fieldsSlots += player.yourPlantedPlants.get(i).amountInInventory;
+                        player.setCash(amount * player.yourPlantedPlants.get(i).value_kg);
+                        player.yourPlantedPlants.remove(i);
+                        player.setCash(-value);
+                    }
                 }
             }
         } else if (player.isSilos) {
@@ -126,12 +134,19 @@ public class Plant implements Buyable, Saleable {
                             player.yourPlantedPlants.get(i).amountInInventory * player.yourPlantedPlants.get(i).efficiency_ha,
                             player.yourPlantedPlants.get(i).value_kg));
 
-                    player.farm.get(0).fieldsSlots += player.yourPlantedPlants.get(i).amountInInventory;
-                    player.yourPlantedPlants.remove(i);
+
+                    if (player.yourPlantedPlants.get(i).name.equals("appleseed") || player.yourPlantedPlants.get(i).name.equals("pearSeed") || player.yourPlantedPlants.get(i).name.equals("cherrySeed") || player.yourPlantedPlants.get(i).name.equals("lemonSeed")) {
+                        player.yourPlantedPlants.get(i).timeToGrow = 52;
+
+                    } else {
+                        player.farm.get(0).fieldsSlots += player.yourPlantedPlants.get(i).amountInInventory;
+                        player.yourPlantedPlants.remove(i);
+                    }
                 }
             }
         }
     }
+
 
     public static void protectFromParasite(Player player) {
         int insects = RandomNumberGeneratorInt.randomBetween(0, 100);
@@ -145,8 +160,12 @@ public class Plant implements Buyable, Saleable {
                     player.setCash(-value);
 
                 } else if (insects == 5) {
-                    player.yourPlantedPlants.get(i).amountInInventory -= 1;
-                    player.farm.get(0).fieldsSlots += 1;
+                    int random = RandomNumberGeneratorInt.randomBetween(0, player.yourPlantedPlants.get(i).amountInInventory);
+                    player.yourPlantedPlants.get(i).amountInInventory -= random;
+                    if (player.yourPlantedPlants.get(i).amountInInventory == 0) {
+                        player.yourPlantedPlants.remove(i);
+                    }
+                    player.farm.get(0).fieldsSlots += random;
                 }
             }
         }

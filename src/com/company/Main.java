@@ -40,12 +40,12 @@ public class Main {
             Plant strawberriesSeed = new Plant("strawberriesSeed", 60.0, RandomNumberGeneratorInt.randomBetween(100, 200), 200, 34, 6.25, 500, 50, "strawberries");
 
             /*ANIMALS */
-            Animal cow = new Animal("cow", 1000.0, 10.0, 200.0, 0.2, 2.0, "corn", "milk", "Cowshed");
-            Animal sheep = new Animal("sheep", 1200.0, 10.0, 250.0, 0.1, 2.0, "wheat", "wool", "Stable");
-            Animal pig = new Animal("pig", 800.0, 10.0, 180.0, 0.30, 2.0, "carrot", null, "Pigsty");
-            Animal chicken = new Animal("chicken", 200.0, 0.2, 50.0, 0.1, 2.0, "sunflower", "egg", "Chickencoop");
-            Animal dog = new Animal("dog", 2000.0, 1.0, 100.0, 0.2, 2.0, "dogFood");
-            Animal cat = new Animal("cat", 2200.0, 0.5, 100.0, 0.1, 2.0, "catFood");
+            Animal cow = new Animal("cow", 1000.0, 10.0, 200.0, 0.2, 2.0, "corn", "milk", "Cowshed",false);
+            Animal sheep = new Animal("sheep", 1200.0, 10.0, 250.0, 0.1, 2.0, "wheat", "wool", "Stable",false);
+            Animal pig = new Animal("pig", 800.0, 10.0, 180.0, 0.30, 2.0, "carrot", null, "Pigsty",false);
+            Animal chicken = new Animal("chicken", 200.0, 0.2, 50.0, 0.1, 2.0, "sunflower", "egg", "Chickencoop",false);
+            Animal dog = new Animal("dog", 2000.0, 1.0, 100.0, 0.2, 2.0, "dogFood",false);
+            Animal cat = new Animal("cat", 2200.0, 0.5, 80.0, 0.1, 2.0, "catFood",false);
 
             /*FARMS */
             Farm oldFarm = new Farm("Old Farm", RandomNumberGeneratorInt.randomBetween(1000, 1500), RandomNumberGeneratorInt.randomBetween(2, 5), 10);
@@ -671,14 +671,12 @@ public class Main {
                 }
 
                 /* Thinks that happened independently from player decision */
-                Player.isCash(Player.playerList.get(whichPlayer));
                 Plant.growingProcess(Player.playerList.get(whichPlayer));
                 Plant.protectFromParasite(Player.playerList.get(whichPlayer));
                 World.disasters(Player.playerList.get(whichPlayer), week);
                 Animal.growingProcess(Player.playerList.get(whichPlayer));
                 Animal.reproduction(Player.playerList.get(whichPlayer));
                 Animal.productionItem(Player.playerList.get(whichPlayer));
-                Animal.feed(Player.playerList.get(whichPlayer));
 
                 /*GOAL*/
                 if (!Player.playerList.get(whichPlayer).farm.isEmpty()) {

@@ -18,8 +18,9 @@ public class Animal implements Buyable, Saleable {
     public String productForSelling;
     public int amountInBuilding = 0;
     public String buildingRequired;
+    public boolean isFeed;
 
-    public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, String productForSelling, String buildingRequired) {
+    public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, String productForSelling, String buildingRequired, boolean isFeed) {
         this.name = name;
         this.costOfPurchase = costOfPurchase;
         this.weight = weight;
@@ -29,9 +30,10 @@ public class Animal implements Buyable, Saleable {
         this.typeOfFoodThatCanEat = typeOfFoodThatCanEat;
         this.productForSelling = productForSelling;
         this.buildingRequired = buildingRequired;
+        this.isFeed = isFeed;
     }
 
-    public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, String productForSelling) {
+    public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat, boolean isFeed) {
         this.name = name;
         this.costOfPurchase = costOfPurchase;
         this.weight = weight;
@@ -39,18 +41,7 @@ public class Animal implements Buyable, Saleable {
         this.gainWeightForWeek = gainWeightForWeek;
         this.amountOfFoodPerWeek = amountOfFoodPerWeek;
         this.typeOfFoodThatCanEat = typeOfFoodThatCanEat;
-        this.productForSelling = productForSelling;
-
-    }
-
-    public Animal(String name, double costOfPurchase, double weight, double timeToGrowUp, double gainWeightForWeek, double amountOfFoodPerWeek, String typeOfFoodThatCanEat) {
-        this.name = name;
-        this.costOfPurchase = costOfPurchase;
-        this.weight = weight;
-        this.timeToGrowUp = timeToGrowUp;
-        this.gainWeightForWeek = gainWeightForWeek;
-        this.amountOfFoodPerWeek = amountOfFoodPerWeek;
-        this.typeOfFoodThatCanEat = typeOfFoodThatCanEat;
+        this.isFeed = isFeed;
 
     }
 
@@ -70,8 +61,18 @@ public class Animal implements Buyable, Saleable {
         if (!player.yourAnimals.isEmpty()) {
             for (int i = 0; i < player.yourAnimals.size(); i++) {
                 if (player.yourAnimals.get(i).timeToGrowUp > 0) {
-                    player.yourAnimals.get(i).timeToGrowUp -= 1;
-                    player.yourAnimals.get(i).weight += player.yourAnimals.get(i).gainWeightForWeek;
+                    if (player.yourAnimals.get(i).isFeed) {
+
+                        player.yourAnimals.get(i).timeToGrowUp -= 1;
+                        player.yourAnimals.get(i).weight += player.yourAnimals.get(i).gainWeightForWeek;
+                        player.yourAnimals.get(i).isFeed = false;
+                    } else {
+                        player.yourAnimals.get(i).weight -= 1;
+                        if (player.yourAnimals.get(i).weight <= 0) {
+                            player.yourAnimals.remove(i);
+                            System.out.println(player.yourAnimals.get(i).name + " died");
+                        }
+                    }
                 }
             }
         }
@@ -96,9 +97,12 @@ public class Animal implements Buyable, Saleable {
                 amount = player.yourAnimals.get(i).amountInBuilding * player.yourAnimals.get(i).amountOfFoodPerWeek;
                 if (!player.yourPlants.isEmpty() && player.yourPlants.get(i).name.equals(player.yourAnimals.get(i).typeOfFoodThatCanEat)) {
                     player.yourPlants.get(i).amountInInventory -= amount;
+                    player.yourAnimals.get(i).isFeed = true;
 
-                } else if (player.yourPlants.isEmpty()) {
-                    player.setCash(amount * RandomNumberGeneratorInt.randomBetween(1, 3));
+                } else if (player.yourPlants.isEmpty() || player.getCash() > 0) {
+                    player.setCash(-(amount * RandomNumberGeneratorInt.randomBetween(1, 3)));
+                    player.yourAnimals.get(i).isFeed = true;
+
                 }
             }
         }

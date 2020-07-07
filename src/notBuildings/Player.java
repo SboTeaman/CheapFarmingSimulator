@@ -26,22 +26,6 @@ public class Player {
         this.cash = 5000.0;
     }
 
-    public static void isCash(Player player) {
-        if (player.cash <= 0) {
-            for (int i = 0; i < player.yourPlantedPlants.size(); i++) {
-                if (RandomNumberGeneratorInt.randomBetween(0, 10) == 5) {
-                    player.yourPlantedPlants.get(i).amountInInventory -= RandomNumberGeneratorInt.randomBetween(0, player.yourPlantedPlants.get(i).amountInInventory);
-                    if (player.yourPlantedPlants.get(i).amountInInventory == 0) {
-                        player.yourPlantedPlants.remove(i);
-                    }
-                }
-            }
-            for (int i = 0; i < player.yourAnimals.size(); i++) {
-                player.yourAnimals.get(i).weight -= 1;
-            }
-        }
-    }
-
     public static void newPlayer() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Type how many player:");
