@@ -5,6 +5,8 @@ import notBuildings.Player;
 import interfaces.RandomNumberGeneratorInt;
 import interfaces.Saleable;
 
+import java.util.Scanner;
+
 public class Farm implements Buyable, Saleable {
 
     public final int maxFieldsSlots;
@@ -53,7 +55,14 @@ public class Farm implements Buyable, Saleable {
 
     /*Method is used for selling field in farm*/
     @Override
-    public void sell(Player player, int amount) {
+    public void sell(Player player) {
+
+        System.out.println("You have " +player.farm.get(0).fieldsSlots + " from " + player.farm.get(0).maxFieldsSlots);
+
+        System.out.println("How much you want to sell?");
+        Scanner scannerAmount = new Scanner(System.in);
+        int amount = scannerAmount.nextInt();
+
         double valueOfTransaction = amount * RandomNumberGeneratorInt.randomBetween(800, 1000);
         if (player.farm.get(0).name.equals(this.name)) {
             if (this.fieldsSlots > amount) {
@@ -69,10 +78,17 @@ public class Farm implements Buyable, Saleable {
 
     /*Method is used for buying field in farm*/
     @Override
-    public void buy(Player player, int amount) {
+    public void buy(Player player) {
+
+        System.out.println("You have " +player.farm.get(0).fieldsSlots + " from " + player.farm.get(0).maxFieldsSlots);
+
+        System.out.println("How much you want to buy?");
+        Scanner scannerAmount = new Scanner(System.in);
+        int amount = scannerAmount.nextInt();
+
         double valueOfTransaction = amount * RandomNumberGeneratorInt.randomBetween(800, 1000);
 
-        if (player.getCash() >= valueOfTransaction) {
+        if (player.getCash() >= valueOfTransaction && player.farm != null) {
             if (player.farm.get(0).name.equals(this.name)) {
                 if (this.maxFieldsSlots >= amount && player.getCash() >= valueOfTransaction && this.fieldsSlots < this.maxFieldsSlots) {
                     this.fieldsSlots += amount;

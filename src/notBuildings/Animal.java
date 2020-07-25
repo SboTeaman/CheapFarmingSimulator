@@ -7,6 +7,7 @@ import interfaces.Saleable;
 
 import java.util.Scanner;
 
+@SuppressWarnings("SuspiciousListRemoveInLoop")
 public class Animal implements Buyable, Saleable {
     public final String name;
     public final double costOfPurchase;
@@ -121,7 +122,12 @@ public class Animal implements Buyable, Saleable {
     }
 
     @Override
-    public void sell(Player player, int amount) {
+    public void sell(Player player) {
+
+        System.out.println("How much you want to buy?");
+        Scanner scannerAmount = new Scanner(System.in);
+        int amount = scannerAmount.nextInt();
+
         for (int i = 0; i < player.yourAnimals.size(); i++) {
             if (player.yourBuildings.get(i).type.equals(this.buildingRequired)) {
 
@@ -158,7 +164,12 @@ public class Animal implements Buyable, Saleable {
     }
 
     @Override
-    public void buy(Player player, int amount) {
+    public void buy(Player player) {
+
+        System.out.println("How much you want to buy?");
+        Scanner scannerAmount = new Scanner(System.in);
+        int amount = scannerAmount.nextInt();
+
         if (!player.yourBuildings.isEmpty()) {
             double value = this.costOfPurchase * amount;
             for (int n = 0; n < player.yourBuildings.size(); n++) {

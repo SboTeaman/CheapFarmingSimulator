@@ -4,5 +4,5 @@ import notBuildings.Player;
 
 public interface Buyable {
 
-    void buy(Player player, int amount);
+    void buy(Player player);
 }

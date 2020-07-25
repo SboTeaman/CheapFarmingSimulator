@@ -2,13 +2,11 @@ package notBuildings;
 
 import buildings.Farm;
 import buildings.Building;
-import interfaces.RandomNumberGeneratorInt;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-@SuppressWarnings("SuspiciousListRemoveInLoop")
 public class Player {
     public static final List<Player> playerList = new ArrayList<>();
     private final String name;
