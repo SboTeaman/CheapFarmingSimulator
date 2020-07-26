@@ -1,8 +1,9 @@
 package buildings;
 
+import interfaces.Buyable;
 import notBuildings.Player;
 
-public class Building {
+public class Building  implements Buyable {
 
     public final String name;
     private final double price;
@@ -27,16 +28,17 @@ public class Building {
         return price;
     }
 
-    public void buyBuildings(Player player, Farm farm) {
-        if (player.farm.isEmpty()) {
+    @Override
+    public void buy(Player player) {
+        if (!player.isFarm()) {
             System.out.println("You don't have any farm");
         } else {
             if (player.getCash() > this.getPrice()) {
-                if (farm.fieldsSlots > 0) {
+                if (player.farm.get(0).fieldsSlots > 0) {
 
                     if (player.yourBuildings.isEmpty()) {
                         player.setCash(-this.getPrice());
-                        farm.fieldsSlots -= 1;
+                        player.farm.get(0).fieldsSlots -= 1;
                         player.yourBuildings.add(this);
                         System.out.println("You bought: " + this.name);
                     } else {

@@ -29,9 +29,9 @@ public class World {
         }
     }
 
-    public static void isWinner(Player player, Farm farm) {
+    public static void isWinner(Player player) {
         if (player.farm.isEmpty()) {
-            if (player.farm.get(0).name.equals(farm.name) && player.getCash() >= 1000000.0) {
+            if (player.farm.get(0).name.equals("ultimateFarm") && player.getCash() >= 1000000.0) {
                 System.out.println("Player:" + player.getName() + " win the game!!!");
                 System.exit(0);
             }

@@ -51,6 +51,10 @@ public class Player {
         return name;
     }
 
+    public boolean isFarm() {
+        return !this.farm.isEmpty();
+    }
+
     public String toString() {
         return "name: " + this.name +
                 "\ncash: " + this.cash;

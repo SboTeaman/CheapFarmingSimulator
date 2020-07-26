@@ -5,10 +5,12 @@ import interfaces.RandomNumberGeneratorInt;
 import notBuildings.Animal;
 import notBuildings.Plant;
 import notBuildings.Player;
+import notBuildings.World;
 
 import java.util.Scanner;
 
 public class Menu {
+
     /* PLANTS */
     static Plant cornSeed = new Plant("cornSeed", 25.0, 10, RandomNumberGeneratorInt.randomBetween(200, 300), 20, 1.25, 200, 20, "corn");
     static Plant carrotSeed = new Plant("carrotSeed", 33.50, 11, RandomNumberGeneratorInt.randomBetween(100, 150), 50, 2.3, 300, 30, "carrot");
@@ -34,7 +36,6 @@ public class Menu {
     static Animal chicken = new Animal("chicken", 200.0, 0.2, 50.0, 0.1, 2.0, "sunflower", "egg", "Chickencoop", false);
     static Animal dog = new Animal("dog", 2000.0, 1.0, 100.0, 0.2, 2.0, "dogFood", false);
     static Animal cat = new Animal("cat", 2200.0, 0.5, 80.0, 0.1, 2.0, "catFood", false);
-
     /*BUILDINGS*/
     static Building smallCowshed = new Cowshed("smallCowshed", 1000.0, 1.0, 10, "Cowshed");
     static Building smallPigsty = new Pigsty("smallPigsty", 1000.0, 1.0, 10, "Pigsty");
@@ -60,6 +61,224 @@ public class Menu {
     static Farm ultimateFarm = new Farm("ultimateFarm", RandomNumberGeneratorInt.randomBetween(200000, 300000), RandomNumberGeneratorInt.randomBetween(30, 40), 100);
 
 
+    public static void mainMenu() {
+        int menuChoice;
+        int week;
+        int year = 2020;
+        for (week = 1; week > 0; week++) {
+
+            /*MENU*/
+            System.out.println("Year: " + year + " Week:" + week);
+
+            for (int whichPlayer = 0; whichPlayer < Player.playerList.size(); whichPlayer++) {
+                do {
+                    System.out.println("\n\n");
+                    System.out.println("---------------------");
+                    System.out.println("Turn: " + Player.playerList.get(whichPlayer).toString());
+                    System.out.println("---------------------");
+                    System.out.println("MENU");
+                    System.out.println("---------------------");
+                    System.out.println("1 - SHOP ");
+                    System.out.println("2 - Statistic of yours Farms");
+                    System.out.println("3 - Manage your farms:");
+                    System.out.println("---------------------");
+                    System.out.println("4 - End a week");
+
+                    Scanner scannerMenu = new Scanner(System.in);
+                    menuChoice = scannerMenu.nextInt();
+                    switch (menuChoice) {
+
+                        case 1: /*SHOP*/
+                            Menu.shopMenu(Player.playerList.get(whichPlayer));
+                            break;
+
+                        case 2: /*Statistic of your farm*/
+                            Menu.farmStatistic(Player.playerList.get(whichPlayer));
+                            break;
+
+                        case 3: /*Manage your farm*/
+                            Menu.farmManage(Player.playerList.get(whichPlayer));
+                            break;
+                    }
+                }
+                while (menuChoice < 4);
+                if (menuChoice >= 4) {
+                    break;
+                }
+
+                Plant.growingProcess(Player.playerList.get(whichPlayer));
+                Plant.protectFromParasite(Player.playerList.get(whichPlayer));
+                World.disasters(Player.playerList.get(whichPlayer), week);
+                Animal.growingProcess(Player.playerList.get(whichPlayer));
+                Animal.reproduction(Player.playerList.get(whichPlayer));
+                Animal.productionItem(Player.playerList.get(whichPlayer));
+
+                World.isWinner(Player.playerList.get(whichPlayer));
+            }
+            if (week == 52) {
+                week = 0;
+                year++;
+            }
+        }
+
+    }
+
+    public static void shopMenu(Player player) {
+
+        System.out.println("---------------------");
+        System.out.println("Welcome in the Shop");
+        System.out.println("---------------------");
+        System.out.println("1 - Buy new Farm");
+        System.out.println("2 - Buy new Buildings");
+        System.out.println("3 - Buy more field");
+        System.out.println("4 - Buy Plants");
+        System.out.println("5 - Buy Animals");
+        System.out.println("---------------------");
+        System.out.println("6 - Sell Plants");
+        System.out.println("7 - Sell Animals");
+        System.out.println("8 - Sell Field");
+        System.out.println("---------------------");
+        System.out.println("9 - Return");
+        System.out.println("---------------------");
+
+        switch (Menu.choiceMenu()) {
+            case 1:
+                System.out.println("---------------------");
+                System.out.println("Buy new Farm");
+                System.out.println("---------------------");
+                Menu.whichFarm().buyFarm(player);
+                break;
+
+            case 2:
+                System.out.println("---------------------");
+                System.out.println(" Buy new Buildings");
+                System.out.println("---------------------");
+                Menu.whichBuilding().buy(player);
+                break;
+
+            case 3: {
+                System.out.println("---------------------");
+                System.out.println("Buy more field");
+                System.out.println("---------------------");
+                player.farm.get(0).buy(player);//check
+                break;
+            }
+            case 4:
+                System.out.println("---------------------");
+                System.out.println("Buy Plants");
+                System.out.println("---------------------");
+                Menu.whichPlant().buy(player);
+                break;
+
+            case 5:
+                System.out.println("---------------------");
+                System.out.println("Buy Animals");
+                System.out.println("---------------------");
+                Menu.whichAnimal().buy(player);
+                break;
+
+            case 6:
+                System.out.println("---------------------");
+                System.out.println("Your plants: " + player.yourPlants);
+                System.out.println("---------------------");
+                System.out.println("Sell Plants");
+                System.out.println("---------------------");
+                Menu.whichPlant().sell(player);
+                break;
+
+            case 7:
+                System.out.println("---------------------");
+                System.out.println("Yours animals" + player.yourAnimals);
+                System.out.println("---------------------");
+                System.out.println("Sell Animals");
+                System.out.println("---------------------");
+                Menu.whichAnimal().sell(player);
+                break;
+
+            case 8:
+                System.out.println("---------------------");
+                System.out.println("Sell Field");
+                System.out.println("---------------------");
+                player.farm.get(0).sell(player);
+        }
+    }
+
+    public static void farmStatistic(Player player) {
+
+        System.out.println("---------------------");
+        System.out.println("Statistic of yours Farms");
+        System.out.println("---------------------");
+        System.out.println("1 - Your farm");
+        System.out.println("2 - List of your buildings");
+        System.out.println("3 - List of your animals");
+        System.out.println("4 - List of your seeds/saplings");
+        System.out.println("5 - List of your planted plants");
+        System.out.println("6 - List of your plants");
+        System.out.println("7 - Silos status");
+        System.out.println("---------------------");
+        System.out.println("0 - Return");
+
+        switch (Menu.choiceMenu()) {
+            case 1:
+                System.out.println("Your farm:");
+                System.out.println(player.farm);
+                break;
+            case 2:
+                System.out.println("List of your buildings:");
+                System.out.println(player.yourBuildings);
+                break;
+            case 3:
+                System.out.println("List of your Animals:");
+                System.out.println(player.yourAnimals);
+                break;
+            case 4:
+                System.out.println("List of your Seeds:");
+                System.out.println(player.yourSeeds);
+                break;
+            case 5:
+                System.out.println("List of your planted Seeds:");
+                System.out.println(player.yourPlantedPlants);
+                break;
+            case 6:
+                System.out.println("List of your plants:");
+                System.out.println(player.yourPlants);
+                break;
+            case 7:
+                System.out.println("Silos: " + player.isSilos);
+                break;
+        }
+    }
+
+    public static void farmManage(Player player) {
+
+        System.out.println("---------------------");
+        System.out.println("Manage your farms:");
+        System.out.println("---------------------");
+        System.out.println("1 - plant seeds/saplings");
+        System.out.println("2 - harvest ready plants");
+        System.out.println("3 - feed animals");
+        System.out.println("---------------------");
+        System.out.println("0 - Return");
+
+        switch (Menu.choiceMenu()) {
+            case 1:
+                System.out.println("---------------------");
+                System.out.println("Your seeds: " + player.yourSeeds);
+                System.out.println("---------------------");
+                System.out.println("which plant you want to plant:");
+                System.out.println("---------------------");
+                Menu.whichPlant().plant(player);
+                break;
+
+            case 2:
+                Plant.harvest(player);
+                break;
+            case 3:
+                Animal.feed(player);
+                break;
+        }
+    }
+
     public static int choiceMenu() {
         Scanner scannerMenu = new Scanner(System.in);
         int choiceMenu = scannerMenu.nextInt();
@@ -67,6 +286,27 @@ public class Menu {
     }
 
     public static Plant whichPlant() {
+
+        System.out.println("---------------------");
+        System.out.println("1 - cornSeed");
+        System.out.println("2 - carrotSeed");
+        System.out.println("3 -  sunflowerSeed");
+        System.out.println("4 -  potatoSeed.");
+        System.out.println("5 -  wheatSeed. ");
+        System.out.println("6 -  broccoliSeed.");
+        System.out.println("7 -  onionSeed. ");
+        System.out.println("8 -  lettuceSeed.");
+        System.out.println("9 -  tomatoSeed.");
+        System.out.println("10 - appleSeed.");
+        System.out.println("11 - pearSeed. ");
+        System.out.println("12 - cherrySeed.");
+        System.out.println("13 - melonSeed.");
+        System.out.println("14 - watermelonSeed");
+        System.out.println("15 - lemonSeed.");
+        System.out.println("16 - strawberriesSe");
+        System.out.println("---------------------");
+        System.out.println("0 - Return");
+        System.out.println("---------------------");
 
         System.out.println("Select plant:");
 
@@ -111,6 +351,16 @@ public class Menu {
 
     public static Animal whichAnimal() {
 
+        System.out.println("1 - cow");
+        System.out.println("2 - sheep");
+        System.out.println("3 - pig");
+        System.out.println("4 - chicken");
+        System.out.println("5 - cat");
+        System.out.println("6 - dog");
+        System.out.println("---------------------");
+        System.out.println("0 - Return");
+        System.out.println("---------------------");
+
         System.out.println("Select animal:");
 
         switch (Menu.choiceMenu()) {
@@ -131,6 +381,26 @@ public class Menu {
     }
 
     public static Building whichBuilding() {
+
+        System.out.println("1 - " + smallCowshed.toString());
+        System.out.println("2 - " + smallPigsty.toString());
+        System.out.println("3 - " + smallStable.toString());
+        System.out.println("4 - " + smallChickencoop.toString());
+        System.out.println("5 - " + mediumCowshed.toString());
+        System.out.println("6 - " + mediumPigsty.toString());
+        System.out.println("7 - " + mediumStable.toString());
+        System.out.println("8 - " + mediumChickencoop.toString());
+        System.out.println("9 - " + bigCowshed.toString());
+        System.out.println("10 - " + bigPigsty.toString());
+        System.out.println("11 - " + bigStable.toString());
+        System.out.println("12 - " + bigChickencoop.toString());
+        System.out.println("13 - " + silos.toString());
+        System.out.println("---------------------");
+        System.out.println("0 - return");
+        System.out.println("---------------------");
+
+        System.out.println("Select building:");
+
         switch (Menu.choiceMenu()) {
             case 1:
                 return smallCowshed;
@@ -163,6 +433,17 @@ public class Menu {
     }
 
     public static Farm whichFarm() {
+
+        System.out.println("1 - " + oldFarm.toString());
+        System.out.println("2 - " + startedFarm.toString());
+        System.out.println("3 - " + advancedFarm.toString());
+        System.out.println("4 - " + highTierFarm.toString());
+        System.out.println("5 - " + ultimateFarm.toString());
+        System.out.println("---------------------");
+        System.out.println("0 - Return");
+        System.out.println("---------------------");
+
+        System.out.println("select farm:");
 
         switch (Menu.choiceMenu()) {
             case 1:

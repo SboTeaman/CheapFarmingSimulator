@@ -82,7 +82,6 @@ public class Plant implements Buyable, Saleable {
                         player.farm.get(0).fieldsSlots -= amount;
 
                         if (player.yourSeeds.get(i).amountInInventory == 0)
-                            //noinspection SuspiciousListRemoveInLoop
                             player.yourSeeds.remove(i);
                     } else {
                         System.out.println("You don't have enough field");
