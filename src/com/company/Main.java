@@ -1,5 +1,7 @@
 package com.company;
 
+import com.sun.source.tree.NewArrayTree;
+import menu.Menu;
 import notBuildings.*;
 import buildings.*;
 import interfaces.RandomNumberGeneratorInt;
@@ -34,7 +36,6 @@ public class Main {
             Plant watermelonSeed = new Plant("watermelonSeed", 55.50, 12, RandomNumberGeneratorInt.randomBetween(90, 200), 47, 5.25, 250, 30, "watermelon");
             Plant lemonSeed = new Plant("lemonSeed", 27.0, 5, RandomNumberGeneratorInt.randomBetween(100, 200), 60, 0.25, 200, 20, "lemon");
             Plant strawberriesSeed = new Plant("strawberriesSeed", 60.0, RandomNumberGeneratorInt.randomBetween(100, 200), 200, 34, 6.25, 500, 50, "strawberries");
-
 
             Animal cow = new Animal("cow", 1000.0, 10.0, 200.0, 0.2, 2.0, "corn", "milk", "Cowshed", false);
             Animal sheep = new Animal("sheep", 1200.0, 10.0, 250.0, 0.1, 2.0, "wheat", "wool", "Stable", false);
@@ -159,48 +160,9 @@ public class Main {
                                     System.out.println("0 - return");
                                     System.out.println("---------------------");
 
-                                    switch (Menu.choiceMenu()) {
-                                        case 1:
-                                            smallCowshed.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0));
-                                            break;
-                                        case 2:
-                                            smallPigsty.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0));
-                                            break;
-                                        case 3:
-                                            smallStable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0));
-                                            break;
-                                        case 4:
-                                            smallChickencoop.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0));
-                                            break;
-                                        case 5:
-                                            mediumCowshed.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0));
-                                            break;
-                                        case 6:
-                                            mediumPigsty.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0));
-                                            break;
-                                        case 7:
-                                            mediumStable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0));
-                                            break;
-                                        case 8:
-                                            mediumChickencoop.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0));
-                                            break;
-                                        case 9:
-                                            bigCowshed.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0));
-                                            break;
-                                        case 10:
-                                            bigPigsty.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0));
-                                            break;
-                                        case 11:
-                                            bigStable.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0));
-                                            break;
-                                        case 12:
-                                            bigChickencoop.buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0));
-                                            break;
-                                        case 13:
-                                            silos.buySilos(Player.playerList.get(whichPlayer));
-                                            break;
-                                    }
+                                    Menu.whichBuilding().buyBuildings(Player.playerList.get(whichPlayer), Player.playerList.get(whichPlayer).farm.get(0));
                                     break;
+
                                 case 3: {
                                     System.out.println("---------------------");
                                     System.out.println("Buy more field");
@@ -232,58 +194,7 @@ public class Main {
                                     System.out.println("---------------------");
                                     System.out.println("0 - Return");
 
-                                    switch (Menu.choiceMenu()) {
-                                        case 0:
-                                            break;
-                                        case 1:
-                                            cornSeed.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 2:
-                                            carrotSeed.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 3:
-                                            sunflowerSeed.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 4:
-                                            potatoSeed.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 5:
-                                            wheatSeed.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 6:
-                                            broccoliSeed.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 7:
-                                            onionSeed.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 8:
-                                            lettuceSeed.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 9:
-                                            tomatoSeed.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 10:
-                                            appleSeed.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 11:
-                                            pearSeed.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 12:
-                                            cherrySeed.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 13:
-                                            melonSeed.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 14:
-                                            watermelonSeed.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 15:
-                                            lemonSeed.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 16:
-                                            strawberriesSeed.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                    }
+                                    Menu.whichPlant().buy(Player.playerList.get(whichPlayer));
                                     break;
 
                                 case 5:
@@ -300,27 +211,9 @@ public class Main {
                                     System.out.println("0 - Return");
                                     System.out.println("---------------------");
 
-                                    switch (Menu.choiceMenu()) {
-                                        case 1:
-                                            cow.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 2:
-                                            sheep.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 3:
-                                            pig.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 4:
-                                            chicken.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 5:
-                                            dog.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 6:
-                                            cat.buy(Player.playerList.get(whichPlayer));
-                                            break;
-                                    }
+                                    Menu.whichAnimal().buy(Player.playerList.get(whichPlayer));
                                     break;
+
                                 case 6:
                                     System.out.println("---------------------");
                                     System.out.println("Your plants: " + Player.playerList.get(whichPlayer).yourPlants);
@@ -347,59 +240,9 @@ public class Main {
                                     System.out.println("0 - Return");
                                     System.out.println("---------------------");
 
-                                    switch (Menu.choiceMenu()) {
-                                        case 0:
-                                            break;
-                                        case 1:
-                                            cornSeed.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 2:
-                                            carrotSeed.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 3:
-                                            sunflowerSeed.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 4:
-                                            potatoSeed.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 5:
-                                            wheatSeed.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 6:
-                                            broccoliSeed.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 7:
-                                            onionSeed.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 8:
-                                            lettuceSeed.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 9:
-                                            tomatoSeed.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 10:
-                                            appleSeed.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 11:
-                                            pearSeed.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 12:
-                                            cherrySeed.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 13:
-                                            melonSeed.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 14:
-                                            watermelonSeed.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 15:
-                                            lemonSeed.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 16:
-                                            strawberriesSeed.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                    }
+                                    Menu.whichPlant().sell(Player.playerList.get(whichPlayer));
                                     break;
+
                                 case 7:
                                     System.out.println("---------------------");
                                     System.out.println("Yours animals" + Player.playerList.get(whichPlayer).yourAnimals);
@@ -415,29 +258,9 @@ public class Main {
                                     System.out.println("---------------------");
                                     System.out.println("0- Return");
 
-                                    switch (Menu.choiceMenu()) {
-                                        case 0:
-                                            break;
-                                        case 1:
-                                            cow.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 2:
-                                            sheep.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 3:
-                                            pig.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 4:
-                                            chicken.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 5:
-                                            dog.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 6:
-                                            cat.sell(Player.playerList.get(whichPlayer));
-                                            break;
-                                    }
+                                    Menu.whichAnimal().sell(Player.playerList.get(whichPlayer));
                                     break;
+
                                 case 8:
                                     System.out.println("---------------------");
                                     System.out.println("Sell Field");
@@ -529,57 +352,9 @@ public class Main {
                                     System.out.println("0 - Return");
                                     System.out.println("---------------------");
 
-                                    switch (Menu.choiceMenu()) {
-                                        case 1:
-                                            cornSeed.plant(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 2:
-                                            carrotSeed.plant(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 3:
-                                            sunflowerSeed.plant(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 4:
-                                            potatoSeed.plant(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 5:
-                                            wheatSeed.plant(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 6:
-                                            broccoliSeed.plant(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 7:
-                                            onionSeed.plant(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 8:
-                                            lettuceSeed.plant(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 9:
-                                            tomatoSeed.plant(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 10:
-                                            appleSeed.plant(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 11:
-                                            pearSeed.plant(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 12:
-                                            cherrySeed.plant(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 13:
-                                            melonSeed.plant(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 14:
-                                            watermelonSeed.plant(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 15:
-                                            lemonSeed.plant(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 16:
-                                            strawberriesSeed.plant(Player.playerList.get(whichPlayer));
-                                            break;
-                                    }
+                                    Menu.whichPlant().plant(Player.playerList.get(whichPlayer));
                                     break;
+
                                 case 2:
                                     Plant.harvest(Player.playerList.get(whichPlayer));
                                     break;
@@ -587,6 +362,7 @@ public class Main {
                                     Animal.feed(Player.playerList.get(whichPlayer));
                                     break;
                             }
+                            break;
                     }
                 }
                 while (choiceMenu < 4);
