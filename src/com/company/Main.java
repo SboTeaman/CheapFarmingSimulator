@@ -6,6 +6,7 @@ import notBuildings.*;
 import buildings.*;
 import interfaces.RandomNumberGeneratorInt;
 
+import javax.swing.plaf.metal.MetalMenuBarUI;
 import java.util.Scanner;
 
 public class Main {
@@ -120,23 +121,7 @@ public class Main {
                                     System.out.println("0 - Return");
                                     System.out.println("---------------------");
 
-                                    switch (Menu.choiceMenu()) {
-                                        case 1:
-                                            oldFarm.buyFarm(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 2:
-                                            startedFarm.buyFarm(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 3:
-                                            advancedFarm.buyFarm(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 4:
-                                            highTierFarm.buyFarm(Player.playerList.get(whichPlayer));
-                                            break;
-                                        case 5:
-                                            ultimateFarm.buyFarm(Player.playerList.get(whichPlayer));
-                                            break;
-                                    }
+                                    Menu.whichFarm().buyFarm(Player.playerList.get(whichPlayer));
                                     break;
 
                                 case 2:

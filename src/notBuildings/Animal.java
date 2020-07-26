@@ -129,7 +129,7 @@ public class Animal implements Buyable, Saleable {
         int amount = scannerAmount.nextInt();
 
         for (int i = 0; i < player.yourAnimals.size(); i++) {
-            if (player.yourBuildings.get(i).type.equals(this.buildingRequired)) {
+            if (player.yourBuildings.get(i).type .equals(this.buildingRequired)) {
 
                 if (player.yourAnimals.get(i).name.equals(this.name)) {
                     if (player.yourAnimals.get(i).amountInBuilding >= amount) {

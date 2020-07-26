@@ -52,6 +52,13 @@ public class Menu {
     static Building bigChickencoop = new Chickencoop("bigChickencoop", 1000.0, 1.0, 100, "Chickencoop");
 
     static Silos silos = new Silos("silos", 2000.0);
+    /*FARMS*/
+    static Farm oldFarm = new Farm("Old Farm", RandomNumberGeneratorInt.randomBetween(1000, 1500), RandomNumberGeneratorInt.randomBetween(2, 5), 10);
+    static Farm startedFarm = new Farm("startedFarm", RandomNumberGeneratorInt.randomBetween(3000, 4000), RandomNumberGeneratorInt.randomBetween(5, 10), 20);
+    static Farm advancedFarm = new Farm("advancedFarm", RandomNumberGeneratorInt.randomBetween(5000, 8000), RandomNumberGeneratorInt.randomBetween(10, 15), 30);
+    static Farm highTierFarm = new Farm("highTierFarm", RandomNumberGeneratorInt.randomBetween(10000, 15000), RandomNumberGeneratorInt.randomBetween(20, 25), 40);
+    static Farm ultimateFarm = new Farm("ultimateFarm", RandomNumberGeneratorInt.randomBetween(200000, 300000), RandomNumberGeneratorInt.randomBetween(30, 40), 100);
+
 
     public static int choiceMenu() {
         Scanner scannerMenu = new Scanner(System.in);
@@ -151,6 +158,23 @@ public class Menu {
                 return bigChickencoop;
             case 13:
                 return silos;
+        }
+        return null;
+    }
+
+    public static Farm whichFarm() {
+
+        switch (Menu.choiceMenu()) {
+            case 1:
+                return oldFarm;
+            case 2:
+                return startedFarm;
+            case 3:
+                return advancedFarm;
+            case 4:
+                return highTierFarm;
+            case 5:
+                return ultimateFarm;
         }
         return null;
     }
